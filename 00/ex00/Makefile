@@ -2,7 +2,7 @@ NAME = megaphone
 CXX = clang++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors -MMD -MP
 
-SRCDIR = ./
+SRCDIR = .
 SRCS = $(shell find $(SRCDIR) -name "*.cpp" -type f | xargs)
 
 OBJDIR = ./obj
