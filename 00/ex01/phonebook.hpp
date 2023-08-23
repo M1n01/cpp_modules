@@ -6,11 +6,13 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 16:19:30 by minabe            #+#    #+#             */
-/*   Updated: 2023/08/16 17:17:51 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/23 16:22:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+
+# include <iostream>
 
 class Phonebook
 {
