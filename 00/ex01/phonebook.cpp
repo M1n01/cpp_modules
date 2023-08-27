@@ -6,11 +6,24 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 16:19:32 by minabe            #+#    #+#             */
-/*   Updated: 2023/08/26 19:24:42 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/27 15:48:40 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
+
+void	add_contact(Phonebook phonebook)
+{
+	std::string	first_name, last_name, nickname, phone_number, darkest_secret;
+
+	std::cin >> first_name >> last_name >> nickname >> phone_number >> darkest_secret;
+	phonebook._add(first_name, last_name, nickname, phone_number, darkest_secret);
+}
+
+void	search_contact(Phonebook phonebook)
+{
+	phonebook._search();
+}
 
 int	main()
 {
@@ -22,9 +35,9 @@ int	main()
 		std::cout << "Please " << std::endl;
 		std::cin >> cmd;
 		if (cmd == "ADD")
-			phonebook.add();
+			add_contact(phonebook);
 		else if (cmd == "SEARCH")
-			phonebook.search();
+			search_contact(phonebook);
 		else if (cmd == "EXIT")
 			break ;
 		else
