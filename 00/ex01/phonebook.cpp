@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 16:19:32 by minabe            #+#    #+#             */
-/*   Updated: 2023/08/27 17:01:26 by minabe           ###   ########.fr       */
+/*   Updated: 2023/08/27 17:04:14 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	Phonebook::_add()
 	std::cin >> darkest_secret;
 	_contacts[0]._darkest_secret = darkest_secret;
 }
+
+/* 出力する文字を10文字に変更する関数を追加する */
 
 void	Phonebook::_search()
 {
