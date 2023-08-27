@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 18:08:25 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 14:43:10 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 22:41:28 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 FlagTrap::FlagTrap(void) : ClapTrap("FlagTrap")
 {
-	std::cout << "FlagTrap default constructor called." << std::endl;
-}
-
-FlagTrap::FlagTrap(std::string name)
-{
-	std::cout << "FlagTrap constructor called." << std::endl;
-	this->_name = name;
 	this->_hitPoints = 100;
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
+	std::cout << "FlagTrap default constructor called." << std::endl;
+}
+
+FlagTrap::FlagTrap(std::string name) : ClapTrap(name)
+{
+	this->_hitPoints = 100;
+	this->_energyPoints = 100;
+	this->_attackDamage = 30;
+	std::cout << "FlagTrap constructor called." << std::endl;
 }
 
 FlagTrap	&FlagTrap::operator=(const FlagTrap &rhs)
