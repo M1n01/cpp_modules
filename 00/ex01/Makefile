@@ -10,8 +10,7 @@ SRCDIR = .
 SRCS = $(shell find $(SRCDIR) -name "*.cpp" -type f | xargs)
 
 OBJDIR = ./obj
-OBJS = $(SRCS:.cpp=.o)
-
+OBJS = $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SRCS))
 DEPS = $(OBJS:.o=.d)
 
 -include $(DEPS)
@@ -19,7 +18,12 @@ DEPS = $(OBJS:.o=.d)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+	$(CXX) $(OBJS) -o $(NAME)
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	@mkdir -p $(OBJDIR)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) -c $< -o $@
+
 
 clean:
 	rm -f $(OBJS) $(DEPS)
