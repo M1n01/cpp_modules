@@ -6,13 +6,14 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 16:19:30 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/05 22:21:54 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/17 16:14:36 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 # include <iostream>
+# include <queue>
 
 class Contact
 {
@@ -24,11 +25,11 @@ class Contact
 		std::string	_darkest_secret;
 };
 
-class Phonebook {
-	public:
-		void		_add();
-		void		_search();
+class Phonebook
+{
 	private:
-		Contact		_contacts[8];
-		int			_index;
+		std::queue<Contact>	_contacts;
+	public:
+		void	_add(const Contact &contact);
+		void	_search(const std::string name);
 };

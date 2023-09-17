@@ -22,8 +22,7 @@ $(NAME): $(OBJS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	@mkdir -p $(OBJDIR)
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) -c $< -o $@
-
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) -c phonebook.cpp -o obj/phonebook.o
 
 clean:
 	rm -f $(OBJS) $(DEPS)
