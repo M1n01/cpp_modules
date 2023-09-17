@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 16:19:32 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/17 16:32:39 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/17 18:04:19 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,46 @@
 
 void	Phonebook::_add(const Contact &contact)
 {
-	if (_contacts.size() == 8)
-		_contacts.pop();
-	_contacts.push(contact);
+	if (_numContacts == MAX_CONTACTS)
+	{
+		std::cout << "Phonebook is full." << std::endl;
+	}
+	else
+	{
+		_contacts[_numContacts] = contact;
+		_numContacts++;
+	}
+}
+
+std::string	format_string(const std::string &str, size_t len)
+{
+	if (str.length() > len)
+		return (str.substr(0, len - 1) + ".");
+	else
+		return (str);
+}
+
+static void	display_contact_table(Contact &contact, int index)
+{
+	std::cout << "|" << std::setw(10) << "Index" << "|";
+	std::cout << std::setw(10) << "First name" << "|";
+	std::cout << std::setw(10) << "Last name" << "|";
+	std::cout << std::setw(10) << "Nickname" << "|" << std::endl;
+	std::cout << "|" << std::setw(10) << index << "|";
+	std::cout << std::setw(10) << format_string(contact._first_name, 10) << "|";
+	std::cout << std::setw(10) << format_string(contact._last_name, 10) << "|";
+	std::cout << std::setw(10) << format_string(contact._nickname, 10) << "|" << std::endl;
 }
 
 void	Phonebook::_search(const std::string name)
 {
-	std::queue<Contact>	temp;
-
-	temp = _contacts;
-	while (!temp.empty())
+	for (int i = 0; i < _numContacts; i++)
 	{
-		const Contact& entry = temp.front();
-
-		if (entry._first_name == name || entry._last_name == name)
+		if (_contacts[i]._first_name == name || _contacts[i]._last_name == name || _contacts[i]._nickname == name)
 		{
-			std::cout << "Phone: " << entry._phone_number << std::endl;
-			return ;
+			display_contact_table(_contacts[i], i + 1);
+			return;
 		}
-		temp.pop();
 	}
 	std::cout << "Name not found!" << std::endl;
 }

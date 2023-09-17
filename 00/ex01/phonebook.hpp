@@ -6,14 +6,15 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 16:19:30 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/17 16:14:36 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/17 18:06:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-
 # include <iostream>
-# include <queue>
+# include <iomanip>
+
+#define MAX_CONTACTS 1
 
 class Contact
 {
@@ -28,8 +29,10 @@ class Contact
 class Phonebook
 {
 	private:
-		std::queue<Contact>	_contacts;
+		Contact	_contacts[MAX_CONTACTS];
+		int		_numContacts;
 	public:
+		Phonebook() : _numContacts(0) {};
 		void	_add(const Contact &contact);
 		void	_search(const std::string name);
 };
