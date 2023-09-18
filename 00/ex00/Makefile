@@ -15,7 +15,7 @@ DEPS = $(OBJS:.o=.d)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(OBJS) $(CXXFLAGS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	@mkdir -p $(OBJDIR)
