@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 16:19:30 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/18 13:50:36 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/18 16:21:29 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ class Phonebook
 	public:
 		Phonebook() : _numContacts(0) {};
 		void	_add(const Contact &contact);
-		void	_search(const std::string name);
+		void	_search();
 };
