@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 16:19:30 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/17 18:06:02 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/18 13:50:36 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # include <iostream>
 # include <iomanip>
 
-#define MAX_CONTACTS 1
+#define MAX_CONTACTS 8
 
 class Contact
 {
