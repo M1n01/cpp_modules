@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:33:01 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/18 19:49:42 by minabe           ###   ########.fr       */
+/*   Updated: 2023/09/23 13:38:44 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,6 @@ void	Account::_displayTimestamp( void )
 
 	std::time(&now);
 	local = std::localtime(&now);
-	std::strftime(buf, sizeof(buf), "[%Y%m%d_%H%M%S] ", local);
+	std::strftime(buf, sizeof(buf), "[%Y%m%d_%H%M%S]", local);
 	std::cout << buf << " ";
 }
