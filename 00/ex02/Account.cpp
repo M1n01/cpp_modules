@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:33:01 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/23 13:38:44 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/01 18:51:36 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	Account::displayAccountsInfos( void )
 }
 
 Account::Account( int initial_deposit )
-	: _accountIndex(getNbAccounts()), _amount(initial_deposit),
+	: _accountIndex(_nbAccounts++), _amount(initial_deposit),
 	_nbDeposits(0), _nbWithdrawals(0)
 {
 	_totalAmount += initial_deposit;
