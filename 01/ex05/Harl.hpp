@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/18 20:47:47 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/07 21:52:39 by minabe           ###   ########.fr       */
+/*   Created: 2023/10/07 20:50:28 by minabe            #+#    #+#             */
+/*   Updated: 2023/10/07 21:49:40 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#pragma once
 
-int	main(void)
+#include <iostream>
+#include <map>
+
+class Harl
 {
-	Harl	harl;
-
-	harl.complain("DEBUG");
-	harl.complain("INFO");
-	harl.complain("WARNING");
-	harl.complain("ERROR");
-	return (0);
-}
+	private:
+		void	debug(void);
+		void 	info(void);
+		void 	warning(void);
+		void 	error(void);
+	public:
+		void	complain(std::string level);
+};
