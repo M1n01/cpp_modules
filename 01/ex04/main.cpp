@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:47:47 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/07 18:26:22 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/07 20:38:17 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 #include <string>
 #include <fstream>
 
+static void	replace_file_content(std::string s1, std::string s2, std::ifstream &inputFile, std::ofstream &outputFile);
+
 int	main(int argc, char **argv)
 {
 	std::string		filename;
 	std::string		s1;
 	std::string		s2;
-	std::string		line;
 	std::string		replace;
 
 	if (argc == 4)
@@ -40,14 +41,28 @@ int	main(int argc, char **argv)
 			std::cerr << "Error: " << replace << " could not be opened." << std::endl;
 			return (EXIT_FAILURE);
 		}
-		while (std::getline(inputFile, line))
-		{
-			// while (line.find(s1) != std::string::npos)
-				/* replace */
-			outputFile << line << std::endl;
-		}
+		replace_file_content(s1, s2, inputFile, outputFile);
 		inputFile.close();
 		outputFile.close();
 	}
 	return (0);
+}
+
+static void	replace_file_content(std::string s1, std::string s2, std::ifstream &inputFile, std::ofstream &outputFile)
+{
+	std::string	line;
+	size_t		pos;
+
+	while (std::getline(inputFile, line))
+	{
+		pos = line.find(s1);
+		while (pos != std::string::npos)
+		{
+			line.erase(pos, s1.length());
+			line.insert(pos, s2);
+			pos += s2.length();
+			pos = line.find(s1, pos);
+		}
+		outputFile << line << std::endl;
+	}
 }
