@@ -1,4 +1,4 @@
-NAME = ex06
+NAME = harlFilter
 CXX = clang++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors -MMD -MP
 LDFLAGS = -I$(INCDIR)
