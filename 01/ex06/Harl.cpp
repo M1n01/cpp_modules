@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 21:15:28 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/07 22:13:36 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/08 12:20:06 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,16 @@ void	Harl::error(void)
 
 void	Harl::complain(std::string level)
 {
-	typedef void (Harl::*complainFunc)(void);
-	std::map<std::string, complainFunc>	funcMap;
+	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	ComplainFunction functions[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-	funcMap["DEBUG"] = &Harl::debug;
-	funcMap["INFO"] = &Harl::info;
-	funcMap["WARNING"] = &Harl::warning;
-	funcMap["ERROR"] = &Harl::error;
-	(this->*funcMap[level])();
+	for (int i = 0; i < 4; i++)
+	{
+		if (levels[i] == level)
+		{
+			(this->*functions[i])();
+			return ;
+		}
+	}
+	std::cout << "Invalid level." << std::endl;
 }
