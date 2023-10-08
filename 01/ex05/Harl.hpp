@@ -6,18 +6,18 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 20:50:28 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/07 21:49:40 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/08 12:17:40 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include <map>
 
 class Harl
 {
 	private:
+		typedef void (Harl::*ComplainFunction)(void);
 		void	debug(void);
 		void 	info(void);
 		void 	warning(void);
