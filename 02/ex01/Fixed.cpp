@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:48:35 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/08 15:55:59 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/08 16:03:08 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ Fixed	&Fixed::operator=(const Fixed &rhs)
 
 int	Fixed::getRawBits(void) const
 {
-	// std::cout << "getRawBits member function called" << std::endl;
 	return (this->_value);
 }
 
