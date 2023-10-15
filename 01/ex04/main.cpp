@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:47:47 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/07 20:38:17 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/15 16:41:54 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,17 @@ int	main(int argc, char **argv)
 	std::string		s2;
 	std::string		replace;
 
-	if (argc == 4)
+	if (argc != 4)
+		std::cerr << "Error: Invalid number of arguments." << std::endl;
+	else
 	{
 		filename = argv[1];
 		s1 = argv[2];
 		s2 = argv[3];
 		replace = filename + ".replace";
 		std::ifstream	inputFile(filename);
-		if (!inputFile)
-		{
-			std::cerr << "Error: " << filename << " could not be opened." << std::endl;
-			return (EXIT_FAILURE);
-		}
 		std::ofstream	outputFile(replace);
-		if (!outputFile)
+		if (!inputFile || !outputFile)
 		{
 			std::cerr << "Error: " << replace << " could not be opened." << std::endl;
 			return (EXIT_FAILURE);

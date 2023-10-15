@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:47:47 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/07 15:18:57 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/15 16:42:11 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 int	main(void)
 {
-	Zombie	*zombies = zombieHorde(5, "Zombie_");
+	int		num;
+	Zombie	*zombies;
 
-	for (int i = 0; i < 5; i++)
+	num = 5;
+	zombies = zombieHorde(num, "Zombie_");
+	for (int i = 0; i < num; i++)
 		zombies[i]._announce();
 	delete[] zombies;
 	return (0);
+}
+
+__attribute__((destructor))
+static void destructor() {
+	system("leaks -q ex01");
 }
