@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:47:47 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/08 12:59:59 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/15 17:12:08 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,10 @@ int main(void)
 	std::cout << b.getRawBits() << std::endl;
 	std::cout << c.getRawBits() << std::endl;
 	return (0);
+}
+
+__attribute__((destructor))
+static void destructor()
+{
+	system("leaks -q ex00");
 }

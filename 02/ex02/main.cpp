@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:47:47 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/10 10:14:27 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/15 17:12:40 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,10 @@ int main(void)
 	std::cout << b << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl;
 	return (0);
+}
+
+__attribute__((destructor))
+static void destructor()
+{
+	system("leaks -q ex02");
 }
