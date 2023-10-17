@@ -6,33 +6,24 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 16:19:30 by minabe            #+#    #+#             */
-/*   Updated: 2023/09/18 16:21:29 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/17 09:57:11 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 # include <iostream>
 # include <iomanip>
+# include "Contact.hpp"
 
 #define MAX_CONTACTS 8
 
-class Contact
-{
-	public:
-		std::string	_first_name;
-		std::string	_last_name;
-		std::string	_nickname;
-		std::string	_phone_number;
-		std::string	_darkest_secret;
-};
-
-class Phonebook
+class PhoneBook
 {
 	private:
 		Contact	_contacts[MAX_CONTACTS];
 		int		_numContacts;
 	public:
-		Phonebook() : _numContacts(0) {};
+		PhoneBook() : _numContacts(0) {};
 		void	_add(const Contact &contact);
 		void	_search();
 };
