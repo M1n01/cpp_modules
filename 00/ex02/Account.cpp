@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 16:33:01 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/01 18:51:36 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/17 15:30:54 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	Account::makeDeposit( int deposit )
 			<< "deposit:" << deposit << ";";
 	_amount += deposit;
 	_nbDeposits++;
+	_totalNbDeposits++;
 	_totalAmount += deposit;
 	std::cout << "amount:" << _amount << ";"
 			<< "nb_deposits:" << _nbDeposits << std::endl;
