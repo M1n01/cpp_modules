@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 16:19:32 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/17 10:15:13 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/17 14:20:45 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,48 +27,37 @@ void	PhoneBook::_add(const Contact &contact)
 	}
 }
 
-static std::string	format_string(const std::string &str, size_t len)
+static void	outputContact(Contact &contact)
 {
-	if (str.length() > len)
-		return (str.substr(0, len - 1) + ".");
-	else
-		return (str);
-}
-
-static void	display_row(Contact &contact, int index)
-{
-	std::cout << "|" << std::setw(10) << index << "|";
-	std::cout << std::setw(10) << format_string(contact.getFirstName(), 10) << "|";
-	std::cout << std::setw(10) << format_string(contact._last_name, 10) << "|";
-	std::cout << std::setw(10) << format_string(contact._nickname, 10) << "|" << std::endl;
+	std::cout << "First name: " << contact.getFirstName() << std::endl;
+	std::cout << "Last name: " << contact.getLastName() << std::endl;
+	std::cout << "Nickname: " << contact.getNickname() << std::endl;
+	std::cout << "Phone number: " << contact.getPhoneNumber() << std::endl;
+	std::cout << "Darkest secret: " << contact.getDarkestSecret() << std::endl;
 }
 
 void PhoneBook::_search()
 {
 	int			index;
-	std::string	header;
 
-	header = "|Index     |First name|Last name |Nickname  |";
-	std::cout << header << std::endl;
-	for (int i = 0; i < _numContacts; i++)
-		display_row(_contacts[i], i + 1);
 	std::cout << "Enter an index: ";
 	std::cin >> index;
-	if (std::cin.fail() || index < 1 || _numContacts < index)
+	if (std::cin.fail() || (index < 1 || _numContacts < index))
 	{
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cout << "Invalid index!" << std::endl;
 		return;
 	}
-	std::cout << header << std::endl;
-	for (int i = 0; i < _numContacts; i++)
-	{
-		if (i == index - 1)
-		{
-			display_row(_contacts[i], i + 1);
-			return ;
-		}
-	}
-	std::cout << "Invalid index!" << std::endl;
+	outputContact(_contacts[index - 1]);
+}
+
+int	PhoneBook::getNumContacts() const
+{
+	return (_numContacts);
+}
+
+Contact	PhoneBook::getContact(int index) const
+{
+	return (_contacts[index]);
 }

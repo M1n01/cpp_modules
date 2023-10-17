@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 08:47:01 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/17 10:05:21 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/17 11:57:36 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,27 +41,27 @@ void	Contact::setDarkestSecret(const std::string &darkest_secret)
 	this->_darkest_secret = darkest_secret;
 }
 
-std::string	Contact::getFirstName() const
+std::string	Contact::getFirstName(void) const
 {
 	return (this->_first_name);
 }
 
-std::string	Contact::getLastName() const
+std::string	Contact::getLastName(void) const
 {
 	return (this->_last_name);
 }
 
-std::string	Contact::getNickname() const
+std::string	Contact::getNickname(void) const
 {
 	return (this->_nickname);
 }
 
-std::string	Contact::getPhoneNumber() const
+std::string	Contact::getPhoneNumber(void) const
 {
 	return (this->_phone_number);
 }
 
-std::string	Contact::getDarkestSecret() const
+std::string	Contact::getDarkestSecret(void) const
 {
 	return (this->_darkest_secret);
 }
