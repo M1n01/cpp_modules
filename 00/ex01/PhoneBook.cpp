@@ -6,13 +6,15 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:13:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/17 16:14:08 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/18 14:50:43 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-void	PhoneBook::_add(const Contact &contact)
+PhoneBook::PhoneBook(void) : _numContacts(0) {}
+
+void	PhoneBook::addContact(const Contact &contact)
 {
 	if (_numContacts == MAX_CONTACTS)
 	{
@@ -27,28 +29,32 @@ void	PhoneBook::_add(const Contact &contact)
 	}
 }
 
-static void	outputContact(Contact &contact)
+void	outputContact(Contact &contact)
 {
-	std::cout << "First name: " << contact.getFirstName() << std::endl;
-	std::cout << "Last name: " << contact.getLastName() << std::endl;
-	std::cout << "Nickname: " << contact.getNickname() << std::endl;
-	std::cout << "Phone number: " << contact.getPhoneNumber() << std::endl;
-	std::cout << "Darkest secret: " << contact.getDarkestSecret() << std::endl;
+	std::cout << "======= Contact Information =======\n";
+	std::cout << "[First name] => " << contact.getFirstName() << std::endl;
+	std::cout << "[Last name] => " << contact.getLastName() << std::endl;
+	std::cout << "[Nickname] => " << contact.getNickname() << std::endl;
+	std::cout << "[Phone number] => " << contact.getPhoneNumber() << std::endl;
+	std::cout << "[Darkest secret] => " << contact.getDarkestSecret() << std::endl;
+	std::cout << "===================================\n";
 }
 
-void PhoneBook::_search()
+void PhoneBook::searchContacts()
 {
+	std::string	input;
 	int			index;
 
 	std::cout << "Enter an index: ";
-	std::cin >> index;
-	if (std::cin.fail() || (index < 1 || _numContacts < index))
+	std::getline(std::cin, input);
+	std::istringstream iss(input);
+	if (!(iss >> index) || index < 1 || _numContacts < index)
 	{
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cout << "Invalid index!" << std::endl;
-		return;
+		return ;
 	}
+	if (std::cin.eof())
+		return ;
 	outputContact(_contacts[index - 1]);
 }
 

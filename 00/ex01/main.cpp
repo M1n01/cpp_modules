@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:14:07 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/17 14:57:02 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/18 14:50:33 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,19 @@ static void	cmdLoop(PhoneBook &phoneBook)
 	while (true)
 	{
 		std::cout << "Enter a command: ";
-		std::getline(std::cin, cmd);
+		if (!std::getline(std::cin, cmd) || std::cin.eof())
+			break ;
 		if (cmd == "ADD")
 		{
 			inputContact(contact);
-			phoneBook._add(contact);
+			phoneBook.addContact(contact);
 		}
 		else if (cmd == "SEARCH")
 		{
 			outputPhoneBook(phoneBook);
-			phoneBook._search();
+			phoneBook.searchContacts();
 		}
-		else if (cmd == "EXIT" || std::cin.eof())
+		else if (cmd == "EXIT")
 			break ;
 		else
 			std::cout << "Invalid command." << std::endl;
@@ -61,6 +62,7 @@ static void	inputContact(Contact &contact)
 {
 	std::string	input;
 
+	std::cout << "======= Enter Contact =======\n";
 	std::cout << "Enter a first name: ";
 	getline(std::cin, input);
 	contact.setFirstName(input);
@@ -76,6 +78,7 @@ static void	inputContact(Contact &contact)
 	std::cout << "Enter a darkest secret: ";
 	getline(std::cin, input);
 	contact.setDarkestSecret(input);
+	std::cout << "=============================\n";
 }
 
 static std::string	format_string(const std::string &str, size_t len)
@@ -86,7 +89,7 @@ static std::string	format_string(const std::string &str, size_t len)
 		return (str);
 }
 
-static void	displaRow(const Contact &contact, int index)
+static void	displayRow(const Contact &contact, int index)
 {
 	std::cout << "|" << std::setw(10) << index << "|";
 	std::cout << std::setw(10) << format_string(contact.getFirstName(), 10) << "|";
@@ -101,5 +104,5 @@ static void	outputPhoneBook(PhoneBook &phoneBook)
 	header = "|Index     |First name|Last name |Nickname  |";
 	std::cout << header << std::endl;
 	for (int i = 0; i < phoneBook.getNumContacts(); i++)
-		displaRow(phoneBook.getContact(i), i + 1);
+		displayRow(phoneBook.getContact(i), i + 1);
 }
