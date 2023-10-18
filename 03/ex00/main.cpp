@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:18 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/18 22:52:11 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/18 23:13:47 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,10 @@ int	main(void)
 	clapTrap.takeDamage(ATK);
 	clapTrap.beRepaired(REPAIR);
 	return (0);
+}
+
+__attribute__((destructor))
+static void destructor()
+{
+	system("leaks -q ex00");
 }
