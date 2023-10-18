@@ -6,18 +6,18 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:16 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/15 18:48:58 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/18 22:48:43 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void)
+ClapTrap::ClapTrap(void) : _name("ClapTrap"), _hitPoints(HP), _energyPoints(EP), _attackDamage(0)
 {
 	std::cout << "ClapTrap default constructor called." << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(HP), _energyPoints(EP), _attackDamage(0)
 {
 	std::cout << "ClapTrap constructor called." << std::endl;
 	this->_name = name;
@@ -28,17 +28,62 @@ ClapTrap::~ClapTrap(void)
 	std::cout << "ClapTrap destructor called." << std::endl;
 }
 
-void	attack(const std::string& target)
+ClapTrap	&ClapTrap::operator=(ClapTrap &dammy)
 {
-	std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
+	(void)dammy;
+	return (*this);
 }
 
-void	takeDamage(unsigned int amount)
+static void	printStatus(const std::string& name, int hitPoints, int energyPoints, int damage)
 {
-	std::cout << "ClapTrap " << this->_name << " takes " << amount << " points of damage!" << std::endl;
+	std::cout << "====" <<  name << "のステータス====" << std::endl;
+	std::cout << "[HP]: " << hitPoints << "/" << HP << std::endl;
+	std::cout << "[EP]: " << energyPoints << std::endl;
+	std::cout << "[Damage]: " << damage << std::endl << std::endl;
 }
 
-void	beRepaired(unsigned int amount)
+void	ClapTrap::attack(const std::string& target)
 {
-	std::cout << "ClapTrap " << this->_name << " is repaired " << amount << " points!" << std::endl;
+	if (this->_hitPoints < 1)
+	{
+		std::cout << "『" << this->_name << "は気絶している。』" << std::endl;
+		return ;
+	}
+	if (this->_energyPoints < 1)
+	{
+		std::cout << "『" << this->_name << "はEPが足りず攻撃ができない。』" << std::endl;
+		printStatus(this->_name, this->_hitPoints, this->_energyPoints, this->_attackDamage);
+		return ;
+	}
+	this->_energyPoints--;
+	std::cout << "『" << this->_name << "の攻撃！" << target << "は" << this->_attackDamage << "のダメージ!!" << "』" << std::endl;
+	printStatus(this->_name, this->_hitPoints, this->_energyPoints, this->_attackDamage);
+}
+
+void	ClapTrap::takeDamage(unsigned int amount)
+{
+	std::cout << "『" << this->_name << "は" << amount << "のダメージ!!" << "』" << std::endl;
+	this->_hitPoints -= amount;
+	this->_attackDamage += amount;
+	printStatus(this->_name, this->_hitPoints, this->_energyPoints, this->_attackDamage);
+}
+
+void	ClapTrap::beRepaired(unsigned int amount)
+{
+	if (this->_hitPoints < 1)
+	{
+		std::cout << "『" << this->_name << "は気絶している。』" << std::endl;
+		return ;
+	}
+	if (this->_energyPoints < 1)
+	{
+		std::cout << "『" << this->_name << "はEPが足りず攻撃ができない。』" << std::endl;
+		printStatus(this->_name, this->_hitPoints, this->_energyPoints, this->_attackDamage);
+		return ;
+	}
+	this->_energyPoints--;
+	this->_hitPoints += amount;
+	this->_attackDamage -= amount;
+	std::cout << "『" << this->_name << "は" << amount << "回復。" << "』" << std::endl;
+	printStatus(this->_name, this->_hitPoints, this->_energyPoints, this->_attackDamage);
 }
