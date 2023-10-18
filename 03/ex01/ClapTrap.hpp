@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/18 23:18:06 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/18 21:58:51 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 # include <iostream>
 
 /*初期値設定*/
-# define HP 10
+# define HP 100
 # define EP 10
-# define ATK 0
+# define ATK 10
 # define REPAIR 10
 
 class ClapTrap
