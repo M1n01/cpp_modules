@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:14:07 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/18 14:50:33 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/18 15:09:32 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,11 @@ static void	cmdLoop(PhoneBook &phoneBook)
 	{
 		std::cout << "Enter a command: ";
 		if (!std::getline(std::cin, cmd) || std::cin.eof())
+		{
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			break ;
+		}
 		if (cmd == "ADD")
 		{
 			inputContact(contact);
@@ -50,6 +54,8 @@ static void	cmdLoop(PhoneBook &phoneBook)
 		{
 			outputPhoneBook(phoneBook);
 			phoneBook.searchContacts();
+			if (std::cin.eof())
+				break ;
 		}
 		else if (cmd == "EXIT")
 			break ;

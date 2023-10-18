@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:13:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/18 14:50:43 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/18 15:07:43 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ void PhoneBook::searchContacts()
 	int			index;
 
 	std::cout << "Enter an index: ";
-	std::getline(std::cin, input);
+	if (!std::getline(std::cin, input))
+		return ;
 	std::istringstream iss(input);
 	if (!(iss >> index) || index < 1 || _numContacts < index)
 	{
 		std::cout << "Invalid index!" << std::endl;
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		return ;
 	}
-	if (std::cin.eof())
-		return ;
 	outputContact(_contacts[index - 1]);
 }
 
