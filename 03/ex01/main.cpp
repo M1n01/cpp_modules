@@ -6,24 +6,25 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:18 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/18 23:13:47 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/21 15:43:15 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int	main(void)
 {
-	ClapTrap	clapTrap("勇者");
+	ScavTrap	scavTrap("勇者");
 
-	clapTrap.attack("サンドバックくん");
-	clapTrap.takeDamage(ATK);
-	clapTrap.beRepaired(REPAIR);
+	scavTrap.attack("キラーマシン");
+	scavTrap.takeDamage(100);
+	scavTrap.beRepaired(REPAIR);
+	scavTrap.guardGate();
 	return (0);
 }
 
 __attribute__((destructor))
 static void destructor()
 {
-	system("leaks -q ex00");
+	system("leaks -q ex01");
 }

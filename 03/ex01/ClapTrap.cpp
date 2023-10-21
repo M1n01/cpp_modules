@@ -6,18 +6,18 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:16 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/18 22:48:43 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/21 14:37:06 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void) : _name("ClapTrap"), _hitPoints(HP), _energyPoints(EP), _attackDamage(0)
+ClapTrap::ClapTrap(void) : _name("ClapTrap"), _hitPoints(HP), _energyPoints(EP), _attackDamage(ATK)
 {
 	std::cout << "ClapTrap default constructor called." << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(HP), _energyPoints(EP), _attackDamage(0)
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(HP), _energyPoints(EP), _attackDamage(ATK)
 {
 	std::cout << "ClapTrap constructor called." << std::endl;
 	this->_name = name;
