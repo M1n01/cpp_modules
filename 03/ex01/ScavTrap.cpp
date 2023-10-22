@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 23:16:56 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/21 15:47:50 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/22 17:04:09 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	ScavTrap::guardGate(void)
 {
 	if (this->_hitPoints < 1)
 	{
-		std::cout << "ScavTrap『" << this->_name << "は気絶している。』" << std::endl;
+		std::cout << "『" << this->_name << "は気絶している。』" << std::endl;
 		return ;
 	}
-	std::cout << "ScavTrap『" << _name << " Gate keeper modeに入った。』" << std::endl;
+	std::cout << "『" << _name << " Gate keeper modeに入った。』" << std::endl;
 }
