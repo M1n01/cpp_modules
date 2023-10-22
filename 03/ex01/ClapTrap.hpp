@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/22 16:57:05 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/22 21:33:39 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 class ClapTrap
 {
 	protected:
-		std::string	_name;
+		std::string		_name;
 		unsigned int	_hitPoints;
 		unsigned int	_energyPoints;
 		unsigned int	_attackDamage;
