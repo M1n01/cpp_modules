@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:48:37 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/10 09:00:15 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/25 21:57:51 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 # include <iostream>
 
 # define DEBUG 1
+
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define YELLOW "\033[0;33m"
+# define BLUE "\033[0;34m"
+# define DEFAULT "\033[0m"
 
 class Fixed
 {
