@@ -6,13 +6,15 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 21:50:59 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/17 11:57:30 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/25 19:24:49 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 # include <iostream>
+
+# define ROWLEN 10
 
 class Contact
 {

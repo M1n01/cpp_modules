@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:14:07 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/25 18:14:06 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/25 19:39:24 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	cmdLoop(PhoneBook &phoneBook)
 		else if (cmd == "EXIT")
 			break ;
 		else
-			std::cout << "Invalid command." << std::endl;
+			std::cout << RED << "Invalid command!" << DEFAULT << std::endl;
 	}
 }
 
@@ -98,12 +98,12 @@ static std::string	format_string(const std::string &str, size_t len)
 		return (str);
 }
 
-static void	displayRow(const Contact &contact, int index)
+static void	displayContactRow(const Contact &contact, int index)
 {
-	std::cout << "|" << std::setw(10) << index << "|";
-	std::cout << std::setw(10) << format_string(contact.getFirstName(), 10) << "|";
-	std::cout << std::setw(10) << format_string(contact.getLastName(), 10) << "|";
-	std::cout << std::setw(10) << format_string(contact.getNickname(), 10) << "|" << std::endl;
+	std::cout << "|" << std::setw(ROWLEN) << index << "|";
+	std::cout << std::setw(ROWLEN) << format_string(contact.getFirstName(), ROWLEN) << "|";
+	std::cout << std::setw(ROWLEN) << format_string(contact.getLastName(), ROWLEN) << "|";
+	std::cout << std::setw(ROWLEN) << format_string(contact.getNickname(), ROWLEN) << "|" << std::endl;
 }
 
 static void	outputPhoneBook(PhoneBook &phoneBook)
@@ -113,5 +113,5 @@ static void	outputPhoneBook(PhoneBook &phoneBook)
 	header = "|Index     |First name|Last name |Nickname  |";
 	std::cout << header << std::endl;
 	for (int i = 0; i < phoneBook.getNumContacts(); i++)
-		displayRow(phoneBook.getContact(i), i + 1);
+		displayContactRow(phoneBook.getContact(i), i + 1);
 }
