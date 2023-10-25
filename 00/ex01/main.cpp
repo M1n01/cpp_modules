@@ -6,12 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:14:07 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/25 19:39:24 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/25 21:31:15 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include <iomanip>
 
 static void	cmdLoop(PhoneBook &phoneBook);
 static void	inputContact(Contact &contact);
@@ -90,20 +89,23 @@ static void	inputContact(Contact &contact)
 	std::cout << "=============================\n";
 }
 
-static std::string	format_string(const std::string &str, size_t len)
+static std::string	formatString(const std::string &str, size_t len)
 {
 	if (str.length() > len)
 		return (str.substr(0, len - 1) + ".");
+	else if (str.length() < len)
+		return (std::string(len - str.length(), ' ') + str);
 	else
 		return (str);
 }
 
 static void	displayContactRow(const Contact &contact, int index)
 {
-	std::cout << "|" << std::setw(ROWLEN) << index << "|";
-	std::cout << std::setw(ROWLEN) << format_string(contact.getFirstName(), ROWLEN) << "|";
-	std::cout << std::setw(ROWLEN) << format_string(contact.getLastName(), ROWLEN) << "|";
-	std::cout << std::setw(ROWLEN) << format_string(contact.getNickname(), ROWLEN) << "|" << std::endl;
+	std::cout << "|" << std::string(ROWLEN - 1, ' ') << index << "|";
+	std::cout << formatString(contact.getFirstName(), ROWLEN) << "|";
+	std::cout << formatString(contact.getLastName(), ROWLEN) << "|";
+	std::cout << formatString(contact.getNickname(), ROWLEN) << "|" << std::endl;
+
 }
 
 static void	outputPhoneBook(PhoneBook &phoneBook)
