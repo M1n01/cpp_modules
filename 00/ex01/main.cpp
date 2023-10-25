@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:14:07 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/18 15:17:29 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/25 18:14:06 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,12 @@ static void	cmdLoop(PhoneBook &phoneBook)
 		else if (cmd == "SEARCH")
 		{
 			outputPhoneBook(phoneBook);
-			phoneBook.searchContacts();
-			if (std::cin.eof())
-				break ;
+			if (!phoneBook.searchContacts())
+			{
+				if (std::cin.eof())
+					break ;
+				continue ;
+			}
 		}
 		else if (cmd == "EXIT")
 			break ;

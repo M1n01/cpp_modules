@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:13:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/18 15:07:43 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/25 18:55:22 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,22 @@ void	outputContact(Contact &contact)
 	std::cout << "===================================\n";
 }
 
-void PhoneBook::searchContacts()
+bool	PhoneBook::searchContacts()
 {
 	std::string	input;
 	int			index;
 
 	std::cout << "Enter an index: ";
 	if (!std::getline(std::cin, input))
-		return ;
+		return (false);
 	std::istringstream iss(input);
 	if (!(iss >> index) || index < 1 || _numContacts < index)
 	{
 		std::cout << "Invalid index!" << std::endl;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		return ;
+		return (false);
 	}
 	outputContact(_contacts[index - 1]);
+	return (true);
 }
 
 int	PhoneBook::getNumContacts() const
