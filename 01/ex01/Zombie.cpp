@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:01:13 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/07 15:44:00 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/25 23:01:40 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ Zombie::Zombie(std::string name): _name(name) {}
 
 Zombie::~Zombie(void)
 {
-	std::cout << this->_name << " is destroyed for debugging." << std::endl;
+	std::cout << RED << this->_name << " is destroyed for debugging." << DEFAULT << std::endl;
 }
 
-void	Zombie::_announce(void)
+void	Zombie::announce(void)
 {
 	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }

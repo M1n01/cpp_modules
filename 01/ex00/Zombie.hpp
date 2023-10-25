@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:48:06 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/25 21:56:11 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/25 23:02:43 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ class Zombie
 	private:
 		std::string	_name;
 	public:
-		void	_announce(void);
+		Zombie(void);
 		Zombie(std::string name);
 		~Zombie(void);
+		void	announce(void);
 };
 
 Zombie	*newZombie(std::string name);
