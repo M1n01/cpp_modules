@@ -3,10 +3,10 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors -MMD -MP
 LDFLAGS = -I$(INCDIR)
 
-INCDIR = .
+INCDIR = ./inc
 INCS = $(shell find $(INCDIR) -name "*.hpp" -type f | xargs)
 
-SRCDIR = .
+SRCDIR = ./src
 SRCS = $(shell find $(SRCDIR) -name "*.cpp" -type f | xargs)
 
 OBJDIR = ./obj

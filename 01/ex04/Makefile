@@ -6,7 +6,7 @@ LDFLAGS = -I$(INCDIR)
 INCDIR = .
 INCS = $(shell find $(INCDIR) -name "*.hpp" -type f | xargs)
 
-SRCDIR = .
+SRCDIR = ./src
 SRCS = $(shell find $(SRCDIR) -name "*.cpp" -type f | xargs)
 
 OBJDIR = ./obj
