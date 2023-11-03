@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 23:05:08 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/31 19:43:48 by minabe           ###   ########.fr       */
+/*   Updated: 2023/10/31 22:47:06 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Animal.hpp"
+# include "../inc/Animal.hpp"
 
 Animal::Animal(void) {}
 
