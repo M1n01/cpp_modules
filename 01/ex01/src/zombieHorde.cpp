@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 18:54:49 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/31 21:35:54 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/08 22:33:29 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 Zombie	*zombieHorde(int N, std::string name)
 {
-	Zombie	*zombies = new Zombie[N];
+	Zombie	*horde;
 
+	horde = new Zombie[N];
 	for (int i = 0; i < N; i++)
-		zombies[i].setName(name + std::to_string(i + 1));
-	return (zombies);
+		horde[i].setName(name);
+	return (horde);
 }

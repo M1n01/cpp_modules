@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:47:47 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/31 21:34:32 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/08 21:34:54 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	main(void)
 {
-	Zombie	*zombie;
+	Zombie	*heapZombie;
 
-	zombie = newZombie("HeapZombie");
-	zombie->announce();
-	delete zombie;
+	heapZombie = newZombie("HeapZombie");
+	heapZombie->announce();
+	delete heapZombie;
 
 	randomChump("StackZombie");
 	return (0);
