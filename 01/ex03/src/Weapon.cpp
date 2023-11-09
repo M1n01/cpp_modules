@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:20:39 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/31 21:40:20 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/09 21:27:06 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ Weapon::~Weapon(void) {}
 
 const std::string	&Weapon::getType(void)
 {
-	return (this->_type);
+	return (_type);
 }
 
 void	Weapon::setType(std::string type)
 {
-	this->_type = type;
+	_type = type;
 }

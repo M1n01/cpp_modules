@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:47:47 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/25 23:13:36 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/09 20:52:50 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	main(void)
 	std::cout << "Address held by stringREF: " << &stringREF << std::endl;
 
 	std::cout << "=======VALUE=======" << std::endl;
-
 	std::cout << "Value of string variable: " << str << std::endl;
 	std::cout << "Value pointed by stringPTR: " << *stringPTR << std::endl;
 	std::cout << "Value pointed by stringREF: " << stringREF << std::endl;
+
 	return (0);
 }
