@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:47:47 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/15 16:41:54 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/10 23:40:58 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include <string>
 #include <fstream>
 
-static void	replace_file_content(std::string s1, std::string s2, std::ifstream &inputFile, std::ofstream &outputFile);
+static void	processAndWriteFile(std::string s1, std::string s2, std::ifstream &inputFile, std::ofstream &outputFile);
+static void	error(std::string message);
 
 int	main(int argc, char **argv)
 {
@@ -24,28 +25,28 @@ int	main(int argc, char **argv)
 	std::string		replace;
 
 	if (argc != 4)
-		std::cerr << "Error: Invalid number of arguments." << std::endl;
-	else
-	{
-		filename = argv[1];
-		s1 = argv[2];
-		s2 = argv[3];
-		replace = filename + ".replace";
-		std::ifstream	inputFile(filename);
-		std::ofstream	outputFile(replace);
-		if (!inputFile || !outputFile)
-		{
-			std::cerr << "Error: " << replace << " could not be opened." << std::endl;
-			return (EXIT_FAILURE);
-		}
-		replace_file_content(s1, s2, inputFile, outputFile);
-		inputFile.close();
-		outputFile.close();
-	}
+		error("Invalid number of arguments.");
+
+	filename = argv[1];
+	s1 = argv[2];
+	s2 = argv[3];
+	replace = filename + ".replace";
+
+	std::ifstream	inputFile(filename);
+	if (!inputFile)
+		error(" Could not open input file " + filename);
+
+	std::ofstream	outputFile(replace);
+	if (!outputFile)
+		error(" Could not open output file " + replace);
+
+	processAndWriteFile(s1, s2, inputFile, outputFile);
+	inputFile.close();
+	outputFile.close();
 	return (0);
 }
 
-static void	replace_file_content(std::string s1, std::string s2, std::ifstream &inputFile, std::ofstream &outputFile)
+static void	processAndWriteFile(std::string s1, std::string s2, std::ifstream &inputFile, std::ofstream &outputFile)
 {
 	std::string	line;
 	size_t		pos;
@@ -62,4 +63,10 @@ static void	replace_file_content(std::string s1, std::string s2, std::ifstream &
 		}
 		outputFile << line << std::endl;
 	}
+}
+
+static void	error(std::string message)
+{
+	std::cerr << "Error: " << message << std::endl;
+	exit(EXIT_FAILURE);
 }
