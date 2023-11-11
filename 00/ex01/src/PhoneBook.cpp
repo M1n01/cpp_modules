@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:13:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/31 21:27:32 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/11 17:51:39 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/PhoneBook.hpp"
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(void) : _numContacts(0) {}
 

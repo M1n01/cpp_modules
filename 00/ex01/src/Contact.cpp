@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 08:47:01 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/31 21:27:20 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/11 17:51:32 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Contact.hpp"
+#include "Contact.hpp"
 
 Contact::Contact(void) {}
 

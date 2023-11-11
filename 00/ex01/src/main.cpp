@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:14:07 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/31 21:27:28 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/11 17:51:36 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/PhoneBook.hpp"
+#include "PhoneBook.hpp"
 
 static void	cmdLoop(PhoneBook &phoneBook);
 static void	inputContact(Contact &contact);
