@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:45:11 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/31 21:51:59 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/11 17:54:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Point.hpp"
+#include "Point.hpp"
 
 Point::Point(void): _x(0), _y(0) {}
 

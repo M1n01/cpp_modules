@@ -6,11 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 18:08:25 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/31 21:57:53 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/11 17:54:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/FlagTrap.hpp"
+#include "FlagTrap.hpp"
 
 FlagTrap::FlagTrap(void) : ClapTrap("FlagTrap")
 {

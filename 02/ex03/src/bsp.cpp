@@ -6,12 +6,12 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:48:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/31 21:51:49 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/11 17:54:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Fixed.hpp"
-#include "../inc/Point.hpp"
+#include "Fixed.hpp"
+#include "Point.hpp"
 
 static float dotProduct(float x1, float y1, float x2, float y2);
 static void computeVectors(Point const &a, Point const &b, float &v_x, float &v_y);
