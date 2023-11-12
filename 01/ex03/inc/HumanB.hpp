@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:05:32 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/07 16:12:29 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/12 13:02:59 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ class HumanB
 	public:
 		HumanB(std::string name);
 		~HumanB(void);
-		void	attack(void);
+		void	attack(void) const;
 		void	setWeapon(Weapon &weapon);
 };

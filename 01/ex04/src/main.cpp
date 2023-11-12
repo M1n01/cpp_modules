@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:47:47 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/10 23:40:58 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/11 20:41:25 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	main(int argc, char **argv)
 
 	filename = argv[1];
 	s1 = argv[2];
+	if (s1 == "")
+		error("Empty string is not allowed.");
 	s2 = argv[3];
 	replace = filename + ".replace";
 

@@ -6,11 +6,10 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:47:47 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/11 17:54:18 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/11 20:49:09 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
@@ -26,6 +25,7 @@ int main()
 	{
 		Weapon club = Weapon("crude spiked club");
 		HumanB jim("Jim");
+		jim.attack();
 		jim.setWeapon(club);
 		jim.attack();
 		club.setType("some other type of club");
@@ -34,7 +34,7 @@ int main()
 	return (0);
 }
 
-__attribute__((destructor))
-static void destructor() {
-	system("leaks -q ex03");
-}
+// __attribute__((destructor))
+// static void destructor() {
+// 	system("leaks -q ex03");
+// }
