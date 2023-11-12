@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 20:50:28 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/25 21:57:19 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/12 13:53:59 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ class Harl
 		void			warning(void);
 		void			error(void);
 	public:
-		void			complain(std::string level);
+		void			filterComplaints(std::string level);
 };

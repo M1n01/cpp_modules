@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 21:15:28 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/11 17:54:18 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/12 15:01:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,33 @@ void	Harl::error(void)
 	std::cout << RED << "[ ERROR ]\nThis is unacceptable! I want to speak to the manager now." << DEFAULT << std::endl;
 }
 
-void	Harl::complain(std::string level)
+void	Harl::filterComplaints(std::string level)
 {
-	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	ComplainFunction functions[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	std::string			levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int					levelIndex = 0;
 
 	for (int i = 0; i < 4; i++)
 	{
 		if (levels[i] == level)
 		{
-			(this->*functions[i])();
-			std::cout << std::endl;
-			return ;
+			levelIndex = i;
+			break ;
 		}
 	}
-	std::cout << "Invalid level." << std::endl;
+
+	switch (levelIndex)
+	{
+		case DEBUG:
+			debug();
+		case INFO:
+			info();
+		case WARNING:
+			warning();
+		case ERROR:
+			error();
+			break;
+		default:
+			std::cout << "Invalid level." << std::endl;
+			break;
+	}
 }
