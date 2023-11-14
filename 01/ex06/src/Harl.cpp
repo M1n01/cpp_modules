@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 21:15:28 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/12 15:01:18 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/14 21:18:09 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	Harl::error(void)
 	std::cout << RED << "[ ERROR ]\nThis is unacceptable! I want to speak to the manager now." << DEFAULT << std::endl;
 }
 
-void	Harl::filterComplaints(std::string level)
+static int	getLevel(std::string level)
 {
 	std::string			levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	int					levelIndex = 0;
@@ -42,9 +42,16 @@ void	Harl::filterComplaints(std::string level)
 		if (levels[i] == level)
 		{
 			levelIndex = i;
-			break ;
+			return (levelIndex);
 		}
 	}
+	return (-1);
+}
+
+void	Harl::filterComplaints(std::string level)
+{
+	std::string			levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int					levelIndex = getLevel(level);
 
 	switch (levelIndex)
 	{
@@ -58,7 +65,7 @@ void	Harl::filterComplaints(std::string level)
 			error();
 			break;
 		default:
-			std::cout << "Invalid level." << std::endl;
+			std::cout << RED << "Invalid level." << DEFAULT << std::endl;
 			break;
 	}
 }
