@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:48:37 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/25 21:57:59 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/21 22:12:56 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,23 @@ class Fixed
 		Fixed(const Fixed &src);
 		Fixed(const int value);
 		Fixed(const float value);
+		Fixed	&operator=(const Fixed &rhs);
 		~Fixed(void);
 
-		Fixed	&operator=(const Fixed &rhs);
 		bool	operator<(const Fixed &rhs);
 		bool	operator>(const Fixed &rhs);
 		bool	operator<=(const Fixed &rhs);
 		bool	operator>=(const Fixed &rhs);
 		bool	operator==(const Fixed &rhs);
 		bool	operator!=(const Fixed &rhs);
-
 		Fixed	operator+(const Fixed &rhs);
 		Fixed	operator-(const Fixed &rhs);
 		Fixed	operator*(const Fixed &rhs);
 		Fixed	operator/(const Fixed &rhs);
-
 		Fixed	&operator++(void);
 		Fixed	operator++(int);
 		Fixed	&operator--(void);
 		Fixed	operator--(int);
-
-		friend std::ostream	&operator<<(std::ostream &os, const Fixed &rhs);
 
 		static Fixed		&min(Fixed &a, Fixed &b);
 		static const Fixed	&min(const Fixed &a, const Fixed &b);
@@ -65,3 +61,5 @@ class Fixed
 		float	toFloat(void) const;
 		int		toInt(void) const;
 };
+
+std::ostream	&operator<<(std::ostream &os, const Fixed &rhs);

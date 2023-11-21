@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:48:35 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/11 17:54:18 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/21 17:45:47 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,30 @@
 
 Fixed::Fixed(void): _value(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << BLUE << "Default constructor called" << DEFAULT << std::endl;
 }
 
 Fixed::Fixed(const Fixed &src)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << BLUE << "Copy constructor called" << DEFAULT << std::endl;
 	*this = src;
 }
 
 Fixed::Fixed(const int value)
 {
-	std::cout << "Int constructor called" << std::endl;
+	std::cout << BLUE << "Int constructor called" << DEFAULT << std::endl;
 	this->_value = value << this->_bits;
 }
 
 Fixed::Fixed(const float value)
 {
-	std::cout << "Float constructor called" << std::endl;
+	std::cout << BLUE << "Float constructor called" << DEFAULT << std::endl;
 	this->_value = roundf(value * (1 << this->_bits));
 }
 
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << YELLOW << "Destructor called" << DEFAULT << std::endl;
 }
 
 Fixed	&Fixed::operator=(const Fixed &rhs)

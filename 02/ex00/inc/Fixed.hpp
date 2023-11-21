@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:48:37 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/25 21:57:37 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/21 17:31:05 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ class Fixed
 	public:
 		Fixed(void);
 		Fixed(const Fixed &src);
-		~Fixed(void);
 		Fixed	&operator=(const Fixed &rhs);
+		~Fixed(void);
+
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 };

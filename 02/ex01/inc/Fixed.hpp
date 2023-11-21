@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:48:37 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/25 21:57:42 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/21 17:36:45 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ class Fixed
 		Fixed(const Fixed &src);
 		Fixed(const int value);
 		Fixed(const float value);
-		~Fixed(void);
 		Fixed	&operator=(const Fixed &rhs);
-		friend std::ostream	&operator<<(std::ostream &os, const Fixed &rhs);
+		~Fixed(void);
+
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 		float	toFloat(void) const;
 		int		toInt(void) const;
 };
+
+std::ostream	&operator<<(std::ostream &os, const Fixed &rhs);
