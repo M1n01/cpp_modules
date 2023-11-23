@@ -6,15 +6,16 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:48:37 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/21 22:12:56 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/21 21:54:49 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 # include <iostream>
+# include <cmath>
 
-# define DEBUG 1
+# define DEBUG 0
 
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"

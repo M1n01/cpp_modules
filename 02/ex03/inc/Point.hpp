@@ -6,21 +6,23 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:45:08 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/10 21:09:24 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/23 18:40:41 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+# include "Fixed.hpp"
+
 class Point
 {
 	private:
-		float	_x;
-		float	_y;
+		Fixed	_x;
+		Fixed	_y;
 	public:
 		Point(void);
 		Point(float const x, float const y);
-		Point(Point const &src);
+		Point(const Point &src);
 		Point	&operator=(Point const &rhs);
 		~Point(void);
 

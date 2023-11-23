@@ -6,17 +6,17 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:48:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/11 17:54:18 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/23 16:07:12 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include "Point.hpp"
 
-static float dotProduct(float x1, float y1, float x2, float y2);
-static void computeVectors(Point const &a, Point const &b, float &v_x, float &v_y);
+static float	dotProduct(float x1, float y1, float x2, float y2);
+static void		computeVectors(Point const &a, Point const &b, float &v_x, float &v_y);
 
-bool bsp(Point const a, Point const b, Point const c, Point const point)
+bool	bsp(Point const a, Point const b, Point const c, Point const point)
 {
 	float v0_x, v0_y, v1_x, v1_y, v2_x, v2_y;
 
@@ -37,12 +37,12 @@ bool bsp(Point const a, Point const b, Point const c, Point const point)
 	return (u >= 0) && (v >= 0) && (u + v < 1);
 }
 
-static float dotProduct(float x1, float y1, float x2, float y2)
+static float	dotProduct(float x1, float y1, float x2, float y2)
 {
 	return x1 * x2 + y1 * y2;
 }
 
-static void computeVectors(Point const &a, Point const &b, float &v_x, float &v_y)
+static void	computeVectors(Point const &a, Point const &b, float &v_x, float &v_y)
 {
 	v_x = b.getX() - a.getX();
 	v_y = b.getY() - a.getY();

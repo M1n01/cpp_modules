@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:48:35 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/21 21:53:22 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/23 21:55:09 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,11 +118,18 @@ Fixed	Fixed::operator-(const Fixed &rhs)
 
 Fixed	Fixed::operator*(const Fixed &rhs)
 {
+	long	temp;
 	Fixed	result;
 
 	if (DEBUG)
 		std::cout << "Multiplication operator called" << std::endl;
-	result._value = (this->_value * rhs._value) >> _bits;
+	temp = (long)(this->_value) * (long)(rhs._value) >> _bits;
+	if (temp > INT_MAX || temp < INT_MIN)
+	{
+		std::cerr << RED << "Error: Multiplication overflow" << DEFAULT << std::endl;
+		return (Fixed());
+	}
+	result._value = (int)temp;
 	return (result);
 }
 
@@ -132,6 +139,11 @@ Fixed	Fixed::operator/(const Fixed &rhs)
 
 	if (DEBUG)
 		std::cout << "Division operator called" << std::endl;
+	if (rhs._value == 0)
+	{
+		std::cerr << RED << "Error: Zero divide detected" << DEFAULT << std::endl;
+		return (Fixed(0));
+	}
 	result._value = (this->_value << _bits) / rhs._value;
 	return (result);
 }
