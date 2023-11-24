@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:48:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/24 15:13:48 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/24 15:20:53 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point)
 	float u = (dot11 * dot02 - dot01 * dot12) * invDenom;
 	float v = (dot00 * dot12 - dot01 * dot02) * invDenom;
 
-	return (u >= 0) && (v >= 0) && (u + v < 1);
+	return (u >= 0) && (v >= 0) && (u + v <= 1);
 }
 
 static float	dotProduct(float x1, float y1, float x2, float y2)

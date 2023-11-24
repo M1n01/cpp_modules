@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:47:47 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/24 09:24:51 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/24 15:19:12 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,15 @@ int main(void)
 	Point	a(0.0f, 0.0f);
 	Point	b(0.0f, 1.0f);
 	Point	c(1.0f, 1.0f);
-	Point	point(0.5f, 0.5f);
 
-	if (bsp(a, b, c, point))
-		std::cout << BLUE << "Point is inside the triangle." << DEFAULT << std::endl;
-	else
-		std::cout << RED << "Point is outside the triangle." << DEFAULT << std::endl;
+	Point	p1(0.1f, 0.1f);
+	Point	p2(0.5f, 0.5f);
+	Point	p3(-0.1f, -0.1f);
+	Point	p4(1.0f, 1.0f);
+
+	std::cout << "p1 is " << (bsp(a, b, c, p1) ? "inside" : "outside") << " the triangle." << std::endl;
+	std::cout << "p2 is " << (bsp(a, b, c, p2) ? "inside" : "outside") << " the triangle." << std::endl;
+	std::cout << "p3 is " << (bsp(a, b, c, p3) ? "inside" : "outside") << " the triangle." << std::endl;
+	std::cout << "p4 is " << (bsp(a, b, c, p4) ? "inside" : "outside") << " the triangle." << std::endl;
 	return (0);
 }
