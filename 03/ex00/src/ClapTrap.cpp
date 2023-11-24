@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:16 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/11 17:54:18 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/24 15:43:25 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,23 @@ ClapTrap::ClapTrap(void) : _name("ClapTrap"), _hitPoints(HP), _energyPoints(EP),
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(HP), _energyPoints(EP), _attackDamage(ATK)
 {
 	std::cout << "ClapTrap constructor called." << std::endl;
-	this->_name = name;
+}
+
+ClapTrap	&ClapTrap::operator=(const ClapTrap &rhs)
+{
+	if (this != &rhs)
+	{
+		this->_name = rhs._name;
+		this->_hitPoints = rhs._hitPoints;
+		this->_energyPoints = rhs._energyPoints;
+		this->_attackDamage = rhs._attackDamage;
+	}
+	return (*this);
 }
 
 ClapTrap::~ClapTrap(void)
 {
 	std::cout << "ClapTrap destructor called." << std::endl;
-}
-
-ClapTrap	&ClapTrap::operator=(ClapTrap &dummy)
-{
-	(void)dummy;
-	return (*this);
 }
 
 static void	printStatus(const std::string& name, int hitPoints, int energyPoints, int attackDamage)

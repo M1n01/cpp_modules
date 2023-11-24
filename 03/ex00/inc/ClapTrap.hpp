@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/25 21:58:39 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/24 15:33:29 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ class ClapTrap
 	public:
 		ClapTrap(void);
 		ClapTrap(std::string name);
+		ClapTrap	&operator=(const ClapTrap &rhs);
 		~ClapTrap(void);
-		ClapTrap	&operator=(ClapTrap &dummy);
 		void		attack(const std::string &target);
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
