@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:45:08 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/23 18:40:41 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/24 15:27:05 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 class Point
 {
 	private:
-		Fixed	_x;
-		Fixed	_y;
+		Fixed const	_x;
+		Fixed const	_y;
 	public:
 		Point(void);
 		Point(float const x, float const y);
