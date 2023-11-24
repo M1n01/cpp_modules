@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:48:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/23 16:07:12 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/24 15:13:48 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,14 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point)
 	float dot11 = dotProduct(v1_x, v1_y, v1_x, v1_y);
 	float dot12 = dotProduct(v1_x, v1_y, v2_x, v2_y);
 
-	float invDenom = 1.0f / (dot00 * dot11 - dot01 * dot01);
+	float invDenom = (dot00 * dot11 - dot01 * dot01);
+	if (invDenom == 0)
+	{
+		std::cerr << RED << "Error: Denominator is zero." << DEFAULT << std::endl;
+		return false;
+	}
+	invDenom = 1.0f / invDenom;
+
 	float u = (dot11 * dot02 - dot01 * dot12) * invDenom;
 	float v = (dot00 * dot12 - dot01 * dot02) * invDenom;
 
