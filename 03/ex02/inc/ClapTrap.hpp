@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/24 22:05:06 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 08:23:20 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@
 # define BLUE "\033[0;34m"
 # define DEFAULT "\033[0m"
 
-/*初期値設定*/
-# define HP 100
-# define EP 50
-# define ATK 20
-# define REPAIR 10
+# define HP_MAX 100
 
 class ClapTrap
 {
@@ -33,13 +29,16 @@ class ClapTrap
 		unsigned int	_hitPoints;
 		unsigned int	_energyPoints;
 		unsigned int	_attackDamage;
+
+		void	printStatus() const;
+
 	public:
 		ClapTrap(void);
 		ClapTrap(std::string name);
 		ClapTrap	&operator=(const ClapTrap &rhs);
-		~ClapTrap(void);
+		virtual ~ClapTrap(void);
 
-		void	attack(const std::string &target);
-		void	takeDamage(unsigned int amount);
-		void	beRepaired(unsigned int amount);
+		virtual void	attack(const std::string &target);
+		void			takeDamage(unsigned int amount);
+		void			beRepaired(unsigned int amount);
 };

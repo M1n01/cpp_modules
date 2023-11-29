@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 18:08:25 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/11 17:54:18 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 08:50:53 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ FlagTrap::FlagTrap(std::string name)
 {
 	std::cout << "FlagTrap constructor called." << std::endl;
 	this->_name = name;
-	this->_hitPoints = HP;
-	this->_energyPoints = EP;
-	this->_attackDamage = ATK;
+	this->_hitPoints = 100;
+	this->_energyPoints = 100;
+	this->_attackDamage = 30;
 }
 
 FlagTrap::~FlagTrap(void)
@@ -33,5 +33,8 @@ FlagTrap::~FlagTrap(void)
 
 void	FlagTrap::highFivesGuys(void)
 {
-	std::cout << "『" << this->_name << "はハイタッチしたそうにしている。』" << std::endl;
+	if (this->_hitPoints < 1)
+		std::cout << "『" << this->_name << "は気絶している。』" << std::endl;
+	else
+		std::cout << "『" << this->_name << "はハイタッチしたそうにしている。』" << std::endl;
 }
