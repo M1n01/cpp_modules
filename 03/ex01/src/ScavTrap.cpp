@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 23:16:56 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/29 23:00:15 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/29 23:04:16 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ void	ScavTrap::attack(const std::string &target)
 		std::cout << "『" << this->_name << "は気絶している。』" << std::endl;
 		return ;
 	}
-	std::cout << "『" << this->_name << "は" << target << "を攻撃した。』" << std::endl;
+	std::cout << "『" << this->_name << "は不思議な踊りをした。" << target << "は" << this->_attackDamage << "のダメージ!!" << "』" << std::endl;
 }
