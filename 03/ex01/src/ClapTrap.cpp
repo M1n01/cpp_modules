@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:16 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/29 22:36:17 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 08:36:51 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoint
 
 ClapTrap	&ClapTrap::operator=(const ClapTrap &rhs)
 {
-	if (this != &rhs)
-	{
-		this->_name = rhs._name;
-		this->_hitPoints = rhs._hitPoints;
-		this->_energyPoints = rhs._energyPoints;
-		this->_attackDamage = rhs._attackDamage;
-	}
+	(void)rhs;
 	return (*this);
 }
 
@@ -42,7 +36,7 @@ ClapTrap::~ClapTrap(void)
 void	ClapTrap::printStatus() const
 {
 	std::cout << "====" <<  this->_name << "のステータス====" << std::endl;
-	std::cout << "[HP]: " << this->_hitPoints << "/" << 10 << std::endl;
+	std::cout << "[HP]: " << this->_hitPoints << "/" << HP_MAX << std::endl;
 	std::cout << "[EP]: " << this->_energyPoints << std::endl;
 	std::cout << "[ATK]: " << this->_attackDamage << std::endl << std::endl;
 }
@@ -80,12 +74,13 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "『" << this->_name << "は気絶している。』" << std::endl;
 	else if (this->_energyPoints < 1)
 		std::cout << "『" << this->_name << "はEPが足りない。』" << std::endl;
-	else if (this->_hitPoints == 10)
+	else if (this->_hitPoints == HP_MAX)
 		std::cout << "『" << this->_name << "のHPはすでに満タンだ。』" << std::endl;
-	else if (this->_hitPoints + amount > 10)
+	else if (this->_hitPoints + amount > HP_MAX)
 	{
 		std::cout << "『" << this->_name << "は回復した。HPが満タンになった。』" << std::endl;
-		this->_hitPoints = 10;
+		this->_hitPoints = HP_MAX;
+		this->_energyPoints--;
 	}
 	else
 	{

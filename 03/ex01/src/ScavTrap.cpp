@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 23:16:56 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/29 23:04:16 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 08:32:46 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,28 @@ ScavTrap::~ScavTrap(void)
 void	ScavTrap::guardGate(void)
 {
 	if (this->_hitPoints < 1)
-	{
 		std::cout << "『" << this->_name << "は気絶している。』" << std::endl;
-		return ;
+	else if (this->_energyPoints < 1)
+		std::cout << "『" << this->_name << "はEPが足りず攻撃ができない。』" << std::endl;
+	else
+	{
+		std::cout << "『" << this->_name << " Gate keeper modeに入った。』" << std::endl;
+		this->_energyPoints--;
 	}
-	std::cout << "『" << _name << " Gate keeper modeに入った。』" << std::endl;
+	printStatus();
 }
 
 void	ScavTrap::attack(const std::string &target)
 {
 	if (this->_hitPoints < 1)
-	{
 		std::cout << "『" << this->_name << "は気絶している。』" << std::endl;
-		return ;
+	else if (this->_energyPoints < 1)
+		std::cout << "『" << this->_name << "はEPが足りず攻撃ができない。』" << std::endl;
+	else
+	{
+		std::cout << "『" << this->_name << "は不思議な踊りをした。" << target << "は" << this->_attackDamage << "のダメージ!!" << "』" << std::endl;
+		this->_energyPoints--;
 	}
-	std::cout << "『" << this->_name << "は不思議な踊りをした。" << target << "は" << this->_attackDamage << "のダメージ!!" << "』" << std::endl;
+	printStatus();
+
 }

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/29 22:59:01 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 08:23:20 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # define YELLOW "\033[0;33m"
 # define BLUE "\033[0;34m"
 # define DEFAULT "\033[0m"
+
+# define HP_MAX 100
 
 class ClapTrap
 {
