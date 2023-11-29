@@ -6,20 +6,21 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:16 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/24 15:43:25 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/26 12:32:40 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void) : _name("ClapTrap"), _hitPoints(HP), _energyPoints(EP), _attackDamage(ATK)
+ClapTrap::ClapTrap(void) : _name("ClapTrap"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
 	std::cout << "ClapTrap default constructor called." << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(HP), _energyPoints(EP), _attackDamage(ATK)
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
 	std::cout << "ClapTrap constructor called." << std::endl;
+	this->_name = name;
 }
 
 ClapTrap	&ClapTrap::operator=(const ClapTrap &rhs)
@@ -42,7 +43,7 @@ ClapTrap::~ClapTrap(void)
 static void	printStatus(const std::string& name, int hitPoints, int energyPoints, int attackDamage)
 {
 	std::cout << "====" <<  name << "のステータス====" << std::endl;
-	std::cout << "[HP]: " << hitPoints << "/" << HP << std::endl;
+	std::cout << "[HP]: " << hitPoints << "/" << 10 << std::endl;
 	std::cout << "[EP]: " << energyPoints << std::endl;
 	std::cout << "[ATK]: " << attackDamage << std::endl << std::endl;
 }
@@ -80,12 +81,12 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "『" << this->_name << "は気絶している。』" << std::endl;
 	else if (this->_energyPoints < 1)
 		std::cout << "『" << this->_name << "はEPが足りない。』" << std::endl;
-	else if (this->_hitPoints == HP)
+	else if (this->_hitPoints == 10)
 		std::cout << "『" << this->_name << "のHPはすでに満タンだ。』" << std::endl;
-	else if (this->_hitPoints + amount > HP)
+	else if (this->_hitPoints + amount > 10)
 	{
 		std::cout << "『" << this->_name << "は回復した。HPが満タンになった。』" << std::endl;
-		this->_hitPoints = HP;
+		this->_hitPoints = 10;
 	}
 	else
 	{
