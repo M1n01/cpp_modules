@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:16 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/26 12:32:40 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/29 22:36:17 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ ClapTrap::ClapTrap(void) : _name("ClapTrap"), _hitPoints(10), _energyPoints(10),
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
 	std::cout << "ClapTrap constructor called." << std::endl;
-	this->_name = name;
 }
 
 ClapTrap	&ClapTrap::operator=(const ClapTrap &rhs)
@@ -40,12 +39,12 @@ ClapTrap::~ClapTrap(void)
 	std::cout << "ClapTrap destructor called." << std::endl;
 }
 
-static void	printStatus(const std::string& name, int hitPoints, int energyPoints, int attackDamage)
+void	ClapTrap::printStatus() const
 {
-	std::cout << "====" <<  name << "のステータス====" << std::endl;
-	std::cout << "[HP]: " << hitPoints << "/" << 10 << std::endl;
-	std::cout << "[EP]: " << energyPoints << std::endl;
-	std::cout << "[ATK]: " << attackDamage << std::endl << std::endl;
+	std::cout << "====" <<  this->_name << "のステータス====" << std::endl;
+	std::cout << "[HP]: " << this->_hitPoints << "/" << 10 << std::endl;
+	std::cout << "[EP]: " << this->_energyPoints << std::endl;
+	std::cout << "[ATK]: " << this->_attackDamage << std::endl << std::endl;
 }
 
 void	ClapTrap::attack(const std::string& target)
@@ -56,10 +55,10 @@ void	ClapTrap::attack(const std::string& target)
 		std::cout << "『" << this->_name << "はEPが足りず攻撃ができない。』" << std::endl;
 	else
 	{
-		this->_energyPoints--;
 		std::cout << "『" << this->_name << "の攻撃！" << target << "は" << this->_attackDamage << "のダメージ!!" << "』" << std::endl;
+		this->_energyPoints--;
 	}
-	printStatus(this->_name, this->_hitPoints, this->_energyPoints, this->_attackDamage);
+	printStatus();
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
@@ -72,7 +71,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	}
 	else
 		this->_hitPoints -= amount;
-	printStatus(this->_name, this->_hitPoints, this->_energyPoints, this->_attackDamage);
+	printStatus();
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
@@ -90,9 +89,9 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	}
 	else
 	{
-		this->_energyPoints--;
-		this->_hitPoints += amount;
 		std::cout << "『" << this->_name << "は" << amount << "回復。" << "』" << std::endl;
+		this->_hitPoints += amount;
+		this->_energyPoints--;
 	}
-	printStatus(this->_name, this->_hitPoints, this->_energyPoints, this->_attackDamage);
+	printStatus();
 }

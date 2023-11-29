@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/29 22:23:53 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/29 22:40:17 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ class ClapTrap
 		unsigned int	_hitPoints;
 		unsigned int	_energyPoints;
 		unsigned int	_attackDamage;
+
+		void	printStatus() const;
+
 	public:
 		ClapTrap(void);
 		ClapTrap(std::string name);
@@ -34,6 +37,6 @@ class ClapTrap
 		virtual ~ClapTrap(void);
 
 		virtual void	attack(const std::string &target);
-		void	takeDamage(unsigned int amount);
-		void	beRepaired(unsigned int amount);
+		void			takeDamage(unsigned int amount);
+		void			beRepaired(unsigned int amount);
 };
