@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:31:52 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/30 09:38:02 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 12:18:47 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ DiamondTrap::~DiamondTrap(void)
 
 void	DiamondTrap::whoAmI(void)
 {
-	std::cout << "My name is: " << _name << std::endl;
-	std::cout << "My ClapTrap name is: " << ClapTrap::_name << std::endl;
+	if (this->_hitPoints < 1)
+		std::cout << "『" << this->_name << "は気絶している。』" << std::endl;
+	else
+	{
+		std::cout << "『ClapTrap 私は " << ClapTrap::_name << " だ。』" << std::endl;
+		std::cout << "『私は " << _name << " だ。』" << std::endl;
+	}
 }

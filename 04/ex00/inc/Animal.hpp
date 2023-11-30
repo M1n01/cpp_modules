@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 23:05:25 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/31 23:08:17 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 11:22:05 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ class Animal
 {
 	protected:
 		std::string	_type;
+
 	public:
 		Animal(void);
 		Animal(std::string type);
+		Animal	&operator=(const Animal &rhs);
 		virtual ~Animal(void);
-		// operator=(const Animal& other);
+
 		std::string		getType(void) const;
 		virtual void	makeSound(void) const;
 };

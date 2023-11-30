@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/11 17:54:18 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 11:27:55 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,6 @@ Cat::~Cat()
 {
 	std::cout << "Cat destructor called" << std::endl;
 }
-
-// Cat::Cat &operator=(const Cat &other)
-// {
-// 	std::cout << "Cat assignation operator called" << std::endl;
-// 	if (this != &other)
-// 		Animal::operator=(other);
-// 	return (*this);
-// }
 
 void	Cat::makeSound() const
 {

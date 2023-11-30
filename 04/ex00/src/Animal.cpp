@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 23:05:08 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/11 17:54:18 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 11:24:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 Animal::Animal(void) {}
 
 Animal::Animal(std::string type) : _type(type) {}
+
+Animal	&Animal::operator=(const Animal &rhs)
+{
+	(void)rhs;
+	return (*this);
+}
 
 Animal::~Animal(void) {}
 

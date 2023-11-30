@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:13:30 by minabe            #+#    #+#             */
-/*   Updated: 2023/10/31 22:58:11 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 11:27:12 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ class Cat : public Animal
 {
 	public:
 		Cat();
-		Cat(const Cat& other);
-		virtual ~Cat();
-		// Cat&	operator=(const Cat& other);
+		Cat(const Cat &other);
+		~Cat();
 		void	makeSound() const;
 };
