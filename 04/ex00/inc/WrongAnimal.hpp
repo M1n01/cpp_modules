@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 23:05:25 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/30 19:57:17 by minabe           ###   ########.fr       */
+/*   Created: 2023/11/30 19:42:30 by minabe            #+#    #+#             */
+/*   Updated: 2023/11/30 19:46:59 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@
 # define BLUE "\033[0;34m"
 # define DEFAULT "\033[0m"
 
-class Animal
+class WrongAnimal
 {
 	protected:
 		std::string	_type;
 
 	public:
-		Animal(void);
-		Animal(std::string type);
-		Animal	&operator=(const Animal &rhs);
-		virtual ~Animal(void);
+		WrongAnimal();
+		WrongAnimal(const WrongAnimal &src);
+		WrongAnimal	&operator=(const WrongAnimal &rhs);
+		virtual ~WrongAnimal();
 
-		virtual std::string	getType(void) const;
-		virtual void		makeSound(void) const;
+		std::string	getType() const;
+		void		makeSound() const;
 };

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/30 12:53:55 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 19:54:15 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@ Cat::Cat() : Animal("Cat")
 Cat::Cat(const Cat &other) : Animal(other)
 {
 	std::cout << BLUE << "Cat copy constructor called" << DEFAULT  << std::endl;
+}
+
+Cat	&Cat::operator=(const Cat &rhs)
+{
+	std::cout << BLUE << "Cat assignation operator called" << DEFAULT  << std::endl;
+	(void)rhs;
+	return (*this);
 }
 
 Cat::~Cat()
