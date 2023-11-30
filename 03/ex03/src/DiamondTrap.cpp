@@ -6,20 +6,22 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:31:52 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/11 17:54:18 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 09:38:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void) : ScavTrap(), FlagTrap()
+DiamondTrap::DiamondTrap(void) : ClapTrap("DiamondTrap_clap_name"), ScavTrap(), FlagTrap()
 {
+	this->_name = "DiamondTrap";
 	std::cout << "DiamondTrap default constructor called." << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ScavTrap(name), FlagTrap(name), _name(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FlagTrap(name)
 {
-	std::cout << "DiamondTrap constructor called." << std::endl;
+	this->_name = name;
+	std::cout << "DiamondTrap constructor called for " << name << "." << std::endl;
 }
 
 DiamondTrap::~DiamondTrap(void)

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:18 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/11 17:54:18 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 09:59:45 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	main(void)
 {
-	DiamondTrap dt("Diamond");
+	DiamondTrap	diamondTrap("Diamond");
 
-	dt.whoAmI();
+	diamondTrap.whoAmI();
 
 	return (0);
 }
