@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:43:37 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/30 19:58:14 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 20:11:05 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ std::string	WrongAnimal::getType() const
 
 void	WrongAnimal::makeSound() const
 {
-	std::cout << RED << "WrongAnimal: " << DEFAULT << "..." << std::endl;
+	std::cout << RED <<  "..." << DEFAULT << std::endl;
 }
