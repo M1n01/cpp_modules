@@ -6,15 +6,21 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 23:05:08 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/30 11:24:18 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 12:54:43 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Animal.hpp"
 
-Animal::Animal(void) {}
+Animal::Animal(void)
+{
+	std::cout << BLUE << "Animal default constructor called" << DEFAULT  << std::endl;
+}
 
-Animal::Animal(std::string type) : _type(type) {}
+Animal::Animal(std::string type) : _type(type)
+{
+	std::cout << BLUE << "Animal type constructor called" << DEFAULT  << std::endl;
+}
 
 Animal	&Animal::operator=(const Animal &rhs)
 {
@@ -22,7 +28,10 @@ Animal	&Animal::operator=(const Animal &rhs)
 	return (*this);
 }
 
-Animal::~Animal(void) {}
+Animal::~Animal(void)
+{
+	std::cout << YELLOW << "Animal destructor called" << DEFAULT << std::endl;
+}
 
 std::string	Animal::getType(void) const
 {
@@ -31,5 +40,5 @@ std::string	Animal::getType(void) const
 
 void	Animal::makeSound(void) const
 {
-	std::cout << "Animal sound" << std::endl;
+	std::cout << "[Animal sound]" << std::endl;
 }

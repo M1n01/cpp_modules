@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:13:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/30 11:27:42 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 12:46:44 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ class Dog : public Animal
 		Dog();
 		Dog(const Dog &other);
 		~Dog();
+
 		void	makeSound() const;
 };
