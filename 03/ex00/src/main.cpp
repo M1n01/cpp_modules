@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:18 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/26 12:30:23 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 17:59:25 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(void)
 {
 	ClapTrap	clapTrap("勇者");
+	// ClapTrap	clapTrap;
 
 	clapTrap.attack("スライム");
 	clapTrap.takeDamage(2);

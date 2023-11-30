@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:18 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/29 23:00:54 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 17:59:16 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(void)
 {
 	ScavTrap	scavTrap("勇者");
+	// ScavTrap	scavTrap;
 
 	scavTrap.attack("うごくせきぞう");
 	scavTrap.takeDamage(10);

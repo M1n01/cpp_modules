@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:18 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/30 07:30:46 by minabe           ###   ########.fr       */
+/*   Updated: 2023/11/30 17:59:01 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(void)
 {
 	FlagTrap	flagTrap("勇者");
+	// FlagTrap	flagTrap;
 
 	flagTrap.attack("うごくせきぞう");
 	flagTrap.takeDamage(10);
