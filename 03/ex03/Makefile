@@ -1,6 +1,6 @@
 NAME = ex03
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors $(LDFLAGS) -MMD -MP
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors -Wno-shadow $(LDFLAGS) -MMD -MP
 LDFLAGS = -I$(INCDIR)
 
 INCDIR = ./inc
