@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 18:08:36 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/30 09:57:05 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/01 23:02:29 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ class FlagTrap : virtual public ClapTrap
 	public:
 		FlagTrap(void);
 		FlagTrap(std::string name);
+		FlagTrap	&operator=(const FlagTrap &rhs);
 		~FlagTrap(void);
+
 		void	highFivesGuys(void);
 };

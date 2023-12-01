@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 18:08:25 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/30 08:50:53 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/01 23:02:46 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ FlagTrap::FlagTrap(std::string name)
 	this->_hitPoints = 100;
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
+}
+
+FlagTrap	&FlagTrap::operator=(const FlagTrap &rhs)
+{
+	if (this != &rhs)
+	{
+		this->_name = rhs._name;
+		this->_hitPoints = rhs._hitPoints;
+		this->_energyPoints = rhs._energyPoints;
+		this->_attackDamage = rhs._attackDamage;
+	}
+	return (*this);
 }
 
 FlagTrap::~FlagTrap(void)

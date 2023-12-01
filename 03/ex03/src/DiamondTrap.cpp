@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 20:31:52 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/30 17:04:50 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/01 23:02:11 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,18 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
 {
 	this->_name = name;
 	std::cout << "DiamondTrap constructor called for " << name << "." << std::endl;
+}
+
+DiamondTrap	&DiamondTrap::operator=(const DiamondTrap &rhs)
+{
+	if (this != &rhs)
+	{
+		this->_name = rhs._name;
+		this->_hitPoints = rhs._hitPoints;
+		this->_energyPoints = rhs._energyPoints;
+		this->_attackDamage = rhs._attackDamage;
+	}
+	return (*this);
 }
 
 DiamondTrap::~DiamondTrap(void)

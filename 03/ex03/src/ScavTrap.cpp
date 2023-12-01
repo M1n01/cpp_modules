@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 23:16:56 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/30 08:49:19 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/01 23:02:55 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,18 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	_energyPoints = 50;
 	_attackDamage = 20;
 	std::cout << "ScavTrap constructor called." << std::endl;
+}
+
+ScavTrap	&ScavTrap::operator=(const ScavTrap &rhs)
+{
+	if (this != &rhs)
+	{
+		this->_name = rhs._name;
+		this->_hitPoints = rhs._hitPoints;
+		this->_energyPoints = rhs._energyPoints;
+		this->_attackDamage = rhs._attackDamage;
+	}
+	return (*this);
 }
 
 ScavTrap::~ScavTrap(void)
