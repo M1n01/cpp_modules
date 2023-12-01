@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:43:37 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/30 20:11:05 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/01 21:27:09 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 WrongAnimal::WrongAnimal() : _type("WrongAnimal")
 {
 	std::cout << YELLOW << "WrongAnimal default constructor called." << DEFAULT << std::endl;
+}
+
+WrongAnimal::WrongAnimal(const std::string &type) : _type(type)
+{
+	std::cout << YELLOW << "WrongAnimal constructor called." << DEFAULT << std::endl;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal &src)

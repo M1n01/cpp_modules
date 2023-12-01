@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:46:21 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/30 19:58:33 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/01 21:27:56 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ WrongCat::WrongCat() : WrongAnimal()
 {
 	std::cout << YELLOW << "WrongCat default constructor called." << DEFAULT << std::endl;
 	this->_type = "WrongCat";
+}
+
+WrongCat::WrongCat(const std::string &type) : WrongAnimal(type)
+{
+	std::cout << YELLOW << "WrongCat type constructor called." << DEFAULT << std::endl;
 }
 
 WrongCat::WrongCat(const WrongCat &src) : WrongAnimal(src)
@@ -38,5 +43,5 @@ WrongCat::~WrongCat()
 
 void	WrongCat::makeSound() const
 {
-	std::cout << RED << "WrongCat: " << DEFAULT << "Meow Meow" << std::endl;
+	std::cout << RED << "Meow Meow" << DEFAULT << std::endl;
 }

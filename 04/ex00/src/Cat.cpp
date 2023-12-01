@@ -6,18 +6,23 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/30 19:54:15 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/01 21:44:20 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat() : Animal("Cat")
+Cat::Cat(void) : Animal("Cat")
 {
 	std::cout << BLUE << "Cat default constructor called" << DEFAULT  << std::endl;
 }
 
-Cat::Cat(const Cat &other) : Animal(other)
+Cat::Cat(const std::string &type) : Animal(type)
+{
+	std::cout << BLUE << "Cat type constructor called" << DEFAULT  << std::endl;
+}
+
+Cat::Cat(const Cat &src) : Animal(src)
 {
 	std::cout << BLUE << "Cat copy constructor called" << DEFAULT  << std::endl;
 }
@@ -29,7 +34,7 @@ Cat	&Cat::operator=(const Cat &rhs)
 	return (*this);
 }
 
-Cat::~Cat()
+Cat::~Cat(void)
 {
 	std::cout << YELLOW << "Cat destructor called" << DEFAULT << std::endl;
 }
