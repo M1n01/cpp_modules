@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:42:30 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/01 21:26:59 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/01 22:15:59 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ class WrongAnimal
 
 	public:
 		WrongAnimal();
-		WrongAnimal(const std::string &type);
 		WrongAnimal(const WrongAnimal &src);
 		WrongAnimal	&operator=(const WrongAnimal &rhs);
 		virtual ~WrongAnimal();

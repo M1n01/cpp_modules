@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:45:01 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/01 21:42:14 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/01 22:19:13 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	main(void)
 	delete meta;
 	delete dog;
 	delete cat;
+
+	std::cout << "---------------------" << std::endl;
 
 	const WrongAnimal	*wrongCat = new WrongCat();
 

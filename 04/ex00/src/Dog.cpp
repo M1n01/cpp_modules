@@ -6,20 +6,16 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:15:38 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/01 21:44:33 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/01 22:17:01 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog(void) : Animal("Dog")
+Dog::Dog(void) : Animal()
 {
 	std::cout << BLUE << "Dog default constructor called" << DEFAULT << std::endl;
-}
-
-Dog::Dog(const std::string &type) : Animal(type)
-{
-	std::cout << BLUE << "Dog type constructor called" << DEFAULT << std::endl;
+	this->_type = "Dog";
 }
 
 Dog::Dog(const Dog &src) : Animal(src)

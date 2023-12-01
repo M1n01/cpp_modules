@@ -6,20 +6,16 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/01 21:44:20 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/01 22:16:55 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat(void) : Animal("Cat")
+Cat::Cat(void) : Animal()
 {
 	std::cout << BLUE << "Cat default constructor called" << DEFAULT  << std::endl;
-}
-
-Cat::Cat(const std::string &type) : Animal(type)
-{
-	std::cout << BLUE << "Cat type constructor called" << DEFAULT  << std::endl;
+	this->_type = "Cat";
 }
 
 Cat::Cat(const Cat &src) : Animal(src)

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 23:05:08 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/01 21:25:24 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/01 22:18:18 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 Animal::Animal(void) : _type("")
 {
 	std::cout << BLUE << "Animal default constructor called" << DEFAULT  << std::endl;
-}
-
-Animal::Animal(const std::string &type) : _type(type)
-{
-	std::cout << BLUE << "Animal type constructor called" << DEFAULT  << std::endl;
 }
 
 Animal::Animal(const Animal &src)
@@ -46,5 +41,5 @@ std::string	Animal::getType(void) const
 
 void	Animal::makeSound(void) const
 {
-	std::cout << RED << "<Animal sound>" << DEFAULT << std::endl;
+	std::cout << RED << "<Animal Sound>" << DEFAULT << std::endl;
 }

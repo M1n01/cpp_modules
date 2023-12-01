@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 23:05:25 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/01 21:24:52 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/01 22:12:16 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ class Animal
 
 	public:
 		Animal(void);
-		Animal(const std::string &type);
 		Animal(const Animal &src);
 		Animal	&operator=(const Animal &rhs);
 		virtual ~Animal(void);

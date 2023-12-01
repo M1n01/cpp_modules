@@ -6,20 +6,15 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:43:37 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/01 21:27:09 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/01 22:18:09 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal() : _type("WrongAnimal")
+WrongAnimal::WrongAnimal()
 {
 	std::cout << YELLOW << "WrongAnimal default constructor called." << DEFAULT << std::endl;
-}
-
-WrongAnimal::WrongAnimal(const std::string &type) : _type(type)
-{
-	std::cout << YELLOW << "WrongAnimal constructor called." << DEFAULT << std::endl;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal &src)
@@ -48,5 +43,5 @@ std::string	WrongAnimal::getType() const
 
 void	WrongAnimal::makeSound() const
 {
-	std::cout << RED <<  "..." << DEFAULT << std::endl;
+	std::cout << RED <<  "<Animal Sound>" << DEFAULT << std::endl;
 }
