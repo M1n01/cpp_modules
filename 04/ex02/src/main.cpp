@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:45:01 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 15:48:02 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 16:44:09 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,33 +16,20 @@
 
 int	main(void)
 {
-	AAnimal	*animals[4];
+	/* AAnimalの直接のインスタンス化を試みる（これはエラーを引き起こす）*/
+	// AAnimal* animal = new AAnimal();
 
-	animals[0] = new Dog();
-	animals[1] = new Cat();
+	// DogとCatのオブジェクトを作成
+	AAnimal* dog = new Dog();
+	AAnimal* cat = new Cat();
 
-	static_cast<Dog *>(animals[0])->getBrain()->setIdea(0, "Bone!!");
-	static_cast<Cat *>(animals[1])->getBrain()->setIdea(0, "Tuna!!");
+	// 各動物の音を確認
+	dog->makeSound(); // "Bark"
+	cat->makeSound(); // "Meow"
 
-	animals[2] = new Dog(*static_cast<Dog *>(animals[0]));
-	animals[3] = new Cat(*static_cast<Cat *>(animals[1]));
-
-	for (int i = 0; i < 4; i++)
-	{
-		Dog	*dog = dynamic_cast<Dog *>(animals[i]);
-		if (dog)
-			std::cout << "Dog Brain: " << dog->getBrain()->getIdea(0) << std::endl;
-
-		Cat	*cat = dynamic_cast<Cat *>(animals[i]);
-		if (cat)
-			std::cout << "Cat Brain: " << cat->getBrain()->getIdea(0) << std::endl;
-	}
-
-	for (int i = 0; i < 4; i++)
-	{
-		delete animals[i];
-	}
-
+	// メモリの解放
+	delete dog;
+	delete cat;
 	return (0);
 }
 
