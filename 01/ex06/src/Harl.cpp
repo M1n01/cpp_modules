@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 21:15:28 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 10:07:02 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 12:23:51 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ void	Harl::filterComplaints(std::string level)
 	switch (levelIndex)
 	{
 		case DEBUG:
-			debug(void);
+			debug();
 		case INFO:
-			info(void);
+			info();
 		case WARNING:
-			warning(void);
+			warning();
 		case ERROR:
-			error(void);
+			error();
 			break;
 		default:
 			std::cout << RED << "Invalid level." << DEFAULT << std::endl;

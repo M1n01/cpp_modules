@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:47:47 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 10:07:02 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 12:22:03 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ int main(void)
 	{
 		Weapon club = Weapon("crude spiked club");
 		HumanA bob("Bob", club);
-		bob.attack(void);
+		bob.attack();
 		club.setType("some other type of club");
-		bob.attack(void);
+		bob.attack();
 	}
 	{
 		Weapon club = Weapon("crude spiked club");
 		HumanB jim("Jim");
-		jim.attack(void);
+		jim.attack();
 		jim.setWeapon(club);
-		jim.attack(void);
+		jim.attack();
 		club.setType("some other type of club");
-		jim.attack(void);
+		jim.attack();
 	}
 	return (0);
 }

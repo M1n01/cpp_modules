@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:47:47 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 10:07:02 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 12:20:44 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 	num = 5;
 	zombies = zombieHorde(num, "HordeZombie");
 	for (int i = 0; i < num; i++)
-		zombies[i].announce(void);
+		zombies[i].announce();
 	delete[] zombies;
 	return (0);
 }
