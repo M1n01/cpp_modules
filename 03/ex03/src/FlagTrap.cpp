@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 18:08:25 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/01 23:02:46 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 12:48:35 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ FlagTrap::~FlagTrap(void)
 void	FlagTrap::highFivesGuys(void)
 {
 	if (this->_hitPoints < 1)
-		std::cout << "『" << this->_name << "は気絶している。』" << std::endl;
+		std::cout << "『" << this->_name << "は瀕死状態だ。』" << std::endl;
 	else
 		std::cout << "『" << this->_name << "はハイタッチしたそうにしている。』" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:16 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 12:32:18 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 13:09:08 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ void	ClapTrap::printStatus(void) const
 void	ClapTrap::attack(const std::string& target)
 {
 	if (this->_hitPoints < 1)
-		std::cout << "『" << this->_name << "は気絶している。』" << std::endl;
+		std::cout << "『" << this->_name << "は瀕死状態だ。』" << std::endl;
 	else if (this->_energyPoints < 1)
 		std::cout << "『" << this->_name << "はEPが足りず攻撃ができない。』" << std::endl;
 	else
 	{
-		std::cout << "『" << this->_name << "の攻撃！" << target << "は" << this->_attackDamage << "のダメージ!!" << "』" << std::endl;
+		std::cout << "『" << this->_name << "は、たいあたりを繰り出した！" << target << "は" << this->_attackDamage << "のダメージ!!" << "』" << std::endl;
 		this->_energyPoints--;
 	}
 	printStatus();
@@ -63,7 +63,7 @@ void	ClapTrap::attack(const std::string& target)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	std::cout << "『" << this->_name << "は" << amount << "のダメージ!!" << "』" << std::endl;
+	std::cout << "『" << this->_name << "は、たいあたりをくらった。" << amount << "のダメージ!!" << "』" << std::endl;
 	if (this->_hitPoints <= amount)
 	{
 		std::cout << "『" << this->_name << "は力尽きた。』" << std::endl;
@@ -77,20 +77,20 @@ void	ClapTrap::takeDamage(unsigned int amount)
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_hitPoints < 1)
-		std::cout << "『" << this->_name << "は気絶している。』" << std::endl;
+		std::cout << "『傷薬を使えなかった。" << this->_name << "は瀕死状態だ。』" << std::endl;
 	else if (this->_energyPoints < 1)
 		std::cout << "『" << this->_name << "はEPが足りない。』" << std::endl;
 	else if (this->_hitPoints == HP_MAX)
-		std::cout << "『" << this->_name << "のHPはすでに満タンだ。』" << std::endl;
+		std::cout << "『傷薬を使えなかった。" << this->_name << "のHPはすでに満タンだ。』" << std::endl;
 	else if (this->_hitPoints + amount > HP_MAX)
 	{
-		std::cout << "『" << this->_name << "は回復した。HPが満タンになった。』" << std::endl;
+		std::cout << "『傷薬を使った。" << this->_name << "は回復した。HPが満タンになった。』" << std::endl;
 		this->_hitPoints = HP_MAX;
 		this->_energyPoints--;
 	}
 	else
 	{
-		std::cout << "『" << this->_name << "は" << amount << "回復。" << "』" << std::endl;
+		std::cout << "『傷薬を使った。" << this->_name << "は" << amount << "回復。" << "』" << std::endl;
 		this->_hitPoints += amount;
 		this->_energyPoints--;
 	}

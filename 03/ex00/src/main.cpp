@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:18 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 10:07:02 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 12:47:41 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 int	main(void)
 {
-	ClapTrap	clapTrap("勇者");
+	ClapTrap	clapTrap("ピカチュウ");
 	// ClapTrap	clapTrap;
 
-	clapTrap.attack("スライム");
+	clapTrap.attack("ポッポ");
 	clapTrap.takeDamage(2);
 	clapTrap.beRepaired(10);
 
-	clapTrap.attack("ホイミスライム");
+	clapTrap.attack("イワーク");
 	clapTrap.takeDamage(8);
 	clapTrap.beRepaired(10);
 
-	clapTrap.attack("ゲマ");
+	clapTrap.attack("カイリュー");
 	clapTrap.takeDamage(100000000);
 	clapTrap.beRepaired(10);
 

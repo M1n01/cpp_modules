@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:18 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 12:32:50 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 13:14:40 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 int	main(void)
 {
-	// DiamondTrap	diamondTrap("勇者");
-	DiamondTrap	diamondTrap;
+	DiamondTrap	diamondTrap("ルカリオ");
+	// DiamondTrap	diamondTrap;
 
-	diamondTrap.attack("うごくせきぞう");
+	diamondTrap.attack("エルフーン");
 	diamondTrap.takeDamage(10);
 	diamondTrap.beRepaired(100);
 	diamondTrap.guardGate();
 	diamondTrap.highFivesGuys();
 	diamondTrap.whoAmI();
 
-	diamondTrap.attack("キラーマシン");
+	diamondTrap.attack("メタモン");
 	diamondTrap.takeDamage(99);
 	diamondTrap.beRepaired(100);
 	diamondTrap.guardGate();
 	diamondTrap.highFivesGuys();
 	diamondTrap.whoAmI();
 
-	diamondTrap.attack("ゲマ");
+	diamondTrap.attack("キノガッサ");
 	diamondTrap.takeDamage(100000000);
 	diamondTrap.beRepaired(100);
 	diamondTrap.guardGate();
