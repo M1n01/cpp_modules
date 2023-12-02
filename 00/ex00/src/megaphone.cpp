@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 21:56:16 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 10:07:02 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 12:15:15 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	{
 		for (int i = 1; i < argc; i++)
 			str += argv[i];
-		std::transform(&str[0], &str[0] + str.size(void), &str[0], ::toupper);
+		std::transform(&str[0], &str[0] + str.size(), &str[0], ::toupper);
 	}
 	std::cout << str << std::endl;
 	return (0);

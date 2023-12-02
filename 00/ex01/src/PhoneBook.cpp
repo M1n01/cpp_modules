@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:13:24 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 10:07:02 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 12:15:45 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void	PhoneBook::addContact(const Contact &contact)
 void	outputContact(Contact &contact)
 {
 	std::cout << "======= Contact Information =======\n";
-	std::cout << "[First name] => " << contact.getFirstName(void) << std::endl;
-	std::cout << "[Last name] => " << contact.getLastName(void) << std::endl;
-	std::cout << "[Nickname] => " << contact.getNickname(void) << std::endl;
-	std::cout << "[Phone number] => " << contact.getPhoneNumber(void) << std::endl;
-	std::cout << "[Darkest secret] => " << contact.getDarkestSecret(void) << std::endl;
+	std::cout << "[First name] => " << contact.getFirstName() << std::endl;
+	std::cout << "[Last name] => " << contact.getLastName() << std::endl;
+	std::cout << "[Nickname] => " << contact.getNickname() << std::endl;
+	std::cout << "[Phone number] => " << contact.getPhoneNumber() << std::endl;
+	std::cout << "[Darkest secret] => " << contact.getDarkestSecret() << std::endl;
 	std::cout << "===================================\n";
 }
 

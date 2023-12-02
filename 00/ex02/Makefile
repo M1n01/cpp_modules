@@ -4,7 +4,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors $(LDFLAGS) -MMD -MP
 LDFLAGS = -I$(INCDIR)
 
 INCDIR = ./inc
-SRCDIR = ./src
+SRCDIR = .
 OBJDIR = ./obj
 
 INCS = $(shell find $(INCDIR) -name "*.hpp")
