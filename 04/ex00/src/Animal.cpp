@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 23:05:08 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/01 22:18:18 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 09:22:21 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ Animal::Animal(const Animal &src)
 
 Animal	&Animal::operator=(const Animal &rhs)
 {
-	(void)rhs;
+	if (this != &rhs)
+		this->_type = rhs._type;
 	return (*this);
 }
 

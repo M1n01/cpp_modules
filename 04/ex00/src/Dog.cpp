@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:15:38 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/01 22:17:01 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 09:22:45 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ Dog::Dog(const Dog &src) : Animal(src)
 Dog	&Dog::operator=(const Dog &rhs)
 {
 	std::cout << BLUE << "Dog assignation operator called" << std::endl;
-	(void)rhs;
+	if (this != &rhs)
+		this->_type = rhs._type;
 	return (*this);
 }
 
