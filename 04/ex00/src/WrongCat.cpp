@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:46:21 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 12:35:14 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 13:45:42 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ WrongCat	&WrongCat::operator=(const WrongCat &rhs)
 {
 	std::cout << YELLOW << "WrongCat assignation operator called." << DEFAULT << std::endl;
 	if (this != &rhs)
-		this->_type = rhs._type;
+		WrongAnimal::operator=(rhs);
 	return (*this);
 }
 

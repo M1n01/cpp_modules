@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 12:34:59 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 13:45:16 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Cat	&Cat::operator=(const Cat &rhs)
 {
 	std::cout << BLUE << "Cat assignation operator called" << DEFAULT  << std::endl;
 	if (this != &rhs)
-		this->_type = rhs._type;
+		Animal::operator=(rhs);
 	return (*this);
 }
 
