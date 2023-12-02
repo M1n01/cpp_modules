@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:45:01 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 16:44:09 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 18:27:42 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ int	main(void)
 __attribute__((destructor))
 static void destructor(void)
 {
-	system("leaks -q ex01");
+	system("leaks -q ex02");
 }

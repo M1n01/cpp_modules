@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:30:06 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 16:30:36 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 18:26:45 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,20 @@ MateriaSource::~MateriaSource()
 
 void			MateriaSource::learnMateria(AMateria* materia)
 {
-	if (_count < 4 && materia)
+	if (!materia)
+		return ;
+	for (int i = 0; i < _count; i++)
+	{
+		if (_materias[i] == materia)
+			return ;
+	}
+	if (_count < 4)
 	{
 		_materias[_count] = materia;
 		_count++;
 	}
+	else
+		std::cout << "MateriaSource is full." << std::endl;
 }
 
 AMateria*		MateriaSource::createMateria(std::string const & type)

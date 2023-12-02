@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:18:53 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 16:24:30 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 18:22:06 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,30 @@ Character::Character(std::string const & name) : _name(name)
 		_inventory[i] = NULL;
 }
 
-Character::Character(const Character & src)
+Character::Character(const Character & src) : _name(src._name)
 {
-	*this = src;
+	for (int i = 0; i < 4; i++)
+	{
+		if (src._inventory[i])
+			_inventory[i] = src._inventory[i]->clone();
+		else
+			_inventory[i] = NULL;
+	}
 }
 
 Character&	Character::operator=(const Character& rhs)
 {
 	if (this != &rhs)
 	{
-		_name = rhs._name;
 		for (int i = 0; i < 4; i++)
 		{
 			if (_inventory[i])
+			{
 				delete _inventory[i];
-			_inventory[i] = rhs._inventory[i]->clone();
+				_inventory[i] = NULL;
+			}
+			if (rhs._inventory[i])
+				_inventory[i] = rhs._inventory[i]->clone();
 		}
 	}
 	return (*this);
@@ -61,14 +70,14 @@ void	Character::equip(AMateria* m)
 		if (_inventory[i] == NULL)
 		{
 			_inventory[i] = m;
-			break ;
+			return ;
 		}
 	}
 }
 
 void	Character::unequip(int idx)
 {
-	if (idx < 0 || idx > 3 || !_inventory[idx])
+	if (idx < 0 || 3 < idx || !_inventory[idx])
 	{
 		std::cerr << RED << "Error: invalid index" << DEFAULT << std::endl;
 		return ;
@@ -78,7 +87,7 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter& target)
 {
-	if (idx < 0 || idx > 3 || !_inventory[idx])
+	if (idx < 0 || 3 < idx || !_inventory[idx])
 	{
 		std::cerr << RED << "Error: invalid index" << DEFAULT << std::endl;
 		return ;

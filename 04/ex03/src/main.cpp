@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:02:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 16:32:09 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 18:27:35 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,10 @@ int	main(void)
 	delete src;
 
 	return (0);
+}
+
+__attribute__((destructor))
+static void destructor(void)
+{
+	system("leaks -q ex03");
 }
