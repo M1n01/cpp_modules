@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:16 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 10:07:02 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 12:31:33 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ClapTrap::attack(const std::string& target)
 		std::cout << "『" << this->_name << "の攻撃！" << target << "は" << this->_attackDamage << "のダメージ!!" << "』" << std::endl;
 		this->_energyPoints--;
 	}
-	printStatus(void);
+	printStatus();
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
@@ -71,7 +71,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	}
 	else
 		this->_hitPoints -= amount;
-	printStatus(void);
+	printStatus();
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
@@ -94,5 +94,5 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		this->_hitPoints += amount;
 		this->_energyPoints--;
 	}
-	printStatus(void);
+	printStatus();
 }
