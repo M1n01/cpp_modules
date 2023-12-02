@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 23:16:56 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 14:42:53 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 14:49:53 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,7 @@ void	ScavTrap::guardGate(void)
 
 void	ScavTrap::attack(const std::string &target)
 {
-	if (this->_hitPoints < 1)
-		std::cout << "『" << this->_name << "は瀕死状態だ。』" << std::endl;
-	else if (this->_energyPoints < 1)
-		std::cout << "『" << this->_name << "はEPが足りず攻撃ができない。』" << std::endl;
-	else
+	if (this->canAttack())
 	{
 		std::cout << "『" << this->_name << "は、わるあがきをした。" << target << "は" << this->_attackDamage << "のダメージ!!" << "』" << std::endl;
 		this->_energyPoints--;

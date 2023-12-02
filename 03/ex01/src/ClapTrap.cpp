@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:16 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 12:59:23 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 14:47:31 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,24 @@ void	ClapTrap::printStatus(void) const
 	std::cout << "[ATK]: " << this->_attackDamage << std::endl << std::endl;
 }
 
-void	ClapTrap::attack(const std::string& target)
+bool	ClapTrap::canAttack(void) const
 {
 	if (this->_hitPoints < 1)
+	{
 		std::cout << "『" << this->_name << "は瀕死状態だ。』" << std::endl;
+		return (false);
+	}
 	else if (this->_energyPoints < 1)
+	{
 		std::cout << "『" << this->_name << "はEPが足りず攻撃ができない。』" << std::endl;
-	else
+		return (false);
+	}
+	return (true);
+}
+
+void	ClapTrap::attack(const std::string& target)
+{
+	if (this->canAttack())
 	{
 		std::cout << "『" << this->_name << "は、たいあたりを繰り出した！" << target << "は" << this->_attackDamage << "のダメージ!!" << "』" << std::endl;
 		this->_energyPoints--;
