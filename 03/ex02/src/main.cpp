@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:18 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 13:07:25 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 23:36:17 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ int	main(void)
 
 	flagTrap.attack("サンダー");
 	flagTrap.takeDamage(99);
+	// flagTrap.takeDamage(100);
 	flagTrap.beRepaired(100);
 	flagTrap.highFivesGuys();
 
 	flagTrap.attack("ザシアン");
-	flagTrap.takeDamage(100000000);
+	flagTrap.takeDamage(999999999);
 	flagTrap.beRepaired(100);
 
 	return (0);

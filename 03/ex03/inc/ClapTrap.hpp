@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:14 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 14:50:33 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 23:42:15 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ class ClapTrap
 		unsigned int	_attackDamage;
 
 		void	printStatus(void) const;
-		bool	canAttack(void) const;
+		bool	isAlive(void) const;
+		bool	canAction(void) const;
 
 	public:
 		ClapTrap(void);
