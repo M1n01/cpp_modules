@@ -19,10 +19,9 @@ Cat::Cat(void) : Animal()
 	this->_brain = new Brain();
 }
 
-Cat::Cat(const Cat &src) : Animal(src)
+Cat::Cat(const Cat &src) : Animal(src), _brain(new Brain(*src._brain))
 {
 	std::cout << BLUE << "Cat copy constructor called" << DEFAULT  << std::endl;
-	this->_brain = new Brain();
 }
 
 Cat	&Cat::operator=(const Cat &rhs)
@@ -30,8 +29,9 @@ Cat	&Cat::operator=(const Cat &rhs)
 	std::cout << BLUE << "Cat assignation operator called" << DEFAULT  << std::endl;
 	if (this != &rhs)
 	{
-		this->_type = rhs._type;
-		*(this->_brain) = *(rhs._brain);
+		Animal::operator=(rhs);
+		delete this->_brain;
+		this->_brain = new Brain(*(rhs._brain));
 	}
 	return (*this);
 }
