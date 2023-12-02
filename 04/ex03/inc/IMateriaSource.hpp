@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:27:30 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 16:48:01 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 20:30:39 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 class IMateriaSource
 {
 	public:
-		virtual ~IMateriaSource();
+		virtual ~IMateriaSource() {}
 
 		virtual void		learnMateria(AMateria*) = 0;
 		virtual AMateria*	createMateria(std::string const & type) = 0;
