@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:48:35 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/23 21:55:09 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 10:07:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ Fixed	&Fixed::operator=(const Fixed &rhs)
 	if (DEBUG)
 		std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &rhs)
-		this->_value = rhs.getRawBits();
+		this->_value = rhs.getRawBits(void);
 	return (*this);
 }
 
@@ -127,7 +127,7 @@ Fixed	Fixed::operator*(const Fixed &rhs)
 	if (temp > INT_MAX || temp < INT_MIN)
 	{
 		std::cerr << RED << "Error: Multiplication overflow" << DEFAULT << std::endl;
-		return (Fixed());
+		return (Fixed(void));
 	}
 	result._value = (int)temp;
 	return (result);
@@ -186,7 +186,7 @@ Fixed	Fixed::operator--(int)
 
 std::ostream	&operator<<(std::ostream &os, const Fixed &rhs)
 {
-	os << rhs.toFloat();
+	os << rhs.toFloat(void);
 	return (os);
 }
 
@@ -194,7 +194,7 @@ Fixed	&Fixed::min(Fixed &a, Fixed &b)
 {
 	if (DEBUG)
 		std::cout << "Min function called" << std::endl;
-	if (a.getRawBits() < b.getRawBits())
+	if (a.getRawBits(void) < b.getRawBits(void))
 		return (a);
 	return (b);
 }
@@ -203,7 +203,7 @@ const Fixed	&Fixed::min(const Fixed &a, const Fixed &b)
 {
 	if (DEBUG)
 		std::cout << "Min function called" << std::endl;
-	if (a.getRawBits() < b.getRawBits())
+	if (a.getRawBits(void) < b.getRawBits(void))
 		return (a);
 	return (b);
 }
@@ -212,7 +212,7 @@ Fixed	&Fixed::max(Fixed &a, Fixed &b)
 {
 	if (DEBUG)
 		std::cout << "Max function called" << std::endl;
-	if (a.getRawBits() > b.getRawBits())
+	if (a.getRawBits(void) > b.getRawBits(void))
 		return (a);
 	return (b);
 }
@@ -221,7 +221,7 @@ const Fixed	&Fixed::max(const Fixed &a, const Fixed &b)
 {
 	if (DEBUG)
 		std::cout << "Max function called" << std::endl;
-	if (a.getRawBits() > b.getRawBits())
+	if (a.getRawBits(void) > b.getRawBits(void))
 		return (a);
 	return (b);
 }

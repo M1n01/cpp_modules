@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:45:11 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/23 18:53:05 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 10:07:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ Point::~Point(void) {}
 
 float	Point::getX(void) const
 {
-	return (this->_x.toFloat());
+	return (this->_x.toFloat(void));
 }
 
 float	Point::getY(void) const
 {
-	return (this->_y.toFloat());
+	return (this->_y.toFloat(void));
 }

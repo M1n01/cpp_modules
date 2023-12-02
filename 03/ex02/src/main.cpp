@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:18 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/30 17:59:01 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 10:07:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	main(void)
 	flagTrap.attack("うごくせきぞう");
 	flagTrap.takeDamage(10);
 	flagTrap.beRepaired(100);
-	flagTrap.highFivesGuys();
+	flagTrap.highFivesGuys(void);
 
 	flagTrap.attack("キラーマシン");
 	flagTrap.takeDamage(99);
 	flagTrap.beRepaired(100);
-	flagTrap.highFivesGuys();
+	flagTrap.highFivesGuys(void);
 
 	flagTrap.attack("ゲマ");
 	flagTrap.takeDamage(100000000);
@@ -35,7 +35,7 @@ int	main(void)
 }
 
 __attribute__((destructor))
-static void destructor()
+static void destructor(void)
 {
 	system("leaks -q ex02");
 }

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:18 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/30 17:05:52 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 10:07:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,29 @@ int	main(void)
 	diamondTrap.attack("うごくせきぞう");
 	diamondTrap.takeDamage(10);
 	diamondTrap.beRepaired(100);
-	diamondTrap.guardGate();
-	diamondTrap.highFivesGuys();
-	diamondTrap.whoAmI();
+	diamondTrap.guardGate(void);
+	diamondTrap.highFivesGuys(void);
+	diamondTrap.whoAmI(void);
 
 	diamondTrap.attack("キラーマシン");
 	diamondTrap.takeDamage(99);
 	diamondTrap.beRepaired(100);
-	diamondTrap.guardGate();
-	diamondTrap.highFivesGuys();
-	diamondTrap.whoAmI();
+	diamondTrap.guardGate(void);
+	diamondTrap.highFivesGuys(void);
+	diamondTrap.whoAmI(void);
 
 	diamondTrap.attack("ゲマ");
 	diamondTrap.takeDamage(100000000);
 	diamondTrap.beRepaired(100);
-	diamondTrap.guardGate();
-	diamondTrap.highFivesGuys();
-	diamondTrap.whoAmI();
+	diamondTrap.guardGate(void);
+	diamondTrap.highFivesGuys(void);
+	diamondTrap.whoAmI(void);
 
 	return (0);
 }
 
 __attribute__((destructor))
-static void destructor()
+static void destructor(void)
 {
 	system("leaks -q ex03");
 }

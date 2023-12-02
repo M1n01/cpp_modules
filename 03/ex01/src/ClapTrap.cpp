@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:22:16 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/01 22:57:48 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 10:07:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ ClapTrap::~ClapTrap(void)
 	std::cout << "ClapTrap destructor called." << std::endl;
 }
 
-void	ClapTrap::printStatus() const
+void	ClapTrap::printStatus(void) const
 {
 	std::cout << "====" <<  this->_name << "のステータス====" << std::endl;
 	std::cout << "[HP]: " << this->_hitPoints << "/" << HP_MAX << std::endl;
@@ -58,7 +58,7 @@ void	ClapTrap::attack(const std::string& target)
 		std::cout << "『" << this->_name << "の攻撃！" << target << "は" << this->_attackDamage << "のダメージ!!" << "』" << std::endl;
 		this->_energyPoints--;
 	}
-	printStatus();
+	printStatus(void);
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
@@ -71,7 +71,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	}
 	else
 		this->_hitPoints -= amount;
-	printStatus();
+	printStatus(void);
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
@@ -94,5 +94,5 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		this->_hitPoints += amount;
 		this->_energyPoints--;
 	}
-	printStatus();
+	printStatus(void);
 }

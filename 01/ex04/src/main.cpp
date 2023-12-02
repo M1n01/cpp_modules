@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 20:47:47 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/11 20:41:25 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 10:07:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	main(int argc, char **argv)
 		error(" Could not open output file " + replace);
 
 	processAndWriteFile(s1, s2, inputFile, outputFile);
-	inputFile.close();
-	outputFile.close();
+	inputFile.close(void);
+	outputFile.close(void);
 	return (0);
 }
 
@@ -58,9 +58,9 @@ static void	processAndWriteFile(std::string s1, std::string s2, std::ifstream &i
 		pos = line.find(s1);
 		while (pos != std::string::npos)
 		{
-			line.erase(pos, s1.length());
+			line.erase(pos, s1.length(void));
 			line.insert(pos, s2);
-			pos += s2.length();
+			pos += s2.length(void);
 			pos = line.find(s1, pos);
 		}
 		outputFile << line << std::endl;

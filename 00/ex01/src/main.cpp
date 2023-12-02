@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:14:07 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/11 17:51:36 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 10:07:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(void)
 }
 
 __attribute__((destructor))
-static void destructor()
+static void destructor(void)
 {
 	system("leaks -q phoneBook");
 }
@@ -38,10 +38,10 @@ static void	cmdLoop(PhoneBook &phoneBook)
 	while (true)
 	{
 		std::cout << "Enter a command: ";
-		if (!std::getline(std::cin, cmd) || std::cin.eof())
+		if (!std::getline(std::cin, cmd) || std::cin.eof(void))
 		{
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cin.clear(void);
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(void), '\n');
 			break ;
 		}
 		if (cmd == "ADD")
@@ -52,9 +52,9 @@ static void	cmdLoop(PhoneBook &phoneBook)
 		else if (cmd == "SEARCH")
 		{
 			outputPhoneBook(phoneBook);
-			if (!phoneBook.searchContacts())
+			if (!phoneBook.searchContacts(void))
 			{
-				if (std::cin.eof())
+				if (std::cin.eof(void))
 					break ;
 				continue ;
 			}
@@ -91,10 +91,10 @@ static void	inputContact(Contact &contact)
 
 static std::string	formatString(const std::string &str, size_t len)
 {
-	if (str.length() > len)
+	if (str.length(void) > len)
 		return (str.substr(0, len - 1) + ".");
-	else if (str.length() < len)
-		return (std::string(len - str.length(), ' ') + str);
+	else if (str.length(void) < len)
+		return (std::string(len - str.length(void), ' ') + str);
 	else
 		return (str);
 }
@@ -102,9 +102,9 @@ static std::string	formatString(const std::string &str, size_t len)
 static void	displayContactRow(const Contact &contact, int index)
 {
 	std::cout << "|" << std::string(ROWLEN - 1, ' ') << index << "|";
-	std::cout << formatString(contact.getFirstName(), ROWLEN) << "|";
-	std::cout << formatString(contact.getLastName(), ROWLEN) << "|";
-	std::cout << formatString(contact.getNickname(), ROWLEN) << "|" << std::endl;
+	std::cout << formatString(contact.getFirstName(void), ROWLEN) << "|";
+	std::cout << formatString(contact.getLastName(void), ROWLEN) << "|";
+	std::cout << formatString(contact.getNickname(void), ROWLEN) << "|" << std::endl;
 
 }
 
@@ -114,6 +114,6 @@ static void	outputPhoneBook(PhoneBook &phoneBook)
 
 	header = "|Index     |First name|Last name |Nickname  |";
 	std::cout << header << std::endl;
-	for (int i = 0; i < phoneBook.getNumContacts(); i++)
+	for (int i = 0; i < phoneBook.getNumContacts(void); i++)
 		displayContactRow(phoneBook.getContact(i), i + 1);
 }
