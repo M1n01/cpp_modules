@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 19:42:30 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 10:04:46 by minabe           ###   ########.fr       */
+/*   Created: 2023/10/31 22:13:30 by minabe            #+#    #+#             */
+/*   Updated: 2023/12/02 10:07:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-# include <iostream>
+# include "Animal.hpp"
+# include "Brain.hpp"
 
-# define RED "\033[0;31m"
-# define GREEN "\033[0;32m"
-# define YELLOW "\033[0;33m"
-# define BLUE "\033[0;34m"
-# define DEFAULT "\033[0m"
-
-class WrongAnimal
+class Cat : public Animal
 {
-	protected:
-		std::string	_type;
+	private:
+		Brain	*_brain;
 
 	public:
-		WrongAnimal(void);
-		WrongAnimal(const WrongAnimal &src);
-		WrongAnimal	&operator=(const WrongAnimal &rhs);
-		virtual ~WrongAnimal(void);
+		Cat(void);
+		Cat(const Cat &src);
+		Cat	&operator=(const Cat &rhs);
+		~Cat(void);
 
-		std::string	getType(void) const;
-		void		makeSound(void) const;
+		void	makeSound(void) const;
+		Brain	*getBrain(void) const;
 };

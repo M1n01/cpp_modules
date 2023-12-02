@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:45:01 by minabe            #+#    #+#             */
-/*   Updated: 2023/11/30 13:16:43 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/02 12:40:49 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ int	main(void)
 	const Animal	*dog = new Dog();
 	const Animal	*cat = new Cat();
 
-	std::cout << "Type is " << dog->getType() << std::endl;
-	std::cout << "Type is " << cat->getType() << std::endl;
-	cat->makeSound();
-	dog->makeSound();
-	meta->makeSound();
 
 	delete meta;
 	delete dog;
@@ -34,7 +29,7 @@ int	main(void)
 }
 
 __attribute__((destructor))
-static void destructor()
+static void destructor(void)
 {
-	system("leaks -q ex00");
+	system("leaks -q ex01");
 }

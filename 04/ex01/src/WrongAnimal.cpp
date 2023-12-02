@@ -12,7 +12,7 @@
 
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal(void)
+WrongAnimal::WrongAnimal(void) : _type("WrongAnimal")
 {
 	std::cout << YELLOW << "WrongAnimal default constructor called." << DEFAULT << std::endl;
 }
@@ -43,5 +43,5 @@ std::string	WrongAnimal::getType(void) const
 
 void	WrongAnimal::makeSound(void) const
 {
-	std::cout << RED <<  "<Animal Sound>" << DEFAULT << std::endl;
+	std::cout << RED <<  "..." << DEFAULT << std::endl;
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 19:42:30 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 10:04:46 by minabe           ###   ########.fr       */
+/*   Created: 2023/11/30 13:29:11 by minabe            #+#    #+#             */
+/*   Updated: 2023/12/02 10:06:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@
 # define BLUE "\033[0;34m"
 # define DEFAULT "\033[0m"
 
-class WrongAnimal
+class Brain
 {
 	protected:
-		std::string	_type;
+		std::string	ideas[100];
 
 	public:
-		WrongAnimal(void);
-		WrongAnimal(const WrongAnimal &src);
-		WrongAnimal	&operator=(const WrongAnimal &rhs);
-		virtual ~WrongAnimal(void);
+		Brain(void);
+		Brain(const Brain &src);
+		Brain	&operator=(const Brain &rhs);
+		virtual ~Brain(void);
 
-		std::string	getType(void) const;
-		void		makeSound(void) const;
+		std::string	getIdea(int index) const;
+		void		setIdea(int index, const std::string &idea);
 };
