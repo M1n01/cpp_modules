@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:45:01 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 12:35:49 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/03 15:51:23 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,45 @@
 
 int	main(void)
 {
-	const Animal	*meta = new Animal();
-	const Animal	*dog = new Dog();
-	const Animal	*cat = new Cat();
+	Animal	*animals[5];
 
-	std::cout << dog->getType() << ": ";
-	dog->makeSound();
+	// DogとCatのオブジェクトを作成
+	animals[0] = new Dog();
+	animals[1] = new Cat();
 
-	std::cout << cat->getType() << ": ";
-	cat->makeSound();
+	// DogとCatのコピーを作成
+	animals[2] = new Dog(*static_cast<Dog *>(animals[0]));
+	animals[3] = new Cat(*static_cast<Cat *>(animals[1]));
 
-	std::cout << meta->getType() << ": ";
-	meta->makeSound();
+	animals[4] = new Animal();
 
-	delete meta;
-	delete dog;
-	delete cat;
+	for (int i = 0; i < 5; i++)
+	{
+		std::cout << "===animals[" << i << "]===" << std::endl;
+
+		Dog	*dog = dynamic_cast<Dog *>(animals[i]);
+		if (dog)
+		{
+			std::cout << "Dog: ";
+			dog->makeSound();
+			continue ;
+		}
+
+		Cat	*cat = dynamic_cast<Cat *>(animals[i]);
+		if (cat)
+		{
+			std::cout << "Cat:  ";
+			cat->makeSound();
+			continue ;
+		}
+
+		std::cout << "Animal:  ";
+		animals[i]->makeSound();
+	}
+
+	// メモリの解放
+	for (int i = 0; i < 5; i++)
+		delete animals[i];
 
 	std::cout << "---------------------" << std::endl;
 

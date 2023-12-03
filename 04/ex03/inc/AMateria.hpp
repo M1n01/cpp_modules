@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 15:54:15 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 16:47:32 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/03 16:20:14 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ class AMateria
 
 	public:
 		AMateria(std::string const & type);
+		AMateria(AMateria const & m);
+		AMateria	&operator=(AMateria const & rhs);
 		virtual ~AMateria();
 
 		std::string const &	getType() const; //Returns the materia type

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:12:57 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 18:10:37 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/03 17:14:13 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ Ice::Ice() : AMateria("ice") {}
 
 Ice::Ice(const Ice & src) : AMateria(src._type) {}
 
-Ice&	Ice::operator=(const Ice& rhs)
+Ice	&Ice::operator=(const Ice& rhs)
 {
 	if (this != &rhs)
-		_type = rhs._type;
+		AMateria::operator=(rhs);
 	return (*this);
 }
 
@@ -27,7 +27,15 @@ Ice::~Ice() {}
 
 AMateria*	Ice::clone() const
 {
-	return (new Ice(*this));
+	try
+	{
+		return (new Ice(*this));
+	}
+	catch (const std::bad_alloc& e)
+	{
+		std::cerr << "Ice clone failed: " << e.what() << std::endl;
+		return (NULL);
+	}
 }
 
 void		Ice::use(ICharacter& target)

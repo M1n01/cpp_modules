@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:18:20 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 16:34:43 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/03 16:35:44 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ class Character : public ICharacter
 		AMateria*	_inventory[4];
 
 	public:
-		Character();
 		Character(std::string const & name);
 		Character(const Character & src);
 		Character&	operator=(const Character& rhs);

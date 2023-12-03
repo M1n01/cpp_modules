@@ -6,13 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:18:53 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 18:22:06 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/03 17:51:01 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Character.hpp"
-
-Character::Character() {}
 
 Character::Character(std::string const & name) : _name(name)
 {
@@ -31,7 +29,7 @@ Character::Character(const Character & src) : _name(src._name)
 	}
 }
 
-Character&	Character::operator=(const Character& rhs)
+Character	&Character::operator=(const Character& rhs)
 {
 	if (this != &rhs)
 	{
@@ -45,6 +43,7 @@ Character&	Character::operator=(const Character& rhs)
 			if (rhs._inventory[i])
 				_inventory[i] = rhs._inventory[i]->clone();
 		}
+		_name = rhs._name;
 	}
 	return (*this);
 }
@@ -65,6 +64,13 @@ std::string const &	Character::getName() const
 
 void	Character::equip(AMateria* m)
 {
+	if (m == NULL)
+		return ;
+	if (m->getType() != "ice" && m->getType() != "cure")
+	{
+		std::cerr << RED << "Error: invalid materia" << DEFAULT << std::endl;
+		return ;
+	}
 	for (int i = 0; i < 4; i++)
 	{
 		if (_inventory[i] == NULL)
@@ -73,6 +79,7 @@ void	Character::equip(AMateria* m)
 			return ;
 		}
 	}
+	std::cout << "Inventory is full." << std::endl;
 }
 
 void	Character::unequip(int idx)
@@ -82,6 +89,7 @@ void	Character::unequip(int idx)
 		std::cerr << RED << "Error: invalid index" << DEFAULT << std::endl;
 		return ;
 	}
+	delete _inventory[idx];
 	_inventory[idx] = NULL;
 }
 

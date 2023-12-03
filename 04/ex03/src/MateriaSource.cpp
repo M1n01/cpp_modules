@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:30:06 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 18:26:45 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/03 16:57:29 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ MateriaSource::~MateriaSource()
 
 void			MateriaSource::learnMateria(AMateria* materia)
 {
-	if (!materia)
+	if (materia == NULL)
 		return ;
 	for (int i = 0; i < _count; i++)
 	{

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:10:30 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 16:10:39 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/03 16:26:49 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Ice : public AMateria
 	public:
 		Ice();
 		Ice(const Ice & src);
-		Ice&	operator=(const Ice& rhs);
+		Ice	&operator=(const Ice& rhs);
 		virtual ~Ice();
 
 		virtual AMateria*	clone() const;
