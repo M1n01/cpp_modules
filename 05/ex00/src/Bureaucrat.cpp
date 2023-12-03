@@ -6,13 +6,11 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:03:40 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 21:04:36 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/03 13:42:16 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-
-Bureaucrat::Bureaucrat(void) {}
 
 Bureaucrat::Bureaucrat(std::string const &name, int grade) : _name(name)
 {
@@ -21,19 +19,52 @@ Bureaucrat::Bureaucrat(std::string const &name, int grade) : _name(name)
 	else if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 	else
-		this->_grade = grade;
-}
-
-Bureaucrat::Bureaucrat(Bureaucrat const &src) : _name(src._name)
-{
-	*this = src;
+		_grade = grade;
 }
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rhs)
 {
 	if (this != &rhs)
-		this->_grade = rhs._grade;
+		_grade = rhs._grade;
 	return (*this);
 }
 
 Bureaucrat::~Bureaucrat(void) {}
+
+const std::string	Bureaucrat::getName(void)
+{
+	return (_name);
+}
+
+unsigned int	Bureaucrat::getGrade(void)
+{
+	return (_grade);
+}
+
+void	Bureaucrat::GradeTooHighException(void)
+{
+	try
+	{
+		/* code */
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+}
+
+void	Bureaucrat::GradeTooLowException(void)
+{
+	if (_grade > LOWEST_GRADE)
+	{
+		std::cerr << std::endl;
+		return (true);
+	}
+	return (false);
+}
+
+std::ostream	&operator<<(std::ostream &os, const Bureaucrat &rhs)
+{
+	os << rhs.getName() << ", bureaucrat grade" << rhs.getGrade();
+	return (os);
+}

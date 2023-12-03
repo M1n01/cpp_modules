@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:03:38 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 21:04:56 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/03 13:22:24 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 int	main(void)
 {
+	Bureaucrat	bureaucrat("Friend A", 1);
+	
+	std::cout << bureaucrat << std::endl;
 	return (0);
 }
