@@ -6,13 +6,13 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:43:37 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 10:07:02 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/03 20:19:52 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal(void) : _type("WrongAnimal")
+WrongAnimal::WrongAnimal(void) : _type("")
 {
 	std::cout << YELLOW << "WrongAnimal default constructor called." << DEFAULT << std::endl;
 }
@@ -20,14 +20,14 @@ WrongAnimal::WrongAnimal(void) : _type("WrongAnimal")
 WrongAnimal::WrongAnimal(const WrongAnimal &src)
 {
 	std::cout << YELLOW << "WrongAnimal copy constructor called." << DEFAULT << std::endl;
-	*this = src;
+	_type = src._type;
 }
 
 WrongAnimal	&WrongAnimal::operator=(const WrongAnimal &rhs)
 {
 	std::cout << YELLOW << "WrongAnimal assignation operator called." << DEFAULT << std::endl;
 	if (this != &rhs)
-		this->_type = rhs._type;
+		_type = rhs._type;
 	return (*this);
 }
 
@@ -38,10 +38,10 @@ WrongAnimal::~WrongAnimal(void)
 
 std::string	WrongAnimal::getType(void) const
 {
-	return (this->_type);
+	return (_type);
 }
 
 void	WrongAnimal::makeSound(void) const
 {
-	std::cout << RED <<  "..." << DEFAULT << std::endl;
+	std::cout << RED <<  "<Animal Sound>" << DEFAULT << std::endl;
 }

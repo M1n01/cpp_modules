@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:15:38 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/03 14:40:22 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/03 20:29:20 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 Dog::Dog(void) : Animal()
 {
 	std::cout << BLUE << "Dog default constructor called" << DEFAULT << std::endl;
-	this->_type = "Dog";
+	_type = "Dog";
 }
 
 Dog::Dog(const Dog &src) : Animal(src)
 {
-	std::cout << BLUE << "Dog copy constructor called" << std::endl;
+	std::cout << BLUE << "Dog copy constructor called" << DEFAULT << std::endl;
 }
 
 Dog	&Dog::operator=(const Dog &rhs)

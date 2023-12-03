@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:18:20 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/03 16:35:44 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/03 21:31:01 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@
 class Character : public ICharacter
 {
 	private:
+		static const int	MAX_UMATERIAS = 10; // unequipされたMateriasの最大数
+
 		std::string	_name;
 		AMateria*	_inventory[4];
+		int			_unequipCount;
+		AMateria*	_unequippedMaterias[MAX_UMATERIAS];
 
 	public:
 		Character(std::string const & name);

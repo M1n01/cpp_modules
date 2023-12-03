@@ -12,15 +12,15 @@
 
 # include "AAnimal.hpp"
 
-AAnimal::AAnimal(void)
+AAnimal::AAnimal(void) : _type("")
 {
-	std::cout << BLUE << "AAnimal default constructor called" << DEFAULT  << std::endl;
+	std::cout << GREEN << "AAnimal default constructor called" << DEFAULT << std::endl;
 }
 
 AAnimal::AAnimal(const AAnimal &src)
 {
-	std::cout << BLUE << "AAnimal copy constructor called" << DEFAULT  << std::endl;
-	*this = src;
+	std::cout << GREEN << "AAnimal copy constructor called" << DEFAULT << std::endl;
+	_type = src._type;
 }
 
 AAnimal	&AAnimal::operator=(const AAnimal &rhs)
@@ -32,7 +32,7 @@ AAnimal	&AAnimal::operator=(const AAnimal &rhs)
 
 AAnimal::~AAnimal(void)
 {
-	std::cout << YELLOW << "AAnimal destructor called" << DEFAULT << std::endl;
+	std::cout << BLUE << "AAnimal destructor called" << DEFAULT << std::endl;
 }
 
 std::string	AAnimal::getType(void) const

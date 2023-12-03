@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:30:06 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/03 16:57:29 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/03 21:03:55 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ MateriaSource::MateriaSource()
 	_count = 0;
 }
 
-MateriaSource::MateriaSource(const MateriaSource& other)
+MateriaSource::MateriaSource(const MateriaSource& src)
 {
 	for (int i = 0; i < 4; i++)
-		_materias[i] = NULL;
-	_count = 0;
-	*this = other;
+		_materias[i] = src._materias[i]->clone();
+	_count = src._count;
 }
 
 MateriaSource&	MateriaSource::operator=(const MateriaSource& rhs)
@@ -54,14 +53,14 @@ MateriaSource::~MateriaSource()
 	}
 }
 
-void			MateriaSource::learnMateria(AMateria* materia)
+void	MateriaSource::learnMateria(AMateria* materia)
 {
 	if (materia == NULL)
 		return ;
 	for (int i = 0; i < _count; i++)
 	{
 		if (_materias[i] == materia)
-			return ;
+			return ; // Already learned
 	}
 	if (_count < 4)
 	{
@@ -72,7 +71,7 @@ void			MateriaSource::learnMateria(AMateria* materia)
 		std::cout << "MateriaSource is full." << std::endl;
 }
 
-AMateria*		MateriaSource::createMateria(std::string const & type)
+AMateria*	MateriaSource::createMateria(std::string const & type)
 {
 	for (int i = 0; i < _count; i++)
 	{

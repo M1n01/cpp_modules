@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 13:29:11 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 10:06:02 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/03 20:26:31 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 class Brain
 {
 	protected:
-		std::string	ideas[100];
+		std::string	_ideas[100];
 
 	public:
 		Brain(void);

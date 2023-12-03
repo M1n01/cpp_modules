@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:46:21 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 13:45:42 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/03 20:18:35 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 WrongCat::WrongCat(void) : WrongAnimal()
 {
 	std::cout << YELLOW << "WrongCat default constructor called." << DEFAULT << std::endl;
-	this->_type = "WrongCat";
+	_type = "WrongCat";
 }
 
 WrongCat::WrongCat(const WrongCat &src) : WrongAnimal(src)
 {
 	std::cout << YELLOW << "WrongCat copy constructor called." << DEFAULT << std::endl;
-	*this = src;
 }
 
 WrongCat	&WrongCat::operator=(const WrongCat &rhs)

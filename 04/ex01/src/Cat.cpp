@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/02 13:44:29 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/03 20:39:42 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,33 @@
 Cat::Cat(void) : Animal()
 {
 	std::cout << BLUE << "Cat default constructor called" << DEFAULT  << std::endl;
-	this->_type = "Cat";
-	this->_brain = new Brain();
+	_type = "Cat";
+	try
+	{
+		_brain = new Brain();
+	}
+	catch (std::bad_alloc &e)
+	{
+		std::cerr << RED << "Memory allocation failed" << e.what() << DEFAULT << std::endl;
+		std::exit(EXIT_FAILURE);
+	}
 }
 
-Cat::Cat(const Cat &src) : Animal(src), _brain(new Brain(*src._brain))
+Cat::Cat(const Cat &src) : Animal(src)
 {
-	std::cout << BLUE << "Cat copy constructor called" << DEFAULT  << std::endl;
+	std::cout << BLUE << "Cat copy constructor called" << DEFAULT << std::endl;
+	try
+	{
+		_brain = new Brain(*src._brain);
+	}
+	catch (std::bad_alloc &e)
+	{
+		std::cerr << RED << "Memory allocation failed" << e.what() << DEFAULT << std::endl;
+		std::exit(EXIT_FAILURE);
+	}
+	_type = src._type;
+	for (int i = 0; i < 100; i++)
+		_brain->setIdea(i, src._brain->getIdea(i));
 }
 
 Cat	&Cat::operator=(const Cat &rhs)
@@ -30,8 +50,16 @@ Cat	&Cat::operator=(const Cat &rhs)
 	if (this != &rhs)
 	{
 		Animal::operator=(rhs);
-		delete this->_brain;
-		this->_brain = new Brain(*(rhs._brain));
+		delete _brain;
+		try
+		{
+			_brain = new Brain();
+		}
+		catch (std::bad_alloc &e)
+		{
+			std::cerr << RED << "Memory allocation failed" << e.what() << DEFAULT << std::endl;
+			std::exit(EXIT_FAILURE);
+		}
 	}
 	return (*this);
 }
@@ -39,7 +67,7 @@ Cat	&Cat::operator=(const Cat &rhs)
 Cat::~Cat(void)
 {
 	std::cout << YELLOW << "Cat destructor called" << DEFAULT << std::endl;
-	delete this->_brain;
+	delete _brain;
 }
 
 void	Cat::makeSound(void) const
@@ -49,5 +77,5 @@ void	Cat::makeSound(void) const
 
 Brain	*Cat::getBrain(void) const
 {
-	return (this->_brain);
+	return (_brain);
 }

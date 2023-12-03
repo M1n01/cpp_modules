@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:15:38 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/03 14:40:10 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/03 20:42:55 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,25 @@
 Dog::Dog(void) : AAnimal()
 {
 	std::cout << BLUE << "Dog default constructor called" << DEFAULT << std::endl;
-	this->_type = "Dog";
-	this->_brain = new Brain();
+	_type = "Dog";
+	_brain = new Brain();
 }
 
-Dog::Dog(const Dog &src) : AAnimal(src), _brain(new Brain(*src._brain))
+Dog::Dog(const Dog &src) : AAnimal(src)
 {
 	std::cout << BLUE << "Dog copy constructor called" << std::endl;
+	try
+	{
+		_brain = new Brain(*src._brain);
+	}
+	catch (std::bad_alloc &e)
+	{
+		std::cerr << RED << "Memory allocation failed" << e.what() << DEFAULT << std::endl;
+		std::exit(EXIT_FAILURE);
+	}
+	_type = src._type;
+	for (int i = 0; i < 100; i++)
+		_brain->setIdea(i, src._brain->getIdea(i));
 }
 
 Dog	&Dog::operator=(const Dog &rhs)
@@ -30,8 +42,16 @@ Dog	&Dog::operator=(const Dog &rhs)
 	if (this != &rhs)
 	{
 		AAnimal::operator=(rhs);
-		delete this->_brain;
-		this->_brain = new Brain(*(rhs._brain));
+		delete _brain;
+		try
+		{
+			_brain = new Brain();
+		}
+		catch (std::bad_alloc &e)
+		{
+			std::cerr << RED << "Memory allocation failed" << e.what() << DEFAULT << std::endl;
+			std::exit(EXIT_FAILURE);
+		}
 	}
 	return (*this);
 }
@@ -39,7 +59,7 @@ Dog	&Dog::operator=(const Dog &rhs)
 Dog::~Dog(void)
 {
 	std::cout << YELLOW << "Dog destructor called" << DEFAULT << std::endl;
-	delete this->_brain;
+	delete _brain;
 }
 
 void	Dog::makeSound(void) const
@@ -49,5 +69,5 @@ void	Dog::makeSound(void) const
 
 Brain	*Dog::getBrain(void) const
 {
-	return (this->_brain);
+	return (_brain);
 }

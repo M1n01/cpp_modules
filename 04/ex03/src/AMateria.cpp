@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 15:52:26 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/03 16:22:32 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/03 20:43:52 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ AMateria::AMateria(std::string const & type) : _type(type) {}
 
 AMateria::AMateria(AMateria const & src)
 {
-	*this = src;
+	_type = src._type;
 }
 
 AMateria	&AMateria::operator=(AMateria const & rhs)
