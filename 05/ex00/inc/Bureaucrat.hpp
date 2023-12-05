@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 20:38:33 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/05 14:08:59 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/05 15:32:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 
 # define HIGHEST_GRADE 1
 # define LOWEST_GRADE 150
+
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define YELLOW "\033[0;33m"
+# define BLUE "\033[0;34m"
+# define DEFAULT "\033[0m"
 
 class Bureaucrat
 {
