@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:36:37 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/05 18:08:38 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/05 18:13:17 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ class Form
 		bool				_signed;
 		const unsigned int	_gradeToSign;
 		const int			_gradeToExecute;
-
-		// bool				isSigned(void) const;
 
 	public:
 		Form(std::string const &name, unsigned int gradeToSign, int gradeToExecute);
