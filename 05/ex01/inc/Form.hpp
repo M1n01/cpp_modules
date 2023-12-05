@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:36:37 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/05 18:13:17 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/05 20:13:09 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <string>
 # include "exception.hpp"
 # include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
@@ -31,6 +33,8 @@ class Form
 		~Form(void);
 
 		const std::string	getName(void) const;
+		unsigned int		getGradeToSign(void) const;
+		int					getGradeToExecute(void) const;
 		bool				beSigned(Bureaucrat const &bureaucrat);
 };
 

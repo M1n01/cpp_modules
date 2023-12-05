@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:36:33 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/05 18:12:32 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/05 20:15:12 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,16 @@ Form::~Form(void) {}
 const std::string	Form::getName(void) const
 {
 	return (_name);
+}
+
+unsigned int	Form::getGradeToSign(void) const
+{
+	return (_gradeToSign);
+}
+
+int	Form::getGradeToExecute(void) const
+{
+	return (_gradeToExecute);
 }
 
 bool	Form::beSigned(Bureaucrat const &bureaucrat)
