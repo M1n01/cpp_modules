@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:15:29 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/03 20:39:42 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/05 15:15:56 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ Cat	&Cat::operator=(const Cat &rhs)
 		delete _brain;
 		try
 		{
-			_brain = new Brain();
+			_brain = new Brain(*rhs._brain);
 		}
 		catch (std::bad_alloc &e)
 		{
