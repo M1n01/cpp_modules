@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:25:51 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 15:56:48 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 21:43:15 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,9 @@ void	RobotomyRequestForm::execute(const Bureaucrat &executor) const
 		std::cout << _target << " has been robotomized successfully." << std::endl;
 	else
 		std::cout << _target << " robotomization failed." << std::endl;
+}
+
+AForm	*RobotomyRequestForm::create(const std::string &target)
+{
+	return (new RobotomyRequestForm("RobotomyRequestForm", target));
 }

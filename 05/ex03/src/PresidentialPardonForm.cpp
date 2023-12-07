@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:46:11 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 14:42:04 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 21:42:31 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,9 @@ void	PresidentialPardonForm::execute(const Bureaucrat &executor) const
 {
 	AForm::execute(executor);
 	std::cout << _target << " has been pardoned by Zafod Beeblebrox." << std::endl;
+}
+
+AForm	*PresidentialPardonForm::create(const std::string &target)
+{
+	return (new PresidentialPardonForm("PresidentialPardonForm", target));
 }

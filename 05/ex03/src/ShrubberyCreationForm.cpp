@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:26:54 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 15:20:57 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 21:43:29 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,9 @@ void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 	ofs << "      ||      " << std::endl;
 	ofs << "      ||      " << std::endl;
 	ofs << std::endl;
+}
+
+AForm	*ShrubberyCreationForm::create(const std::string &target)
+{
+	return (new ShrubberyCreationForm("ShrubberyCreationForm", target));
 }

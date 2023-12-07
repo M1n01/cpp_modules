@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:57:32 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 17:58:14 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 22:01:50 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "exception.hpp"
 
 Intern::Intern(void) {}
 
@@ -31,17 +32,23 @@ Intern	&Intern::operator=(Intern const &rhs)
 
 Intern::~Intern(void) {}
 
-AForm	*Intern::makeForm(std::string const &formName, std::string const &target)
-{
-	AForm	*newForm = NULL;
+const std::string	Intern::formNames[] = {"robotomy request", "shrubbery creation", "presidential pardon"};
+Intern::FormCreator	Intern::formCreators[];
 
-	if (formName == "robotomy request")
-		newForm = new RobotomyRequestForm(target);
-	else if (formName == "shrubbery creation")
-		newForm = new ShrubberyCreationForm(target);
-	else if (formName == "presidential pardon")
-		newForm = new PresidentialPardonForm(target);
-	else
-		std::cerr << "Unknown form type: " << formName << std::endl;
-	return (newForm);
+void	Intern::initializeFormCreators(void)
+{
+	formCreators[0] = RobotomyRequestForm::create;
+	formCreators[1] = ShrubberyCreationForm::create;
+	formCreators[2] = PresidentialPardonForm::create;
+}
+
+AForm	*Intern::makeForm(std::string const &formName, std::string const &target) const
+{
+	for (int i = 0; i < numForms; i++)
+	{
+		std::cout << i << std::endl;
+		if (formName == formNames[i])
+			return (formCreators[i](target));
+	}
+	throw FormNotFoundException();
 }

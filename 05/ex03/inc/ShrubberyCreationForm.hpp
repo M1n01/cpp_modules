@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:20:44 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 14:53:38 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 21:25:24 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm	&operator=(const ShrubberyCreationForm &rhs);
 		~ShrubberyCreationForm(void);
 
-		void	execute(const Bureaucrat &executor) const;
+		void			execute(const Bureaucrat &executor) const;
+		static AForm	*create(const std::string &target);
 };
