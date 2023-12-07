@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 20:38:33 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/05 20:10:48 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 14:03:56 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class Bureaucrat
 		unsigned int		_grade;
 
 	public:
+		Bureaucrat(void);
 		Bureaucrat(std::string const &name, int grade);
 		Bureaucrat(Bureaucrat const &src);
 		Bureaucrat	&operator=(Bureaucrat const &rhs);

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:03:38 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 11:25:16 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 14:13:05 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ int	main(void)
 	{
 		Form	form("Form", 42, 42);
 		std::cout << form << std::endl;
-		Form	confidentialForm("ConfidentialForm", 10, 42);
+
+		// default constructor
+		Form	confidentialForm;
 		std::cout << confidentialForm << std::endl;
+
 
 		Bureaucrat	normal("Normal", 42);
 		std::cout << normal << std::endl;
@@ -36,9 +39,19 @@ int	main(void)
 		normal2.signForm(form);
 		std::cout << form << std::endl;
 
+		std::cout << "\n====COPY TEST====" << std::endl;
+		Form	copyForm(form);
+		std::cout << copyForm << std::endl;
+		normal2.signForm(copyForm);
+		std::cout << copyForm << std::endl;
+
+
 		std::cout << "\n====ERROR TEST====" << std::endl;
-		Form	errorForm("ErrorForm", 0, 42);
-		std::cout << errorForm << std::endl;
+		// Form	errorForm("ErrorForm", 0, 42);
+		// std::cout << errorForm << std::endl;
+
+		Form	errorForm2("ErrorForm", 1, 151);
+		std::cout << errorForm2 << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -50,7 +63,9 @@ int	main(void)
 	{
 		Form	form("Form", 42, 42);
 		std::cout << form << std::endl;
-		Form	confidentialForm("ConfidentialForm", 10, 42);
+
+		// default constructor
+		Form	confidentialForm;
 		std::cout << confidentialForm << std::endl;
 
 		Bureaucrat	lowest("Lowest", 150);
@@ -68,7 +83,7 @@ int	main(void)
 	{
 		Form	form("Form", 42, 42);
 		std::cout << form << std::endl;
-		Form	confidentialForm("ConfidentialForm", 10, 42);
+		Form	confidentialForm;
 		std::cout << confidentialForm << std::endl;
 
 		Bureaucrat	highest("Highest", 1);

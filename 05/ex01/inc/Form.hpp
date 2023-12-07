@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:36:37 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 10:22:51 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 14:05:46 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Form
 		const unsigned int	_gradeToExecute;
 
 	public:
+		Form(void);
 		Form(std::string const &name, unsigned int gradeToSign, int gradeToExecute);
 		Form(Form const &src);
 		Form	&operator=(Form const &rhs);

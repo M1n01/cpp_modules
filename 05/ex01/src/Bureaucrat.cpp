@@ -6,11 +6,13 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:03:40 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 10:39:42 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 14:04:50 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+
+Bureaucrat::Bureaucrat(void) : _name("Default"), _grade(LOWEST_GRADE) {}
 
 Bureaucrat::Bureaucrat(std::string const &name, int grade) : _name(name), _grade(grade)
 {

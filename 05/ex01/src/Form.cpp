@@ -6,11 +6,13 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:36:33 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 10:23:10 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 14:07:19 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+
+Form::Form(void) : _name("Default"), _signed(false), _gradeToSign(HIGHEST_GRADE), _gradeToExecute(HIGHEST_GRADE) {}
 
 Form::Form(std::string const &name, unsigned int gradeToSign, int gradeToExecute)
 	: _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
@@ -66,6 +68,6 @@ bool	Form::beSigned(Bureaucrat const &bureaucrat)
 
 std::ostream	&operator<<(std::ostream& os, const Form& form)
 {
-	os << "Form: " << form.getName() << ", Grade to sign: " << form.getGradeToSign() << ", Grade to execute: " << form.getGradeToExecute() << ", Signed: " << (form.getSigned() ? "true" : "false");
+	os << "Form: \"" << form.getName() << "\", Grade to sign: " << form.getGradeToSign() << ", Grade to execute: " << form.getGradeToExecute() << ", Signed: " << (form.getSigned() ? "true" : "false");
 	return (os);
 }

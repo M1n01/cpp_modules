@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:03:38 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 11:18:09 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 14:02:51 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int	main(void)
 {
+	std::cout << "\n====NORMAL TEST====" << std::endl;
 	try
 	{
-		// default constructor
 		Bureaucrat	normal("Normal", 42);
 		std::cout << normal << std::endl;
 
@@ -56,9 +56,11 @@ int	main(void)
 		std::cerr << RED << e.what() << DEFAULT << std::endl;
 	}
 
+	std::cout << "\n====LOWEST TEST====" << std::endl;
 	try
 	{
-		Bureaucrat	lowest("Lowest", 150);
+		// default constructor
+		Bureaucrat	lowest;
 		std::cout << lowest << std::endl;
 		lowest.decrementGrade(); // 例外を投げる
 		std::cout << lowest << std::endl;
@@ -68,6 +70,7 @@ int	main(void)
 		std::cerr << RED << e.what() << DEFAULT << std::endl;
 	}
 
+	std::cout << "\n====HIGHEST TEST====" << std::endl;
 	try
 	{
 		Bureaucrat	highest("Highest", 1);
