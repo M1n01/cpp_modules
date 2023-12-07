@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:03:40 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 17:15:33 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 17:45:01 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Bureaucrat::Bureaucrat(Bureaucrat const &src) : _name(src._name), _grade(src._gr
 		_grade = src._grade;
 }
 
-Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rhs)
+Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &rhs)
 {
 	if (this != &rhs)
 		_grade = rhs._grade;

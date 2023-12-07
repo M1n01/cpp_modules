@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:03:40 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 17:26:44 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 17:48:17 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Bureaucrat::Bureaucrat(Bureaucrat const &src) : _name(src._name), _grade(src._gr
 		_grade = src._grade;
 }
 
-Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rhs)
+Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &rhs)
 {
 	if (this != &rhs)
 		_grade = rhs._grade;
@@ -78,7 +78,7 @@ void	Bureaucrat::signForm(Form &form)
 	}
 	catch (std::exception &e)
 	{
-		std::cout << RED << _name << " cannot sign " << form.getName() << " because " << e.what() << DEFAULT << std::endl;
+		std::cerr << RED << _name << " cannot sign " << form.getName() << " because " << e.what() << DEFAULT << std::endl;
 	}
 }
 
