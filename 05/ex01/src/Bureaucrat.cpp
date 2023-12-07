@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:03:40 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 14:04:50 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 17:26:44 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rhs)
 
 Bureaucrat::~Bureaucrat(void) {}
 
-const std::string	Bureaucrat::getName(void) const
+const std::string	&Bureaucrat::getName(void) const
 {
 	return (_name);
 }
@@ -55,7 +55,7 @@ unsigned int	Bureaucrat::getGrade(void) const
 
 void	Bureaucrat::incrementGrade(void)
 {
-	if (_grade - 1 < HIGHEST_GRADE)
+	if (_grade <= HIGHEST_GRADE)
 		throw GradeTooHighException();
 	else
 		_grade--;
@@ -63,7 +63,7 @@ void	Bureaucrat::incrementGrade(void)
 
 void	Bureaucrat::decrementGrade(void)
 {
-	if (_grade + 1 > LOWEST_GRADE)
+	if (_grade >= LOWEST_GRADE)
 		throw GradeTooLowException();
 	else
 		_grade++;
@@ -71,14 +71,14 @@ void	Bureaucrat::decrementGrade(void)
 
 void	Bureaucrat::signForm(Form &form)
 {
-	if (form.getGradeToSign() < _grade)
-		std::cout << RED << _name << " cannot sign " << form.getName() << " because his/her grade is too low." << DEFAULT << std::endl;
-	else if (form.getSigned())
-		std::cout << YELLOW << _name << " cannot sign " << form.getName() << " because it is already signed." << DEFAULT << std::endl;
-	else
+	try
 	{
 		form.beSigned(*this);
 		std::cout << GREEN << _name << " signs " << form.getName() << "." << DEFAULT << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << RED << _name << " cannot sign " << form.getName() << " because " << e.what() << DEFAULT << std::endl;
 	}
 }
 

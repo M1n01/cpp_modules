@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:36:33 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 14:07:19 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 17:31:36 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Form	&Form::operator=(Form const &rhs)
 
 Form::~Form(void) {}
 
-const std::string	Form::getName(void) const
+const std::string	&Form::getName(void) const
 {
 	return (_name);
 }
@@ -55,15 +55,14 @@ unsigned int	Form::getGradeToExecute(void) const
 	return (_gradeToExecute);
 }
 
-bool	Form::beSigned(Bureaucrat const &bureaucrat)
+void	Form::beSigned(Bureaucrat const &bureaucrat)
 {
 	if (bureaucrat.getGrade() > _gradeToSign)
 		throw GradeTooLowException();
+	if (_signed)
+		throw std::runtime_error("Form already signed.");
 	else
-	{
 		_signed = true;
-		return (true);
-	}
 }
 
 std::ostream	&operator<<(std::ostream& os, const Form& form)

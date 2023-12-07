@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:36:37 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 14:05:46 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 17:22:20 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ class Form
 		Form	&operator=(Form const &rhs);
 		~Form(void);
 
-		const std::string	getName(void) const;
+		const std::string	&getName(void) const;
 		bool				getSigned(void) const;
 		unsigned int		getGradeToSign(void) const;
 		unsigned int		getGradeToExecute(void) const;
-		bool				beSigned(Bureaucrat const &bureaucrat);
+
+		void				beSigned(Bureaucrat const &bureaucrat);
 };
 
 std::ostream	&operator<<(std::ostream& os, const Form& form);
