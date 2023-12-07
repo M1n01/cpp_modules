@@ -27,16 +27,20 @@ class AForm
 		const unsigned int	_gradeToExecute;
 
 	public:
+		AForm(void);
 		AForm(std::string const &name, unsigned int gradeToSign, int gradeToExecute);
 		AForm(AForm const &src);
 		AForm	&operator=(AForm const &rhs);
-		~AForm(void);
+		virtual ~AForm(void);
 
 		const std::string	getName(void) const;
 		bool				getSigned(void) const;
 		unsigned int		getGradeToSign(void) const;
 		unsigned int		getGradeToExecute(void) const;
+
 		bool				beSigned(Bureaucrat const &bureaucrat);
+
+		virtual void		execute(Bureaucrat const &executor) const = 0;
 };
 
 std::ostream	&operator<<(std::ostream& os, const AForm& form);
