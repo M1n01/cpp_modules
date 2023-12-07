@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:03:38 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/05 15:42:30 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 10:58:50 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,65 +15,49 @@
 
 int	main(void)
 {
+	Form	form("Form", 42, 42);
+	std::cout << form << std::endl;
+	Form	hardForm("HardForm", 10, 42);
+	std::cout << hardForm << std::endl;
+
+	std::cout << "\n====NORMAL TEST====" << std::endl;
 	try
 	{
 		// default constructor
 		Bureaucrat	normal("Normal", 42);
 		std::cout << normal << std::endl;
-
-		// copy constructor
-		Bureaucrat	normal1(normal);
-		Bureaucrat	normal2(normal);
-
-		normal1.incrementGrade();
-		std::cout << normal1 << std::endl;
-
-		normal2.decrementGrade();
-		std::cout << normal2 << std::endl;
+		normal.signForm(form);
+		std::cout << form << std::endl;
+		normal.signForm(hardForm);
+		std::cout << hardForm << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << RED << e.what() << DEFAULT << std::endl;
 	}
 
-	try
-	{
-		Bureaucrat	high("High", 0); // 例外を投げる
-		std::cout << high << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << RED << e.what() << DEFAULT << std::endl;
-	}
-
-	try
-	{
-		Bureaucrat	low("Low", 151); // 例外を投げる
-		std::cout << low << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << RED << e.what() << DEFAULT << std::endl;
-	}
-
+	std::cout << "\n====LOWEST TEST====" << std::endl;
 	try
 	{
 		Bureaucrat	lowest("Lowest", 150);
 		std::cout << lowest << std::endl;
-		lowest.decrementGrade(); // 例外を投げる
-		std::cout << lowest << std::endl;
+		lowest.signForm(hardForm);
+		std::cout << hardForm << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << RED << e.what() << DEFAULT << std::endl;
 	}
 
+	std::cout << "\n====HIGHEST TEST====" << std::endl;
 	try
 	{
 		Bureaucrat	highest("Highest", 1);
 		std::cout << highest << std::endl;
-		highest.incrementGrade(); // 例外を投げる
-		std::cout << highest << std::endl;
+		highest.signForm(hardForm);
+		std::cout << hardForm << std::endl;
+		highest.signForm(form);
+		std::cout << form << std::endl;
 	}
 	catch(const std::exception& e)
 	{

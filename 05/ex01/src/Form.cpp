@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:36:33 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/05 20:15:12 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 10:23:10 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,17 @@ const std::string	Form::getName(void) const
 	return (_name);
 }
 
+bool	Form::getSigned(void) const
+{
+	return (_signed);
+}
+
 unsigned int	Form::getGradeToSign(void) const
 {
 	return (_gradeToSign);
 }
 
-int	Form::getGradeToExecute(void) const
+unsigned int	Form::getGradeToExecute(void) const
 {
 	return (_gradeToExecute);
 }
@@ -57,4 +62,10 @@ bool	Form::beSigned(Bureaucrat const &bureaucrat)
 		_signed = true;
 		return (true);
 	}
+}
+
+std::ostream	&operator<<(std::ostream& os, const Form& form)
+{
+	os << "Form: " << form.getName() << ", Grade to sign: " << form.getGradeToSign() << ", Grade to execute: " << form.getGradeToExecute() << ", Signed: " << (form.getSigned() ? "true" : "false");
+	return (os);
 }
