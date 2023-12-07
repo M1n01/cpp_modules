@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:03:40 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 16:01:44 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 17:47:45 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Bureaucrat::Bureaucrat(Bureaucrat const &src) : _name(src._name), _grade(src._gr
 		_grade = src._grade;
 }
 
-Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rhs)
+Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &rhs)
 {
 	if (this != &rhs)
 		_grade = rhs._grade;
@@ -43,7 +43,7 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rhs)
 
 Bureaucrat::~Bureaucrat(void) {}
 
-const std::string	Bureaucrat::getName(void) const
+const std::string	&Bureaucrat::getName(void) const
 {
 	return (_name);
 }
@@ -55,7 +55,7 @@ unsigned int	Bureaucrat::getGrade(void) const
 
 void	Bureaucrat::incrementGrade(void)
 {
-	if (_grade - 1 < HIGHEST_GRADE)
+	if (_grade <= HIGHEST_GRADE)
 		throw GradeTooHighException();
 	else
 		_grade--;
@@ -63,7 +63,7 @@ void	Bureaucrat::incrementGrade(void)
 
 void	Bureaucrat::decrementGrade(void)
 {
-	if (_grade + 1 > LOWEST_GRADE)
+	if (_grade >= LOWEST_GRADE)
 		throw GradeTooLowException();
 	else
 		_grade++;
@@ -91,7 +91,7 @@ void	Bureaucrat::executeForm(AForm const &form)
 	}
 	catch (std::exception &e)
 	{
-		std::cout << RED << _name << " cannot execute " << form.getName() << " because " << e.what() << DEFAULT << std::endl;
+		std::cerr << RED << _name << " cannot execute " << form.getName() << " because " << e.what() << DEFAULT << std::endl;
 	}
 }
 
