@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:25:51 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 14:51:25 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 15:56:48 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ RobotomyRequestForm::~RobotomyRequestForm(void) {}
 void	RobotomyRequestForm::execute(const Bureaucrat &executor) const
 {
 	AForm::execute(executor);
-	std::cout << "Bzzzzzz" << std::endl;
+	std::cout << "Bzzzz bzzzz bzzzz!" << std::endl;
 	if (rand() % 2)
 		std::cout << _target << " has been robotomized successfully." << std::endl;
 	else

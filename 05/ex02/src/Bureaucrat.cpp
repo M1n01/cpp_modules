@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:03:40 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 14:57:20 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 16:01:44 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	Bureaucrat::executeForm(AForm const &form)
 	}
 	catch (std::exception &e)
 	{
-		std::cout << RED << _name << " cannot execute " << form.getName() << " because " << e.what() << "." << DEFAULT << std::endl;
+		std::cout << RED << _name << " cannot execute " << form.getName() << " because " << e.what() << DEFAULT << std::endl;
 	}
 }
 

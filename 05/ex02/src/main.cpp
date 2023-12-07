@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:03:38 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 15:03:36 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 16:37:56 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,40 +20,101 @@ int	main(void)
 	std::cout << "\n====NORMAL TEST====" << std::endl;
 	try
 	{
-		std::cout << "\n~~~~ROBOTOMY TEST~~~~" << std::endl;
-		RobotomyRequestForm	form("RobotomyRequestForm", "Bender");
-		std::cout << form << std::endl;
+		Bureaucrat	king("King", 1);
+		std::cout << king << std::endl;
 
-		Bureaucrat			bender("Bender", 1);
-		std::cout << bender << std::endl;
-
-		bender.signForm(form);
-		bender.executeForm(form);
+		Bureaucrat	queen("Queen", 2);
 
 		std::cout << "\n~~~~SHRUBBERY TEST~~~~" << std::endl;
-		ShrubberyCreationForm	form2("ShrubberyCreationForm", "Bender");
+		ShrubberyCreationForm	form("ShrubberyCreationForm", "Gerden");
+		std::cout << form << std::endl;
+
+		king.signForm(form);
+		queen.executeForm(form);
+
+		std::cout << "\n~~~~ROBOTOMY TEST~~~~" << std::endl;
+		RobotomyRequestForm	form2("RobotomyRequestForm", "King");
 		std::cout << form2 << std::endl;
 
-		bender.signForm(form2);
-		bender.executeForm(form2);
+		king.signForm(form2);
+		queen.executeForm(form2);
 
 		std::cout << "\n~~~~PRESIDENTIAL TEST~~~~" << std::endl;
-		PresidentialPardonForm	form3("PresidentialPardonForm", "Bender");
+		PresidentialPardonForm	form3("PresidentialPardonForm", "King");
 		std::cout << form3 << std::endl;
-		bender.signForm(form3);
-		bender.executeForm(form3);
+		king.signForm(form3);
+		queen.executeForm(form3);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << RED << e.what() << DEFAULT << std::endl;
 	}
 
-	std::cout << "\n====SHRUBBERY TEST====" << std::endl;
+	std::cout << "\n====ERROR TEST====" << std::endl;
 	try
 	{
-		RobotomyRequestForm	form("ShrubberyCreationForm", "Bender");
+		// Bureaucrat インスタンスの配列を作成
+		Bureaucrat	benders[] = {
+			Bureaucrat("Bender1", 146), // Shrubbery
+			Bureaucrat("Bender2", 73),  // Robotomy
+			Bureaucrat("Bender3", 26),  // Presidential
+			Bureaucrat("Supreme Leader", 1) // 最高権限
+		};
 
+		Bureaucrat	executors[] = {
+			Bureaucrat("Executor1", 138), // Shrubbery
+			Bureaucrat("Executor2", 46),  // Robotomy
+			Bureaucrat("Executor3", 6),   // Presidential
+			Bureaucrat("Supreme Leader", 1) // 最高権限
+		};
+		int	testNum = 4;
+
+		// ShrubberyCreationForm テスト
+		std::cout << "\n~~~~SHRUBBERY TEST~~~~" << std::endl;
+		ShrubberyCreationForm form("ShrubberyCreationForm", "Garden");
 		std::cout << form << std::endl;
+
+		for (int i = 0; i < testNum; i++) {
+			std::cout << "\n <" << benders[i] << ">" << std::endl;
+			benders[i].signForm(form);
+
+			for (int j = 0; j < testNum; j++)
+			{
+				std::cout << executors[j] << std::endl;
+				executors[j].executeForm(form);
+			}
+		}
+
+		// RobotomyRequestForm テスト
+		std::cout << "\n~~~~ROBOTOMY TEST~~~~" << std::endl;
+		RobotomyRequestForm form2("RobotomyRequestForm", "King");
+		std::cout << form << std::endl;
+
+		for (int i = 0; i < testNum; i++) {
+			std::cout << "\n <" << benders[i] << ">" << std::endl;
+			benders[i].signForm(form2);
+			for (int j = 0; j < testNum; j++)
+			{
+				std::cout << executors[j] << std::endl;
+				executors[j].executeForm(form2);
+			}
+		}
+
+		// PresidentialPardonForm テスト
+		std::cout << "\n~~~~PRESIDENTIAL TEST~~~~" << std::endl;
+		PresidentialPardonForm form3("PresidentialPardonForm", "");
+		std::cout << form3 << std::endl;
+
+		for (int i = 0; i < testNum; i++) {
+			std::cout << "\n <" << benders[i] << ">" << std::endl;
+			benders[i].signForm(form3);
+
+			for (int j = 0; j < testNum; j++)
+			{
+				std::cout << executors[j] << std::endl;
+				executors[j].executeForm(form3);
+			}
+	}
 	}
 	catch(const std::exception& e)
 	{
