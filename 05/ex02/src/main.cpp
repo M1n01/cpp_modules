@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:03:38 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 16:37:56 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 16:44:44 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(void)
 		Bureaucrat	queen("Queen", 2);
 
 		std::cout << "\n~~~~SHRUBBERY TEST~~~~" << std::endl;
-		ShrubberyCreationForm	form("ShrubberyCreationForm", "Gerden");
+		ShrubberyCreationForm	form("ShrubberyCreationForm", "Garden");
 		std::cout << form << std::endl;
 
 		king.signForm(form);
@@ -71,7 +71,7 @@ int	main(void)
 
 		// ShrubberyCreationForm テスト
 		std::cout << "\n~~~~SHRUBBERY TEST~~~~" << std::endl;
-		ShrubberyCreationForm form("ShrubberyCreationForm", "Garden");
+		ShrubberyCreationForm form("ShrubberyCreationForm", "Garden1");
 		std::cout << form << std::endl;
 
 		for (int i = 0; i < testNum; i++) {
