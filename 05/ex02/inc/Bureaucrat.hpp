@@ -6,14 +6,14 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 20:38:33 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 13:58:11 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 14:56:38 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 # include <iostream>
-# include "Form.hpp"
+# include "AForm.hpp"
 # include "exception.hpp"
 
 # define HIGHEST_GRADE 1
@@ -25,7 +25,7 @@
 # define BLUE "\033[0;34m"
 # define DEFAULT "\033[0m"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -42,9 +42,11 @@ class Bureaucrat
 
 		const std::string	getName(void) const;
 		unsigned int		getGrade(void) const;
+
 		void				incrementGrade(void);
 		void				decrementGrade(void);
-		void				signForm(Form &form);
+		void				signForm(AForm &form);
+		void				executeForm(AForm const &form);
 };
 
 std::ostream	&operator<<(std::ostream &os, const Bureaucrat &rhs);

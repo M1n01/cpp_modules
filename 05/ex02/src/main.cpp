@@ -6,64 +6,59 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:03:38 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 11:18:37 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 15:03:36 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "exception.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int	main(void)
 {
-	Form	form("Form", 42, 42);
-	std::cout << form << std::endl;
-	Form	hardForm("HardForm", 10, 42);
-	std::cout << hardForm << std::endl;
-
 	std::cout << "\n====NORMAL TEST====" << std::endl;
 	try
 	{
-		// default constructor
-		Bureaucrat	normal("Normal", 42);
-		std::cout << normal << std::endl;
-		normal.signForm(form);
+		std::cout << "\n~~~~ROBOTOMY TEST~~~~" << std::endl;
+		RobotomyRequestForm	form("RobotomyRequestForm", "Bender");
 		std::cout << form << std::endl;
-		normal.signForm(hardForm);
-		std::cout << hardForm << std::endl;
+
+		Bureaucrat			bender("Bender", 1);
+		std::cout << bender << std::endl;
+
+		bender.signForm(form);
+		bender.executeForm(form);
+
+		std::cout << "\n~~~~SHRUBBERY TEST~~~~" << std::endl;
+		ShrubberyCreationForm	form2("ShrubberyCreationForm", "Bender");
+		std::cout << form2 << std::endl;
+
+		bender.signForm(form2);
+		bender.executeForm(form2);
+
+		std::cout << "\n~~~~PRESIDENTIAL TEST~~~~" << std::endl;
+		PresidentialPardonForm	form3("PresidentialPardonForm", "Bender");
+		std::cout << form3 << std::endl;
+		bender.signForm(form3);
+		bender.executeForm(form3);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << RED << e.what() << DEFAULT << std::endl;
 	}
 
-	std::cout << "\n====LOWEST TEST====" << std::endl;
+	std::cout << "\n====SHRUBBERY TEST====" << std::endl;
 	try
 	{
-		Bureaucrat	lowest("Lowest", 150);
-		std::cout << lowest << std::endl;
-		lowest.signForm(hardForm);
-		std::cout << hardForm << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << RED << e.what() << DEFAULT << std::endl;
-	}
+		RobotomyRequestForm	form("ShrubberyCreationForm", "Bender");
 
-	std::cout << "\n====HIGHEST TEST====" << std::endl;
-	try
-	{
-		Bureaucrat	highest("Highest", 1);
-		std::cout << highest << std::endl;
-		highest.signForm(hardForm);
-		std::cout << hardForm << std::endl;
-		highest.signForm(form);
 		std::cout << form << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << RED << e.what() << DEFAULT << std::endl;
 	}
-
 	return (0);
 }
 

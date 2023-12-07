@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:36:33 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 14:18:47 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 14:42:46 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,14 @@ bool	AForm::beSigned(Bureaucrat const &bureaucrat)
 		_signed = true;
 		return (true);
 	}
+}
+
+void	AForm::execute(Bureaucrat const &executor) const
+{
+	if (!_signed)
+		throw NotSignedException();
+	else if (executor.getGrade() > _gradeToExecute)
+		throw GradeTooLowException();
 }
 
 std::ostream	&operator<<(std::ostream& os, const AForm& form)

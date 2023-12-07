@@ -6,13 +6,14 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:40:41 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 14:25:06 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 14:39:20 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 class PresidentialPardonForm : public AForm
 {
@@ -26,6 +27,5 @@ class PresidentialPardonForm : public AForm
 		PresidentialPardonForm	&operator=(const PresidentialPardonForm &rhs);
 		~PresidentialPardonForm(void);
 
-
-		void execute(const Bureaucrat& executor) const;
+		void	execute(const Bureaucrat &executor) const;
 };

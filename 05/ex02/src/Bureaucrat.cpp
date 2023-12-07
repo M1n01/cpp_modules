@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:03:40 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 14:05:02 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 14:57:20 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	Bureaucrat::decrementGrade(void)
 		_grade++;
 }
 
-void	Bureaucrat::signForm(Form &form)
+void	Bureaucrat::signForm(AForm &form)
 {
 	if (form.getGradeToSign() < _grade)
 		std::cout << RED << _name << " cannot sign " << form.getName() << " because his/her grade is too low." << DEFAULT << std::endl;
@@ -79,6 +79,19 @@ void	Bureaucrat::signForm(Form &form)
 	{
 		form.beSigned(*this);
 		std::cout << GREEN << _name << " signs " << form.getName() << "." << DEFAULT << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const &form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << BLUE << _name << " executes " << form.getName() << "." << DEFAULT << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << RED << _name << " cannot execute " << form.getName() << " because " << e.what() << "." << DEFAULT << std::endl;
 	}
 }
 

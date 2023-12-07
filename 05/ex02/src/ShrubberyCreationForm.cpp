@@ -6,13 +6,13 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:26:54 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 14:27:31 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 14:55:07 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm()
+ShrubberyCreationForm::ShrubberyCreationForm(void)
 	: AForm("ShrubberyCreationForm", 145, 137), _target("Default") {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &name, const std::string &target)
@@ -31,4 +31,24 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm() {}
+ShrubberyCreationForm::~ShrubberyCreationForm(void) {}
+
+void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
+{
+	AForm::execute(executor);
+	std::ofstream	ofs(_target + "_shrubbery");
+	if (!ofs)
+		throw std::runtime_error("Failed to open file.");
+	ofs << "      /\\      " << std::endl;
+	ofs << "     /\\*\\     " << std::endl;
+	ofs << "    /\\O\\*\\    " << std::endl;
+	ofs << "   /*/\\/\\/\\   " << std::endl;
+	ofs << "  /\\O\\/\\*\\/\\  " << std::endl;
+	ofs << " /\\*\\/\\*\\/\\/\\ " << std::endl;
+	ofs << "/\\O\\/\\/*/\\/O/\\" << std::endl;
+	ofs << "      ||      " << std::endl;
+	ofs << "      ||      " << std::endl;
+	ofs << "      ||      " << std::endl;
+	ofs << std::endl;
+
+}

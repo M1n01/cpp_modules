@@ -6,13 +6,13 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:25:51 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 14:26:43 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 14:51:25 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm()
+RobotomyRequestForm::RobotomyRequestForm(void)
 	: AForm("RobotomyRequestForm", 72, 45), _target("Default") {}
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string &name, const std::string &target)
@@ -31,4 +31,14 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &r
 	return (*this);
 }
 
-RobotomyRequestForm::~RobotomyRequestForm() {}
+RobotomyRequestForm::~RobotomyRequestForm(void) {}
+
+void	RobotomyRequestForm::execute(const Bureaucrat &executor) const
+{
+	AForm::execute(executor);
+	std::cout << "Bzzzzzz" << std::endl;
+	if (rand() % 2)
+		std::cout << _target << " has been robotomized successfully." << std::endl;
+	else
+		std::cout << _target << " robotomization failed." << std::endl;
+}

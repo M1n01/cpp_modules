@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:36:37 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 14:28:10 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 14:42:32 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ class AForm
 
 		bool				beSigned(Bureaucrat const &bureaucrat);
 
-		virtual void		execute(Bureaucrat const &executor) const = 0;
+		virtual void		execute(Bureaucrat const &executor) const;
 };
 
 std::ostream	&operator<<(std::ostream& os, const AForm& form);
