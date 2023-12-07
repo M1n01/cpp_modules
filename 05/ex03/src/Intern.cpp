@@ -6,11 +6,14 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:57:32 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 16:58:26 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 17:58:14 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 Intern::Intern(void) {}
 
@@ -30,12 +33,15 @@ Intern::~Intern(void) {}
 
 AForm	*Intern::makeForm(std::string const &formName, std::string const &target)
 {
+	AForm	*newForm = NULL;
+
 	if (formName == "robotomy request")
-		return (new RobotomyRequestForm(target));
+		newForm = new RobotomyRequestForm(target);
 	else if (formName == "shrubbery creation")
-		return (new ShrubberyCreationForm(target));
+		newForm = new ShrubberyCreationForm(target);
 	else if (formName == "presidential pardon")
-		return (new PresidentialPardonForm(target));
+		newForm = new PresidentialPardonForm(target);
 	else
-		throw UnknownFormException();
+		std::cerr << "Unknown form type: " << formName << std::endl;
+	return (newForm);
 }

@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:36:33 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 14:42:46 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 17:54:45 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ AForm	&AForm::operator=(AForm const &rhs)
 
 AForm::~AForm(void) {}
 
-const std::string	AForm::getName(void) const
+const std::string	&AForm::getName(void) const
 {
 	return (_name);
 }
@@ -55,15 +55,14 @@ unsigned int	AForm::getGradeToExecute(void) const
 	return (_gradeToExecute);
 }
 
-bool	AForm::beSigned(Bureaucrat const &bureaucrat)
+void	AForm::beSigned(Bureaucrat const &bureaucrat)
 {
 	if (bureaucrat.getGrade() > _gradeToSign)
 		throw GradeTooLowException();
+	if (_signed)
+		throw std::runtime_error("Form already signed.");
 	else
-	{
 		_signed = true;
-		return (true);
-	}
 }
 
 void	AForm::execute(Bureaucrat const &executor) const
