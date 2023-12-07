@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:03:40 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 13:59:18 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/07 17:15:33 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rhs)
 
 Bureaucrat::~Bureaucrat(void) {}
 
-const std::string	Bureaucrat::getName(void) const
+const std::string	&Bureaucrat::getName(void) const
 {
 	return (_name);
 }
@@ -55,7 +55,7 @@ unsigned int	Bureaucrat::getGrade(void) const
 
 void	Bureaucrat::incrementGrade(void)
 {
-	if (_grade - 1 < HIGHEST_GRADE)
+	if (_grade <= HIGHEST_GRADE)
 		throw GradeTooHighException();
 	else
 		_grade--;
@@ -63,7 +63,7 @@ void	Bureaucrat::incrementGrade(void)
 
 void	Bureaucrat::decrementGrade(void)
 {
-	if (_grade + 1 > LOWEST_GRADE)
+	if (_grade >= LOWEST_GRADE)
 		throw GradeTooLowException();
 	else
 		_grade++;
