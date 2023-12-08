@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:03:38 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/08 22:50:42 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/08 23:39:02 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	main(void)
 		king.signForm(*scf);
 		queen.executeForm(*scf);
 
+		delete scf;
+
 		std::cout << "\n~~~~ROBOTOMY TEST~~~~" << std::endl;
 		AForm	*rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 		std::cout << *rrf << std::endl;
@@ -43,11 +45,15 @@ int	main(void)
 		king.signForm(*rrf);
 		queen.executeForm(*rrf);
 
+		delete rrf;
+
 		std::cout << "\n~~~~PRESIDENTIAL TEST~~~~" << std::endl;
 		AForm	*ppf = someRandomIntern.makeForm("presidential pardon", "Bender");
 		std::cout << *ppf << std::endl;
 		king.signForm(*ppf);
 		queen.executeForm(*ppf);
+
+		delete ppf;
 	}
 	catch(const std::exception& e)
 	{
@@ -77,10 +83,12 @@ int	main(void)
 
 		// ShrubberyCreationForm テスト
 		std::cout << "\n~~~~SHRUBBERY TEST~~~~" << std::endl;
-		AForm	*scf = someRandomIntern.makeForm("shrubbery creation", "Garden");
-		std::cout << *scf << std::endl;
 
-		for (int i = 0; i < testNum; i++) {
+		for (int i = 0; i < testNum; i++)
+		{
+			AForm	*scf = someRandomIntern.makeForm("shrubbery creation", "Garden");
+			std::cout << *scf << std::endl;
+
 			std::cout << "\n <" << benders[i] << ">" << std::endl;
 			benders[i].signForm(*scf);
 
@@ -89,14 +97,18 @@ int	main(void)
 				std::cout << executors[j] << std::endl;
 				executors[j].executeForm(*scf);
 			}
+			delete scf;
 		}
+
 
 		// RobotomyRequestForm テスト
 		std::cout << "\n~~~~ROBOTOMY TEST~~~~" << std::endl;
-		AForm	*rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-		std::cout << *rrf << std::endl;
 
-		for (int i = 0; i < testNum; i++) {
+		for (int i = 0; i < testNum; i++)
+		{
+			AForm	*rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+			std::cout << *rrf << std::endl;
+
 			std::cout << "\n <" << benders[i] << ">" << std::endl;
 			benders[i].signForm(*rrf);
 			for (int j = 0; j < testNum; j++)
@@ -104,14 +116,18 @@ int	main(void)
 				std::cout << executors[j] << std::endl;
 				executors[j].executeForm(*rrf);
 			}
+			delete rrf;
 		}
+
 
 		// PresidentialPardonForm テスト
 		std::cout << "\n~~~~PRESIDENTIAL TEST~~~~" << std::endl;
-		AForm	*ppf = someRandomIntern.makeForm("presidential pardon", "Bender");
-		std::cout << *ppf << std::endl;
 
-		for (int i = 0; i < testNum; i++) {
+		for (int i = 0; i < testNum; i++)
+		{
+			AForm	*ppf = someRandomIntern.makeForm("presidential pardon", "Bender");
+			std::cout << *ppf << std::endl;
+
 			std::cout << "\n <" << benders[i] << ">" << std::endl;
 			benders[i].signForm(*ppf);
 
@@ -120,7 +136,9 @@ int	main(void)
 				std::cout << executors[j] << std::endl;
 				executors[j].executeForm(*ppf);
 			}
-	}
+			delete ppf;
+		}
+
 	}
 	catch(const std::exception& e)
 	{
@@ -133,5 +151,5 @@ int	main(void)
 __attribute__((destructor))
 static void destructor(void)
 {
-	system("leaks -q ex02");
+	system("leaks -q ex03");
 }

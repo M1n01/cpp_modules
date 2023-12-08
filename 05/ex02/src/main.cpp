@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 21:03:38 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 16:44:44 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/08 23:40:04 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,12 @@ int	main(void)
 
 		// ShrubberyCreationForm テスト
 		std::cout << "\n~~~~SHRUBBERY TEST~~~~" << std::endl;
-		ShrubberyCreationForm form("ShrubberyCreationForm", "Garden1");
-		std::cout << form << std::endl;
 
-		for (int i = 0; i < testNum; i++) {
+		for (int i = 0; i < testNum; i++)
+		{
+			ShrubberyCreationForm form("ShrubberyCreationForm", "Garden1");
+			std::cout << form << std::endl;
+
 			std::cout << "\n <" << benders[i] << ">" << std::endl;
 			benders[i].signForm(form);
 
@@ -87,10 +89,12 @@ int	main(void)
 
 		// RobotomyRequestForm テスト
 		std::cout << "\n~~~~ROBOTOMY TEST~~~~" << std::endl;
-		RobotomyRequestForm form2("RobotomyRequestForm", "King");
-		std::cout << form << std::endl;
 
-		for (int i = 0; i < testNum; i++) {
+		for (int i = 0; i < testNum; i++)
+		{
+			RobotomyRequestForm form2("RobotomyRequestForm", "King");
+			std::cout << form2 << std::endl;
+
 			std::cout << "\n <" << benders[i] << ">" << std::endl;
 			benders[i].signForm(form2);
 			for (int j = 0; j < testNum; j++)
@@ -102,10 +106,12 @@ int	main(void)
 
 		// PresidentialPardonForm テスト
 		std::cout << "\n~~~~PRESIDENTIAL TEST~~~~" << std::endl;
-		PresidentialPardonForm form3("PresidentialPardonForm", "");
-		std::cout << form3 << std::endl;
 
-		for (int i = 0; i < testNum; i++) {
+		for (int i = 0; i < testNum; i++)
+		{
+			PresidentialPardonForm form3("PresidentialPardonForm", "");
+			std::cout << form3 << std::endl;
+
 			std::cout << "\n <" << benders[i] << ">" << std::endl;
 			benders[i].signForm(form3);
 
@@ -114,7 +120,7 @@ int	main(void)
 				std::cout << executors[j] << std::endl;
 				executors[j].executeForm(form3);
 			}
-	}
+		}
 	}
 	catch(const std::exception& e)
 	{
