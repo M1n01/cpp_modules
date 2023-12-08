@@ -6,7 +6,7 @@
 /*   By: minabe <minabe@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:57:32 by minabe            #+#    #+#             */
-/*   Updated: 2023/12/07 22:01:50 by minabe           ###   ########.fr       */
+/*   Updated: 2023/12/08 22:44:14 by minabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,15 @@
 #include "PresidentialPardonForm.hpp"
 #include "exception.hpp"
 
-Intern::Intern(void) {}
+Intern::Intern(void)
+{
+	initializeFormCreators();
+}
 
 Intern::Intern(Intern const &src)
 {
 	*this = src;
+	// initializeFormCreators();
 }
 
 Intern	&Intern::operator=(Intern const &rhs)
@@ -46,7 +50,6 @@ AForm	*Intern::makeForm(std::string const &formName, std::string const &target) 
 {
 	for (int i = 0; i < numForms; i++)
 	{
-		std::cout << i << std::endl;
 		if (formName == formNames[i])
 			return (formCreators[i](target));
 	}
