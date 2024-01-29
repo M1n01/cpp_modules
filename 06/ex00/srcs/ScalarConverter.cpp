@@ -76,27 +76,27 @@ void ScalarConverter::convert(const char *value)
     Result<char, std::string> charResult = convertChar(value);
     if (!charResult.success)
         std::cout << charResult.error << std::endl;
-    else
-        std::cout << charResult.value << std::endl;
+    // else
+    //     std::cout << charResult.value << std::endl;
 
     std::cout << "int: ";
     Result<int, std::string> intResult = convertInt(value);
     if (!intResult.success)
         std::cout << intResult.error << std::endl;
-    else
-        std::cout << intResult.value << std::endl;
+    // else
+    //     std::cout << intResult.value << std::endl;
 
     std::cout << "float: ";
     Result<float, std::string> floatResult = convertFloat(value);
     if (!floatResult.success)
         std::cout << floatResult.error << std::endl;
-    else
-        std::cout << floatResult.value << std::endl;
+    // else
+    //     std::cout << floatResult.value << std::endl;
 
     std::cout << "double: ";
     Result<double, std::string> doubleResult = convertDouble(value);
     if (!doubleResult.success)
         std::cout << doubleResult.error << std::endl;
-    else
-        std::cout << doubleResult.value << std::endl;
+    // else
+    //     std::cout << doubleResult.value << std::endl;
 }
