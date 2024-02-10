@@ -12,19 +12,14 @@ typedef Result<char, std::string> ConvertToCharResult;
 class ScalarConverter
 {
   private:
-    ConvertToCharResult convertToChar(const std::string &str);
-    ConvertToIntResult convertToInt(const std::string &str);
-    ConvertToFloatResult convertToFloat(const std::string &str);
-    ConvertToDoubleResult convertToDouble(const std::string &str);
-    bool isDoubleLiteral(const std::string& literal);
+    static ConvertToCharResult convertToChar(const std::string &str);
+    static ConvertToIntResult convertToInt(const std::string &str);
+    static ConvertToFloatResult convertToFloat(const std::string &str);
+    static ConvertToDoubleResult convertToDouble(const std::string &str);
+    static bool isDoubleLiteral(const std::string& literal);
 
   public:
-    ScalarConverter();
-    ScalarConverter(const ScalarConverter &src);
-    ScalarConverter &operator=(const ScalarConverter &rhs);
-    ~ScalarConverter();
-
-    void convert(const std::string str);
+    static void convert(const std::string str);
 };
 
 bool isprintChars(std::string str);
