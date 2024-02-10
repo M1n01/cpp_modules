@@ -2,25 +2,29 @@
 
 #include "Result.hpp"
 #include <iostream>
+#include <iomanip>
+
+typedef Result<int, std::string> ConvertToIntResult;
+typedef Result<float, std::string> ConvertToFloatResult;
+typedef Result<double, std::string> ConvertToDoubleResult;
+typedef Result<char, std::string> ConvertToCharResult;
 
 class ScalarConverter
 {
   private:
-    char _c;
-    int _i;
-    float _f;
-    double _d;
-
-	Result<char, std::string> convertChar(const char *value);
-	Result<int, std::string> convertInt(const char *value);
-	Result<float, std::string> convertFloat(const char *value);
-	Result<double, std::string> convertDouble(const char *value);
+    ConvertToCharResult convertToChar(const std::string &str);
+    ConvertToIntResult convertToInt(const std::string &str);
+    ConvertToFloatResult convertToFloat(const std::string &str);
+    ConvertToDoubleResult convertToDouble(const std::string &str);
+    bool isDoubleLiteral(const std::string& literal);
 
   public:
-    ScalarConverter(void);
+    ScalarConverter();
     ScalarConverter(const ScalarConverter &src);
     ScalarConverter &operator=(const ScalarConverter &rhs);
-    ~ScalarConverter(void);
+    ~ScalarConverter();
 
-    void convert(const char *value);
+    void convert(const std::string str);
 };
+
+bool isprintChars(std::string str);

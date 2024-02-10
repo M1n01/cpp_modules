@@ -1,7 +1,6 @@
 #pragma once
 
-template <typename T, typename E>
-struct Result
+template <typename T, typename E> struct Result
 {
     const T value;
     const E error;

@@ -2,13 +2,12 @@
 
 int main(int argc, char *argv[])
 {
-    ScalarConverter sc;
-
-    if (argc != 2)
+    if (argc != 2 || !isprintChars(argv[1]))
     {
-        std::cout << "Usage: ./convert [value]" << std::endl;
+        std::cout << "Usage: ./convert [print chars]" << std::endl;
         return (1);
     }
+    ScalarConverter sc;
     sc.convert(argv[1]);
     return (0);
 }
