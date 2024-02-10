@@ -1,11 +1,11 @@
-NAME = ex02
+NAME = ex01
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors $(LDFLAGS) -MMD -MP
 LDFLAGS = -I$(INCDIR)
 
-INCDIR = ./inc
-SRCDIR = ./src
-OBJDIR = ./obj
+INCDIR = ./includes
+SRCDIR = ./srcs
+OBJDIR = ./objs
 
 INCS = $(shell find $(INCDIR) -name "*.hpp")
 SRCS = $(shell find $(SRCDIR) -name '*.cpp')
