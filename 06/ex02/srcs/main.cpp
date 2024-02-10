@@ -1,11 +1,11 @@
+#include "Base.hpp"
+#include <iostream>
 
-
-int main(int argc, char *argv[])
+int main()
 {
-    if (argc != 2)
-    {
-        std::cout << "Usage: ./convert [value]" << std::endl;
-        return (1);
-    }
-    return (0);
+    Base *base = generate();
+    identify(base);
+    identify(*base);
+    delete base;
+    return 0;
 }
