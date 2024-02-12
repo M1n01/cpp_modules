@@ -2,7 +2,7 @@
 
 int main(int argc, char *argv[])
 {
-    if (argc != 2 || !isprintChars(argv[1]))
+    if (argc != 2 || !utils::isprintChars(argv[1]))
     {
         std::cout << "Usage: ./convert [print chars]" << std::endl;
         return (1);
