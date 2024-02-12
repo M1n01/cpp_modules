@@ -25,4 +25,6 @@ class ScalarConverter
 namespace utils
 {
 bool isprintChars(const std::string &str);
+double stod(const std::string &str);
+bool isCharLiteral(const std::string &str);
 } // namespace utils

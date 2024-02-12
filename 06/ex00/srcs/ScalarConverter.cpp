@@ -16,10 +16,22 @@ double stod(const std::string &str)
 {
     char *fail;
     const double value = std::strtod(str.c_str(), &fail);
-    std::cout << "errno: " << errno << std::endl;
-    if (str == "f" || (value == 0 && *fail != 'f'))
+    if (str == "f" || (value == 0 && *fail != '\0' && *fail != 'f'))
         throw std::invalid_argument("impossible");
     return value;
+}
+
+bool isCharLiteral(const std::string &str)
+{
+    try
+    {
+        utils::stod(str);
+        return false;
+    }
+    catch (const std::exception &e)
+    {
+        return true;
+    }
 }
 } // namespace utils
 
@@ -27,17 +39,25 @@ ConvertToCharResult ScalarConverter::convertToChar(const std::string &input)
 {
     try
     {
-        char *fail;
-        double value = std::strtod(input.c_str(), &fail);
-        if (*fail != 'f')
-            return ConvertToCharResult::Error("impossible");
-        std::cout << "HERE: " << value << ":" << *fail << std::endl;
-        char charValue = static_cast<char>(value);
-        return ConvertToCharResult::Success(charValue);
+        double value = utils::stod(input);
+        ConvertToIntResult intResult = convertToInt(input);
+        if (intResult.success)
+        {
+            value = intResult.value;
+            char c = static_cast<char>(value);
+            if (isprint(c))
+                return ConvertToCharResult::Success(c);
+            else
+                return ConvertToCharResult::Error("Non displayable");
+        }
+        else
+        {
+            return ConvertToCharResult::Error(intResult.error);
+        }
     }
     catch (const std::exception &e)
     {
-        return ConvertToCharResult::Error("Huge value");
+        return ConvertToCharResult::Success(input[0]);
     }
 }
 
@@ -45,11 +65,11 @@ ConvertToIntResult ScalarConverter::convertToInt(const std::string &input)
 {
     if (utils::isCharLiteral(input))
         return ConvertToIntResult::Error("impossible");
-    // else
+    else
     {
         const double value = std::stod(input);
-        // if (std::isnan(value) || std::isinf(value))
-        //     return ConvertToIntResult::Error("impossible");
+        if (std::isnan(value) || std::isinf(value))
+            return ConvertToIntResult::Error("impossible");
         const int intValue = static_cast<int>(value);
         return ConvertToIntResult::Success(intValue);
     }
@@ -57,9 +77,9 @@ ConvertToIntResult ScalarConverter::convertToInt(const std::string &input)
 
 ConvertToFloatResult ScalarConverter::convertToFloat(const std::string &input)
 {
-    // if (utils::isCharLiteral(input))
-    //     return ConvertToFloatResult::Error("impossible");
-    // else
+    if (utils::isCharLiteral(input))
+        return ConvertToFloatResult::Error("impossible");
+    else
     {
         const double value = std::stod(input);
         const float floatValue = static_cast<float>(value);
@@ -69,9 +89,9 @@ ConvertToFloatResult ScalarConverter::convertToFloat(const std::string &input)
 
 ConvertToDoubleResult ScalarConverter::convertToDouble(const std::string &input)
 {
-    // if (utils::isCharLiteral(input))
-    //     return ConvertToDoubleResult::Error("impossible");
-    // else
+    if (utils::isCharLiteral(input))
+        return ConvertToDoubleResult::Error("impossible");
+    else
     {
         const double value = std::stod(input);
         const float floatValue = static_cast<float>(value);
