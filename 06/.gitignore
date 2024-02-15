@@ -4,3 +4,5 @@
 */ex*
 *.pdf
 */convert
+.clang-format
+.vscode
