@@ -1,4 +1,8 @@
 */a.out
 */.DS_Store
-*/obj
+*/objs
 */ex*
+*.pdf
+*/convert
+.clang-format
+.vscode
