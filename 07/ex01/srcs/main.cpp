@@ -1,37 +1,28 @@
 #include <iostream>
 #include "iter.hpp"
 
-void printInt(int const &i)
+template <typename T>
+void print(const T &element)
 {
-    std::cout << i << " ";
-}
-
-void printFloat(float const &f)
-{
-    std::cout << f << " ";
-}
-
-void printString(std::string const &s)
-{
-    std::cout << s << " ";
+    std::cout << element << " ";
 }
 
 int main(void)
 {
-    int intArray[] = {1, 2, 3, 4, 5};
-    float floatArray[] = {1.1, 2.2, 3.3, 4.4, 5.5};
-    std::string stringArray[] = {"one", "two", "three", "four", "five"};
+    const int intArray[] = {1, 2, 3, 4, 5};
+    const float floatArray[] = {1.1, 2.2, 3.3, 4.4, 5.5};
+    const std::string stringArray[] = {"one", "two", "three", "four", "five"};
 
     std::cout << "intArray: ";
-    iter<int>(intArray, 5, printInt);
+    iter<int>(intArray, sizeof(intArray) / sizeof(intArray[0]), print);
     std::cout << std::endl;
 
     std::cout << "floatArray: ";
-    iter<float>(floatArray, 5, printFloat);
+    iter<float>(floatArray, sizeof(floatArray) / sizeof(floatArray[0]), print);
     std::cout << std::endl;
 
     std::cout << "stringArray: ";
-    iter<std::string>(stringArray, 5, printString);
+    iter<std::string>(stringArray, sizeof(stringArray) / sizeof(stringArray[0]), print);
     std::cout << std::endl;
 
     return 0;
