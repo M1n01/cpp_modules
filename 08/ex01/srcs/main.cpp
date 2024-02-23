@@ -30,14 +30,20 @@ int main()
     // 大量の数値を扱うテスト
     try
     {
-        Span largeSpan(10000);
-        // 1から10000までの数値を追加
-        for (int i = 1; i <= 10000; i++)
+        Span sp(10000); // 例として10000までの数値を追加できるようにします
+
+        // 1から10000までの数値のベクターを作成
+        std::vector<int> largeNumbers;
+        for (int i = 1; i <= 10000; ++i)
         {
-            largeSpan.addNumber(i);
+            largeNumbers.push_back(i);
         }
-        std::cout << "Shortest span (largeSpan): " << largeSpan.shortestSpan() << std::endl;
-        std::cout << "Longest span (largeSpan): " << largeSpan.longestSpan() << std::endl;
+
+        // addNumbersを使って一度の呼び出しで数値を追加
+        sp.addNumbers(largeNumbers.begin(), largeNumbers.end());
+
+        std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
+        std::cout << "Longest span: " << sp.longestSpan() << std::endl;
     }
     catch (std::exception &e)
     {

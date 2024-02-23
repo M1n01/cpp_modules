@@ -34,6 +34,14 @@ void Span::addNumber(int n)
         throw std::runtime_error("Container is full");
 }
 
+void Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+    if (_numbers.size() + std::distance(begin, end) <= _size)
+        _numbers.insert(_numbers.end(), begin, end);
+    else
+        throw std::runtime_error("Container is full");
+}
+
 int Span::shortestSpan()
 {
     if (_numbers.size() < 2)
