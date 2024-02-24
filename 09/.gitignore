@@ -1,7 +1,9 @@
 */a.out
 */.DS_Store
 */objs
-*/ex*
+ex00/btc
+ex01/RPN
+ex02/PmergeMe
 *.pdf
 */convert
 .clang-format
