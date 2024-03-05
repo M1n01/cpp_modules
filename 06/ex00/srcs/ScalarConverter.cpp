@@ -67,8 +67,12 @@ ConvertToIntResult ScalarConverter::convertToInt(const std::string &input)
         return ConvertToIntResult::Error("impossible");
     else
     {
-        const double value = std::stod(input);
-        if (std::isnan(value) || std::isinf(value))
+        const double value = utils::stod(input);
+
+        // C++98 compatible check for NaN and infinity
+        if (value != value || value == std::numeric_limits<double>::infinity() ||
+            value == -std::numeric_limits<double>::infinity() || value > std::numeric_limits<int>::max() ||
+            value < std::numeric_limits<int>::min())
             return ConvertToIntResult::Error("impossible");
         const int intValue = static_cast<int>(value);
         return ConvertToIntResult::Success(intValue);
@@ -81,7 +85,7 @@ ConvertToFloatResult ScalarConverter::convertToFloat(const std::string &input)
         return ConvertToFloatResult::Error("impossible");
     else
     {
-        const double value = std::stod(input);
+        const double value = utils::stod(input);
         const float floatValue = static_cast<float>(value);
         return ConvertToFloatResult::Success(floatValue);
     }
@@ -93,7 +97,7 @@ ConvertToDoubleResult ScalarConverter::convertToDouble(const std::string &input)
         return ConvertToDoubleResult::Error("impossible");
     else
     {
-        const double value = std::stod(input);
+        const double value = utils::stod(input);
         const float floatValue = static_cast<float>(value);
         return ConvertToDoubleResult::Success(floatValue);
     }
