@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Result.hpp"
+#include <cmath>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
@@ -13,10 +14,10 @@ typedef Result<char, std::string> ConvertToCharResult;
 class ScalarConverter
 {
   private:
-    static ConvertToCharResult convertToChar(const std::string &input);
-    static ConvertToIntResult convertToInt(const std::string &input);
-    static ConvertToFloatResult convertToFloat(const std::string &input);
-    static ConvertToDoubleResult convertToDouble(const std::string &input);
+    static ConvertToCharResult convertToChar(const double value);
+    static ConvertToIntResult convertToInt(const double value);
+    static ConvertToFloatResult convertToFloat(const double value);
+    static ConvertToDoubleResult convertToDouble(const double value);
 
   public:
     static void convert(const std::string str);
