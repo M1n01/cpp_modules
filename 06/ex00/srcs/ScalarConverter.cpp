@@ -18,7 +18,18 @@ bool is_nan(const double value)
 }
 } // namespace utils
 
-ConvertToCharResult ScalarConverter::convertToChar(const double value)
+ScalarConverter::ScalarConverter() {}
+
+ScalarConverter::ScalarConverter(const ScalarConverter &) {}
+
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &)
+{
+    return *this;
+}
+
+ScalarConverter::~ScalarConverter() {}
+
+ConvertToCharResult ScalarConverter::convertToChar(const double &value)
 {
     if (value < 0 || value > 127 || utils::is_nan(value))
         return ConvertToCharResult::Error("impossible");
@@ -27,24 +38,24 @@ ConvertToCharResult ScalarConverter::convertToChar(const double value)
     return ConvertToCharResult::Error("Non displayable");
 }
 
-ConvertToIntResult ScalarConverter::convertToInt(const double value)
+ConvertToIntResult ScalarConverter::convertToInt(const double &value)
 {
     if (value < INT_MIN || value > INT_MAX || utils::is_nan(value))
         return ConvertToIntResult::Error("impossible");
     return ConvertToIntResult::Success(static_cast<int>(value));
 }
 
-ConvertToFloatResult ScalarConverter::convertToFloat(const double value)
+ConvertToFloatResult ScalarConverter::convertToFloat(const double &value)
 {
     return ConvertToFloatResult::Success(static_cast<float>(value));
 }
 
-ConvertToDoubleResult ScalarConverter::convertToDouble(const double value)
+ConvertToDoubleResult ScalarConverter::convertToDouble(const double &value)
 {
     return ConvertToDoubleResult::Success(value);
 }
 
-void ScalarConverter::convert(const std::string str)
+void ScalarConverter::convert(const std::string &str)
 {
     static double value = strtod(str.c_str(), NULL);
 

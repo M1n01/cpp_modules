@@ -26,34 +26,54 @@ Base *generate(void)
     }
 }
 
-void identify(Base &p)
+void identify(Base *p)
 {
-    if (dynamic_cast<A *>(&p))
+    if (dynamic_cast<A *>(p) != NULL)
     {
         std::cout << "A" << std::endl;
     }
-    else if (dynamic_cast<B *>(&p))
+    else if (dynamic_cast<B *>(p) != NULL)
     {
         std::cout << "B" << std::endl;
     }
-    else if (dynamic_cast<C *>(&p))
+    else if (dynamic_cast<C *>(p) != NULL)
     {
         std::cout << "C" << std::endl;
+    }
+    else
+    {
+        std::cout << "Unknown type" << std::endl;
     }
 }
 
-void identify(Base *p)
+void identify(Base & p)
 {
-    if (dynamic_cast<A *>(p))
+    try
     {
+        A &a = dynamic_cast<A &>(p);
+        (void)a;
         std::cout << "A" << std::endl;
     }
-    else if (dynamic_cast<B *>(p))
+    catch (const std::bad_cast &e)
     {
-        std::cout << "B" << std::endl;
-    }
-    else if (dynamic_cast<C *>(p))
-    {
-        std::cout << "C" << std::endl;
+        try
+        {
+            B &b = dynamic_cast<B &>(p);
+            (void)b;
+            std::cout << "B" << std::endl;
+        }
+        catch (const std::bad_cast &e)
+        {
+            try
+            {
+                C &c = dynamic_cast<C &>(p);
+                (void)c;
+                std::cout << "C" << std::endl;
+            }
+            catch (const std::bad_cast &e)
+            {
+                std::cout << "Unknown type" << std::endl;
+            }
+        }
     }
 }

@@ -14,13 +14,18 @@ typedef Result<char, std::string> ConvertToCharResult;
 class ScalarConverter
 {
   private:
-    static ConvertToCharResult convertToChar(const double value);
-    static ConvertToIntResult convertToInt(const double value);
-    static ConvertToFloatResult convertToFloat(const double value);
-    static ConvertToDoubleResult convertToDouble(const double value);
+    ScalarConverter();
+    ScalarConverter(const ScalarConverter &);
+    ScalarConverter &operator=(const ScalarConverter &);
+    ~ScalarConverter();
+
+    static ConvertToCharResult convertToChar(const double &value);
+    static ConvertToIntResult convertToInt(const double &value);
+    static ConvertToFloatResult convertToFloat(const double &value);
+    static ConvertToDoubleResult convertToDouble(const double &value);
 
   public:
-    static void convert(const std::string str);
+    static void convert(const std::string &str);
 };
 
 namespace utils
