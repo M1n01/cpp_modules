@@ -1,7 +1,7 @@
 #pragma once
 
-#include <stdexcept>
 #include <iostream>
+#include <stdexcept>
 
 const int MAX_VAL = 100;
 template <typename T> class Array
