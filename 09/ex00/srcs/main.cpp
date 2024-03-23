@@ -1,5 +1,4 @@
 #include "../includes/BitcoinExchange.hpp"
-#include <iostream>
 
 int main(int argc, char **argv)
 {
@@ -24,14 +23,24 @@ int main(int argc, char **argv)
             std::getline(file, line); // 1行目は見出しのため無視
             while (std::getline(file, line))
             {
-                ParseLineResult result = parseLine(line);
+                ParseLineResult result = utils::parseLine(line);
+                if (result.success)
+                {
+                    const std::string &date = result.value.first;
+                    const double &value = result.value.second;
+                    std::cout << date << " => " << value << " = " << value * exchange.getPrice(date) << std::endl;
+                }
+                else
+                {
+                    utils::printError(result.error);
+                }
             }
         }
         else
         {
-            std::cerr << "Error: could not open file." << std::endl;
+            utils::printError("could not open file.");
         }
-        
+
         return 0;
     }
 }

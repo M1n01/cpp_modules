@@ -1,4 +1,4 @@
-#include "../includes/Result.hpp"
+#include "Result.hpp"
 #include <iostream>
 
 template <typename T, typename E>
@@ -15,8 +15,3 @@ template <typename T, typename E> Result<T, E> Result<T, E>::Error(const E error
 {
     return (Result<T, E>(T(), error, false));
 }
-
-template struct Result<char, std::string>;
-template struct Result<double, std::string>;
-template struct Result<float, std::string>;
-template struct Result<int, std::string>;

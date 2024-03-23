@@ -10,3 +10,5 @@ template <typename T, typename E> struct Result
     static Result<T, E> Success(const T value);
     static Result<T, E> Error(const E error);
 };
+
+#include "Result.tpp"

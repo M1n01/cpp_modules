@@ -7,7 +7,7 @@ BitcoinExchange::BitcoinExchange()
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
 {
-    *this = other;
+    this->bitcoinPriceHistory = other.bitcoinPriceHistory;
 }
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
@@ -32,64 +32,37 @@ void BitcoinExchange::loadDataBase(void)
             const std::string price = line.substr(line.find(",") + 1);
             try
             {
-                this->bitcoinPriceHistory[date] = std::strtof(price.c_str(), NULL);
+                this->bitcoinPriceHistory[date] = std::strtod(price.c_str(), NULL);
             }
             catch (std::invalid_argument &e)
             {
-                std::cerr << "Error: " << e.what() << std::endl;
+                utils::printError(e.what());
             }
         }
         file.close();
     }
     else
     {
-        std::cerr << "Error: could not open file." << std::endl;
+        utils::printError("could not open file.");
     }
 }
 
-Result<std::vector<std::string>, std::string> splitLine(std::string &line)
+double BitcoinExchange::getPrice(const std::string &date) const
 {
-    std::istringstream iss(line);
-    std::vector<std::string> tokens;
-    std::string token;
-
-    while (std::getline(iss, token, '|'))
-        tokens.push_back(token);
-
-    if (!validDate(token[0]))
-        return Result<std::vector<std::string>, std::string>::Error("");
-    if (!validValue(tokens[1]))
-        return Result<std::vector<std::string>, std::string>::Error("");
-    if (tokens.size() == 2 && )
-
-    return Result<std::vector<std::string>, std::string>::Success(tokens);
-}
-
-void BitcoinExchange::printPrice(const std::string &filepath)
-{
-    std::ifstream file(filepath);
-    std::string line;
-
-    if (file.is_open())
+    std::map<std::string, double>::const_iterator it = this->bitcoinPriceHistory.begin();
+    double prevPrice = it->second;
+    while (it != this->bitcoinPriceHistory.end())
     {
-        std::getline(file, line); // 1行目は見出しのため無視
-        while (std::getline(file, line))
+        if (it->first == date)
         {
-            Result<std::vector<std::string>, std::string> result = splitLine(line);
-            if (result.success)
-            {
-                const std::string date = result.value[0];
-                const int value = stoi(result.value[1]);
-                std::cout << date << " => " << value << " = " << value * bitcoinPriceHistory.at(date) << std::endl;
-            }
-            else
-            {
-                std::cout << result.error << std::endl;
-            }
+            return it->second;
         }
+        else if (it->first > date)
+        {
+            break;
+        }
+        prevPrice = it->second;
+        it++;
     }
-    else
-    {
-        std::cerr << "Error: could not open file." << std::endl;
-    }
+    return prevPrice;
 }

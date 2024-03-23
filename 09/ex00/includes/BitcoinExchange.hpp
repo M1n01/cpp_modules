@@ -1,14 +1,11 @@
 #pragma once
 
+#include "alias.hpp"
+#include "utils.hpp"
+
 #include <fstream>
 #include <iostream>
-#include <sstream>
 #include <map>
-#include <vector>
-#include "Result.hpp"
-
-
-const std::string DATABASE_PATH = "database/data.csv";
 
 class BitcoinExchange
 {
@@ -23,5 +20,5 @@ class BitcoinExchange
     BitcoinExchange &operator=(const BitcoinExchange &other);
     ~BitcoinExchange();
 
-    void printPrice();
+    double getPrice(const std::string &date) const;
 };
