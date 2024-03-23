@@ -19,5 +19,5 @@ class BitcoinExchange
     BitcoinExchange &operator=(const BitcoinExchange &other);
     ~BitcoinExchange();
 
-    void printPrice(std::string date);
+    void printPrice(const std::string &filepath);
 };

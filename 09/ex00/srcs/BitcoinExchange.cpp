@@ -32,7 +32,7 @@ void BitcoinExchange::loadDataBase(void)
             const std::string price = line.substr(line.find(",") + 1);
             try
             {
-                this->bitcoinPriceHistory[date] = std::stof(price);
+                this->bitcoinPriceHistory[date] = std::strtof(price.c_str(), NULL);
             }
             catch (std::invalid_argument &e)
             {
@@ -47,15 +47,29 @@ void BitcoinExchange::loadDataBase(void)
     }
 }
 
-void BitcoinExchange::printPrice(std::string date)
+void BitcoinExchange::printPrice(const std::string &filepath)
 {
-    std::map<std::string, double>::iterator it = this->bitcoinPriceHistory.find(date);
-    if (it != this->bitcoinPriceHistory.end())
+    std::ifstream file(filepath);
+    std::string line;
+
+    if (file.is_open())
     {
-        std::cout << "Price on " << date << " was " << it->second << std::endl;
+        while (std::getline(file, line))
+        {
+            const std::string date = line.substr(0, line.find(" | "));
+            try
+            {
+                const int value = std::stoi(line.substr(line.find(" | ") + 3));
+                std::cout << date << " | " << value << " | " << this->bitcoinPriceHistory.at(date) << std::endl;
+            }
+            catch (std::out_of_range &e)
+            {
+                std::cerr << "Error: " << e.what() << std::endl;
+            }
+        }
     }
     else
     {
-        std::cerr << "Error: date not found." << std::endl;
+        std::cerr << "Error: could not open file." << std::endl;
     }
 }
