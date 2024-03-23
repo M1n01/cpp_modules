@@ -44,6 +44,42 @@ static bool validDate(const std::string &date)
     return true;
 }
 
+static std::pair<std::string, std::string> splitLine(const std::string &line)
+{
+    std::istringstream iss(line);
+    std::string date;
+    std::string valueStr;
+
+    if (!std::getline(iss, date, '|'))
+        date = line;
+
+    std::getline(iss, valueStr);
+
+    return std::make_pair(date, valueStr);
+}
+
+static ParseValueResult parseValue(const std::string &valueStr)
+{
+    if (!valueStr.empty())
+    {
+        char *endptr;
+        const double value = std::strtod(valueStr.c_str(), &endptr);
+        if (endptr == valueStr.c_str() + valueStr.length())
+        {
+            if (value >= 0 && value <= INT_MAX)
+                return ParseValueResult::Success(value);
+            else if (value < 0)
+                return ParseValueResult::Error("not a positive number");
+            else
+                return ParseValueResult::Error("too large a number");
+        }
+        else
+            return ParseValueResult::Error("invalid value format");
+    }
+    else
+        return ParseValueResult::Error("a value is required");
+}
+
 namespace utils
 {
 void printError(const std::string &message)
@@ -53,32 +89,22 @@ void printError(const std::string &message)
 
 ParseLineResult parseLine(const std::string &line)
 {
-    std::istringstream iss(line);
-    std::vector<std::string> tokens;
-    std::string token;
-
     if (!line.empty())
     {
-        while (std::getline(iss, token, '|'))
-            tokens.push_back(token);
+        const std::pair<std::string, std::string> tokens = splitLine(line);
+        const std::string &date = tokens.first;
+        const std::string &valueStr = tokens.second;
 
-        if (validDate(tokens[0]))
+        if (validDate(date))
         {
-            if (!tokens[1].empty())
-            {
-                const double value = std::strtod(tokens[1].c_str(), nullptr);
-                if (value >= 0 && value <= INT_MAX)
-                    return ParseLineResult::Success(std::pair<std::string, double>(tokens[0], value));
-                else if (value < 0)
-                    return ParseLineResult::Error("not a positive number");
-                else
-                    return ParseLineResult::Error("too large a number");
-            }
+            const ParseValueResult valueResult = parseValue(valueStr);
+            if (valueResult.success)
+                return ParseLineResult::Success(std::make_pair(date, valueResult.value));
             else
-                return ParseLineResult::Error("a value is required");
+                return ParseLineResult::Error(valueResult.error);
         }
         else
-            return ParseLineResult::Error("bad input => " + tokens[0]);
+            return ParseLineResult::Error("bad input => " + date);
     }
     else
         return ParseLineResult::Error("empty line");

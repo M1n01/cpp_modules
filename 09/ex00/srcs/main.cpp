@@ -23,7 +23,7 @@ int main(int argc, char **argv)
             std::getline(file, line); // 1行目は見出しのため無視
             while (std::getline(file, line))
             {
-                ParseLineResult result = utils::parseLine(line);
+                const ParseLineResult result = utils::parseLine(line);
                 if (result.success)
                 {
                     const std::string &date = result.value.first;
