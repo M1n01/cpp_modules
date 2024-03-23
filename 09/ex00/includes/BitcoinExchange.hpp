@@ -2,7 +2,11 @@
 
 #include <fstream>
 #include <iostream>
+#include <sstream>
 #include <map>
+#include <vector>
+#include "Result.hpp"
+
 
 const std::string DATABASE_PATH = "database/data.csv";
 
@@ -19,5 +23,5 @@ class BitcoinExchange
     BitcoinExchange &operator=(const BitcoinExchange &other);
     ~BitcoinExchange();
 
-    void printPrice(const std::string &filepath);
+    void printPrice();
 };

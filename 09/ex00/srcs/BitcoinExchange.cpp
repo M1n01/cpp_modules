@@ -47,6 +47,24 @@ void BitcoinExchange::loadDataBase(void)
     }
 }
 
+Result<std::vector<std::string>, std::string> splitLine(std::string &line)
+{
+    std::istringstream iss(line);
+    std::vector<std::string> tokens;
+    std::string token;
+
+    while (std::getline(iss, token, '|'))
+        tokens.push_back(token);
+
+    if (!validDate(token[0]))
+        return Result<std::vector<std::string>, std::string>::Error("");
+    if (!validValue(tokens[1]))
+        return Result<std::vector<std::string>, std::string>::Error("");
+    if (tokens.size() == 2 && )
+
+    return Result<std::vector<std::string>, std::string>::Success(tokens);
+}
+
 void BitcoinExchange::printPrice(const std::string &filepath)
 {
     std::ifstream file(filepath);
@@ -54,17 +72,19 @@ void BitcoinExchange::printPrice(const std::string &filepath)
 
     if (file.is_open())
     {
+        std::getline(file, line); // 1行目は見出しのため無視
         while (std::getline(file, line))
         {
-            const std::string date = line.substr(0, line.find(" | "));
-            try
+            Result<std::vector<std::string>, std::string> result = splitLine(line);
+            if (result.success)
             {
-                const int value = std::stoi(line.substr(line.find(" | ") + 3));
-                std::cout << date << " | " << value << " | " << this->bitcoinPriceHistory.at(date) << std::endl;
+                const std::string date = result.value[0];
+                const int value = stoi(result.value[1]);
+                std::cout << date << " => " << value << " = " << value * bitcoinPriceHistory.at(date) << std::endl;
             }
-            catch (std::out_of_range &e)
+            else
             {
-                std::cerr << "Error: " << e.what() << std::endl;
+                std::cout << result.error << std::endl;
             }
         }
     }
