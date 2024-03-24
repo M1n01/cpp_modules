@@ -1,22 +1,10 @@
 #include "ScalarConverter.hpp"
 
-namespace utils
-{
-bool isprintChars(const std::string &str)
-{
-    for (size_t i = 0; i < str.length(); i++)
-    {
-        if (!isprint(str[i]))
-            return false;
-    }
-    return true;
-}
 
 bool is_nan(const double value)
 {
     return value != value;
 }
-} // namespace utils
 
 ScalarConverter::ScalarConverter() {}
 
@@ -31,7 +19,7 @@ ScalarConverter::~ScalarConverter() {}
 
 ConvertToCharResult ScalarConverter::convertToChar(const double &value)
 {
-    if (value < 0 || value > 127 || utils::is_nan(value))
+    if (value < 0 || value > 127 || is_nan(value))
         return ConvertToCharResult::Error("impossible");
     if (std::isprint(static_cast<char>(value)))
         return ConvertToCharResult::Success(static_cast<char>(value));
@@ -40,14 +28,16 @@ ConvertToCharResult ScalarConverter::convertToChar(const double &value)
 
 ConvertToIntResult ScalarConverter::convertToInt(const double &value)
 {
-    if (value < INT_MIN || value > INT_MAX || utils::is_nan(value))
+    if (value < INT_MIN || value > INT_MAX || is_nan(value))
         return ConvertToIntResult::Error("impossible");
     return ConvertToIntResult::Success(static_cast<int>(value));
 }
 
 ConvertToFloatResult ScalarConverter::convertToFloat(const double &value)
 {
-    return ConvertToFloatResult::Success(static_cast<float>(value));
+    if (value < std::numeric_limits<float>::min() || value > std::numeric_limits<float>::max())
+        return ConvertToFloatResult::Error("impossible");
+    return ConvertToFloatResult::Success(static_cast<float>(value)); // 2**127がマックス？
 }
 
 ConvertToDoubleResult ScalarConverter::convertToDouble(const double &value)
