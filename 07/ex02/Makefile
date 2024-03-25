@@ -24,14 +24,14 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 -include $(DEPS)
 
 clean:
-	$(RM) -r $(OBJDIR) $(DEPS)
+	$(RM) -r $(OBJDIR)
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
 
-debug: CXXFLAGS += -g -fsanitize=address
+debug: CXXFLAGS += -g -fsanitize=address, undefined
 debug: re
 
 .PHONY: all clean fclean re debug
