@@ -29,8 +29,15 @@ PMergeMe::~PMergeMe()
 
 PMergeMeResult PMergeMe::sort()
 {
-    std::vector<int> outputVector;
-    std::merge(_inputDeque.begin(), _inputDeque.end(), _inputList.begin(), _inputList.end(),
-               std::back_inserter(outputVector));
-    return outputVector;
+    std::deque<int> deque(_inputDeque);
+    std::list<int> list(_inputList);
+
+    fordJohnsonSort(deque);
+    // fordJohnsonSort(list);
+
+    // if (!std::equal(deque.begin(), deque.end(), list.begin()))
+    //     return PMergeMeResult::Error("Error: Deque and List results do not match");
+
+    _outputVector = std::vector<int>(deque.begin(), deque.end());
+    return PMergeMeResult::Success(_outputVector);
 }
