@@ -24,7 +24,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 -include $(DEPS)
 
 clean:
-	$(RM) -r $(OBJDIR) $(DEPS)
+	$(RM) -r $(OBJDIR)
 
 fclean: clean
 	$(RM) $(NAME)
