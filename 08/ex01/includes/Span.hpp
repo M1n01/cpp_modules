@@ -1,23 +1,30 @@
 #pragma once
 
 #include <algorithm>
-#include <vector>
+#include <set>
 
 class Span
 {
   private:
-    unsigned int _size;
-    std::vector<int> _numbers;
+    unsigned int capacity;
+    std::multiset<int> numbers;
+
+    Span();
 
   public:
-    Span();
     Span(unsigned int n);
     Span(Span const &other);
     Span &operator=(Span const &other);
     ~Span();
 
     void addNumber(int n);
-    void addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
-    int shortestSpan();
-    int longestSpan();
+    template <typename T> void addNumbers(T begin, T end)
+    {
+        if (static_cast<size_t>(std::distance(begin, end)) <= capacity - numbers.size())
+            numbers.insert(begin, end);
+        else
+            throw std::runtime_error("Container is full");
+    };
+    unsigned int shortestSpan() const;
+    unsigned int longestSpan() const;
 };

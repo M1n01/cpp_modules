@@ -24,6 +24,37 @@ int main()
 
     try
     {
+        Span sp = Span(5);
+        sp.addNumber(INT_MAX);
+        sp.addNumber(INT_MIN);
+        sp.addNumber(0);
+        sp.addNumber(2);
+        sp.addNumber(-5);
+        std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
+        std::cout << "Longest span: " << sp.longestSpan() << std::endl;
+    }
+    catch (std::exception &e)
+    {
+        std::cout << "Exception: " << e.what() << std::endl;
+    }
+    std::cout << std::endl;
+
+    try
+    {
+        Span sp = Span(2);
+        sp.addNumber(INT_MAX);
+        sp.addNumber(INT_MIN);
+        std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
+        std::cout << "Longest span: " << sp.longestSpan() << std::endl;
+    }
+    catch (std::exception &e)
+    {
+        std::cout << "Exception: " << e.what() << std::endl;
+    }
+    std::cout << std::endl;
+
+    try
+    {
         Span sp(10000);
         std::vector<int> largeNumbers;
         for (int i = 1; i <= 10000; ++i)
@@ -34,10 +65,9 @@ int main()
         std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
         std::cout << "Longest span: " << sp.longestSpan() << std::endl;
 
-        Span sp2(5);
-        sp2.addNumbers(largeNumbers.begin(), largeNumbers.begin() + 3);
-        std::cout << "Shortest span after partial fill: " << sp2.shortestSpan() << std::endl;
-        std::cout << "Longest span after partial fill: " << sp2.longestSpan() << std::endl;
+        Span sp2(sp);
+        std::cout << "Shortest span: " << sp2.shortestSpan() << std::endl;
+        std::cout << "Longest span: " << sp2.longestSpan() << std::endl;
     }
     catch (std::exception &e)
     {
@@ -58,8 +88,8 @@ int main()
     try
     {
         Span sp(5);
-        sp.addNumber(1);
         std::cout << "Shortest span on empty Span: " << sp.shortestSpan() << std::endl;
+        std::cout << "Longest span on empty Span: " << sp.longestSpan() << std::endl;
     }
     catch (std::exception &e)
     {
