@@ -32,19 +32,34 @@ int main()
     }
     std::cout << std::endl;
 
+    const MutantStack<int> mstackConst(mstack);
     std::cout << "Stack contents (const forward): ";
-    for (MutantStack<int>::const_iterator it = mstack.begin(); it != mstack.end(); ++it)
+    for (MutantStack<int>::const_iterator it = mstackConst.begin(); it != mstackConst.end(); ++it)
     {
         std::cout << *it << " ";
     }
     std::cout << std::endl;
 
-    MutantStack<int> s(mstack);
-    MutantStack<int> s2;
-    s2 = s;
+    std::cout << "Stack contents (const reverse): ";
+    for (MutantStack<int>::const_reverse_iterator it = mstackConst.rbegin(); it != mstackConst.rend(); ++it)
+    {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+
+    std::stack<int> s(mstack);
+
+    for (std::stack<int> tmp = s; !tmp.empty(); tmp.pop())
+    {
+        std::cout << "Stack pop: " << tmp.top() << std::endl;
+    }
+
+    MutantStack<int> s2(mstack);
+    MutantStack<int> s3;
+    s3 = s2;
 
     std::cout << "Copy assigned stack contents: ";
-    for (MutantStack<int>::iterator it = s2.begin(); it != s2.end(); ++it)
+    for (MutantStack<int>::iterator it = s3.begin(); it != s3.end(); ++it)
     {
         std::cout << *it << " ";
     }
