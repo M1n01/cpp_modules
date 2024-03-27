@@ -1,7 +1,7 @@
 NAME = RPN
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors $(LDFLAGS) -MMD -MP
-LDFLAGS = -I$(INCDIR)
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors -I$(INCDIR) -MMD -MP
+
 
 INCDIR = ./includes
 SRCDIR = ./srcs

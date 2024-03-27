@@ -1,7 +1,7 @@
 NAME = account
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors $(LDFLAGS) -MMD -MP
-LDFLAGS = -I$(INCDIR)
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors -I$(INCDIR) -MMD -MP
+
 
 INCDIR = ./inc
 SRCDIR = .
@@ -24,7 +24,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 -include $(DEPS)
 
 clean:
-	$(RM) -r $(OBJDIR) $(DEPS)
+	$(RM) -r $(OBJDIR)
 
 fclean: clean
 	$(RM) $(NAME)

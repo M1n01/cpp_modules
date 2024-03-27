@@ -1,12 +1,12 @@
 NAME = ex01
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors $(LDFLAGS) -MMD -MP
-LDFLAGS = -I$(INCDIR)
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors -I$(INCDIR) -MMD -MP
+
 
 INCDIR = ./inc
 INCS = $(shell find $(INCDIR) -name "*.hpp" -type f | xargs)CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors $(LDFLAGS) -MMD -MP
-LDFLAGS = -I$(INCDIR)
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors -I$(INCDIR) -MMD -MP
+
 
 INCDIR = ./inc
 SRCDIR = ./src
@@ -29,7 +29,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 -include $(DEPS)
 
 clean:
-	$(RM) -r $(OBJDIR) $(DEPS)
+	$(RM) -r $(OBJDIR)
 
 fclean: clean
 	$(RM) $(NAME)

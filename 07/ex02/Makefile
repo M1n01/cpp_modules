@@ -1,7 +1,7 @@
 NAME = ex02
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors $(LDFLAGS) -MMD -MP
-LDFLAGS = -I$(INCDIR)
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors -I$(INCDIR) -MMD -MP
+
 
 INCDIR = ./includes
 SRCDIR = ./srcs
@@ -31,7 +31,7 @@ fclean: clean
 
 re: fclean all
 
-debug: CXXFLAGS += -g -fsanitize=address, undefined
+debug: CXXFLAGS += -g -fsanitize=address,undefined
 debug: re
 
 .PHONY: all clean fclean re debug
