@@ -7,5 +7,7 @@
 namespace utils
 {
 void printError(const std::string &message);
-ParseLineResult parseLine(const std::string &line);
-} // namespace Utils
+ParseValueResult parseValue(const std::string &valueStr);
+ParseLineResult parseInputFileLine(const std::string &line);
+bool validDate(const std::string &date);
+} // namespace utils

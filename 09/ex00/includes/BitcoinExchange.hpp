@@ -12,7 +12,7 @@ class BitcoinExchange
   private:
     std::map<std::string, double> bitcoinPriceHistory;
 
-    void loadDataBase(void);
+    LoadDataBaseResult loadDataBase(void);
 
   public:
     BitcoinExchange();

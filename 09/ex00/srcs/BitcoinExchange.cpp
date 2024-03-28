@@ -2,7 +2,13 @@
 
 BitcoinExchange::BitcoinExchange()
 {
-    this->loadDataBase();
+    std::cout << "Loading database..." << std::endl;
+    LoadDataBaseResult result = this->loadDataBase();
+    if (!result.success)
+    {
+        throw std::runtime_error(result.error);
+    }
+    std::cout << "Database loaded!\n" << std::endl;
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
@@ -20,30 +26,44 @@ BitcoinExchange::~BitcoinExchange()
 {
 }
 
-void BitcoinExchange::loadDataBase(void)
+LoadDataBaseResult BitcoinExchange::loadDataBase(void)
 {
     std::ifstream file(DATABASE_PATH);
     if (file.is_open())
     {
         std::string line;
+        std::getline(file, line); // skip header
+        if (line != "date,exchange_rate")
+        {
+            return LoadDataBaseResult::Error("bad header");
+        }
         while (std::getline(file, line))
         {
             const std::string date = line.substr(0, line.find(","));
-            const std::string price = line.substr(line.find(",") + 1);
-            try
+            if (utils::validDate(date))
             {
-                this->bitcoinPriceHistory[date] = std::strtod(price.c_str(), NULL);
+                const std::string price = line.substr(line.find(",") + 1);
+                ParseValueResult result = utils::parseValue(price);
+                if (result.success)
+                {
+                    this->bitcoinPriceHistory[date] = result.value;
+                }
+                else
+                {
+                    return LoadDataBaseResult::Error(result.error);
+                }
             }
-            catch (std::invalid_argument &e)
+            else
             {
-                utils::printError(e.what());
+                return LoadDataBaseResult::Error("bad input => " + date);
             }
         }
         file.close();
+        return LoadDataBaseResult::Success(SUCCESS);
     }
     else
     {
-        utils::printError("could not open file.");
+        return LoadDataBaseResult::Error("could not open file.");
     }
 }
 

@@ -4,41 +4,54 @@ int main(int argc, char **argv)
 {
     if (argc < 2)
     {
-        std::cerr << "Error: could not open file." << std::endl;
+        utils::printError("could not open file.");
         return 1;
     }
     else if (argc > 2)
     {
-        std::cerr << "Error: Too many args." << std::endl;
+        utils::printError("Too many args.");
         return 1;
     }
     else
     {
-        BitcoinExchange exchange;
-        std::ifstream file(argv[1]);
-        std::string line;
-
-        if (file.is_open())
+        try
         {
-            std::getline(file, line); // 1行目は見出しのため無視
-            while (std::getline(file, line))
+            BitcoinExchange exchange;
+            std::ifstream file(argv[1]);
+            std::string line;
+
+            if (file.is_open())
             {
-                const ParseLineResult result = utils::parseLine(line);
-                if (result.success)
+                std::getline(file, line); // 1行目は見出し
+                if (line != "date | value")
                 {
-                    const std::string &date = result.value.first;
-                    const double &value = result.value.second;
-                    std::cout << date << " => " << value << " = " << value * exchange.getPrice(date) << std::endl;
+                    utils::printError("invalid file format.");
+                    return 1;
                 }
-                else
+                while (std::getline(file, line))
                 {
-                    utils::printError(result.error);
+                    const ParseLineResult result = utils::parseInputFileLine(line);
+                    if (result.success)
+                    {
+                        const std::string &date = result.value.first;
+                        const double &value = result.value.second;
+                        std::cout << date << " => " << value << " = " << value * exchange.getPrice(date) << std::endl;
+                    }
+                    else
+                    {
+                        utils::printError(result.error);
+                    }
                 }
             }
+            else
+            {
+                utils::printError("could not open file.");
+            }
         }
-        else
+        catch (std::exception &e)
         {
-            utils::printError("could not open file.");
+            utils::printError(e.what());
+            return 1;
         }
 
         return 0;
